@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.75" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/back"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="52dp"
         android:layout_height="48dp"
