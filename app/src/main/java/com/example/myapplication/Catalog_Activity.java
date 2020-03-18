@@ -14,7 +14,7 @@ public class Catalog_Activity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_catalog);
+        setContentView(R.layout.activity_main);
         bt=findViewById(R.id.back);
         bt.setOnClickListener(this);
     }
