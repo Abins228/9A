@@ -22,7 +22,7 @@ public class Catalog_Activity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
         Intent i;
-        i = new Intent(Catalog_Activity.this, Catalog_Activity.class);
+        i = new Intent(Catalog_Activity.this, MainActivity.class);
         startActivity(i);
     }
 }
