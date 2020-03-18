@@ -17,15 +17,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/catalogbutton"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="65dp"
         android:layout_height="65dp"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.94"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/Widget.AppCompat.Button.Borderless"
         app:layout_constraintVertical_bias="0.96"
         app:srcCompat="@drawable/eye1" />
 

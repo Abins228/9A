@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -11,11 +12,24 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-public class MainActivity extends AppCompatActivity {
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+  Button bt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        bt.findViewById(R.id.catalogbutton);
+        bt.setOnClickListener((View.OnClickListener) this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent i;
+        i = new Intent(this, Catalog_Activity.class);
+        startActivity(i);
     }
 }
