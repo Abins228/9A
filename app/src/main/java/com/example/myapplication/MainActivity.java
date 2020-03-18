@@ -13,23 +13,24 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-  Button bt;
+  ImageButton bt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bt.findViewById(R.id.catalogbutton);
-        bt.setOnClickListener((View.OnClickListener) this);
+       bt=findViewById(R.id.catalogbutton);
+       bt.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         Intent i;
-        i = new Intent(this, Catalog_Activity.class);
+        i = new Intent(MainActivity.this, Catalog_Activity.class);
         startActivity(i);
     }
 }
