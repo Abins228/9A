@@ -33,4 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         i = new Intent(MainActivity.this, Catalog_Activity.class);
         startActivity(i);
     }
+    public void onClickSborka(View view) {
+        Intent s;
+        s = new Intent(MainActivity.this, sborka_activity.class);
+        startActivity(s);
+    }
 }
