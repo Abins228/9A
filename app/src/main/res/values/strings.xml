@@ -9,4 +9,16 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="motherboard">Материнские платы</string>
+    <string name="gpu">Видеокарты</string>
+    <string name="proces">Процессоры</string>
+    <string name="ram">Оперативная память</string>
+    <string name="bp">Облоки питания</string>
+    <string name="coolers">Кулеры для процессора</string>
+    <string name="vint">Винтеляторы</string>
+    <string name="hdd">Жесткие диски</string>
+    <string name="ssdm2">SSD/M.2 накопители</string>
+    <string name="body">Корпуса</string>
+
+
 </resources>
