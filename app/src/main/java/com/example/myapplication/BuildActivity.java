@@ -85,7 +85,7 @@ public class BuildActivity extends AppCompatActivity implements View.OnClickList
         s.putExtra("SSD",SSD);
         startActivity(s);
     }
-    public void onClickM2(View view) {//
+    public void onClickM2(View view) {
         Intent s;
         s = new Intent(BuildActivity.this, MarketActivity.class);
         s.putExtra("M2",M2);
