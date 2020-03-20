@@ -34,7 +34,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textView11"
                 app:layout_constraintTop_toBottomOf="@+id/textView11"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/sborka" />
+                app:srcCompat="@drawable/sborka6" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -64,7 +64,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textView8"
                 app:layout_constraintTop_toBottomOf="@+id/textView8"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/sborka" />
+                app:srcCompat="@drawable/sborka6" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -94,7 +94,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textView10"
                 app:layout_constraintTop_toBottomOf="@+id/textView10"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/sborka" />
+                app:srcCompat="@drawable/sborka6" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -124,7 +124,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textView9"
                 app:layout_constraintTop_toBottomOf="@+id/textView9"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/sborka" />
+                app:srcCompat="@drawable/sborka6" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -141,20 +141,6 @@
                 app:layout_constraintStart_toStartOf="@+id/imageButton3"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton3"
                 app:layout_constraintVertical_bias="0.0" />
-
-            <ImageButton
-                android:id="@+id/imageButton10"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onClickS"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textView7"
-                app:layout_constraintTop_toBottomOf="@+id/textView7"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/sborka" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -182,7 +168,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textView6"
                 app:layout_constraintTop_toBottomOf="@+id/textView6"
                 app:layout_constraintVertical_bias="0.01999998"
-                app:srcCompat="@drawable/sborka" />
+                app:srcCompat="@drawable/sborka6" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -210,7 +196,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textView5"
                 app:layout_constraintTop_toBottomOf="@+id/textView5"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/sborka" />
+                app:srcCompat="@drawable/sborka6" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -238,7 +224,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textView4"
                 app:layout_constraintTop_toBottomOf="@+id/textView4"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/sborka" />
+                app:srcCompat="@drawable/sborka6" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -266,7 +252,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textView3"
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/sborka" />
+                app:srcCompat="@drawable/sborka6" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -294,7 +280,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/sborka" />
+                app:srcCompat="@drawable/sborka6" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -336,7 +322,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textView"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/sborka" />
+                app:srcCompat="@drawable/sborka6" />
 
             <TextView
                 android:id="@+id/textView"
@@ -350,6 +336,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/back2"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <ImageButton
+                android:id="@+id/imageButton10"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClickS"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textView7"
+                app:layout_constraintTop_toBottomOf="@+id/textView7"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/sborka6" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
