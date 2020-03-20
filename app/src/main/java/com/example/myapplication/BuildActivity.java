@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class BuildActivity extends AppCompatActivity implements View.OnClickListener {
-    ImageButton bt;
+    ImageButton bt;//
 
     static final int MOTHERBOARD = 1;
     static final int PROCES = 2;
