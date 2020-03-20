@@ -14,11 +14,12 @@
     <string name="proces">Процессоры</string>
     <string name="ram">Оперативная память</string>
     <string name="bp">Блоки питания</string>
-    <string name="coolers">Кулеры для процессора</string>
-    <string name="cooler">Кулер для процессора</string>
-    <string name="vint">Вентиляторы</string>
+    <string name="CPUCOOLER">Кулер для процессора</string>
+    <string name="CPUCOOLERS">Кулеры для процессора</string>
+    <string name="cooler">Вентиляторы</string>
     <string name="hdd">Жесткие диски</string>
-    <string name="ssdm2">SSD/M.2 накопители</string>
+    <string name="ssd">SSD накопители</string>
+    <string name="M2">M.2 накопители</string>
     <string name="bodies">Корпуса</string>
     <string name="body">Корпус</string>
 

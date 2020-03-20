@@ -11,7 +11,6 @@ import android.widget.ImageButton;
 public class Catalog_Activity extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton bt;
-    Button motherbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

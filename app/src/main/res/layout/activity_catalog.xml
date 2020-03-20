@@ -10,13 +10,12 @@
         android:id="@+id/buttonbody"
         android:layout_width="340dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="108dp"
         android:text="@string/bodies"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/back"
@@ -38,61 +37,73 @@
         android:layout_height="47dp"
         android:onClick="onClickMotherBoard"
         android:text="@string/motherboard"
-        app:layout_constraintBottom_toTopOf="@+id/gpubutton"
+        app:layout_constraintBottom_toTopOf="@+id/cpubutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/gpubutton"
+        android:id="@+id/cpubutton"
         android:layout_width="340dp"
         android:layout_height="47dp"
         android:text="@string/proces"
-        app:layout_constraintBottom_toTopOf="@+id/buttonproces"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCPUcooler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonproces"
+        android:id="@+id/buttonCPUcooler"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:text="@string/coolers"
-        app:layout_constraintBottom_toTopOf="@+id/buttonram"
+        android:text="@string/CPUCOOLERS"
+        app:layout_constraintBottom_toTopOf="@+id/buttongpu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonram"
+        android:id="@+id/buttongpu"
         android:layout_width="340dp"
         android:layout_height="47dp"
         android:text="@string/gpu"
-        app:layout_constraintBottom_toTopOf="@+id/butttonBp"
+        app:layout_constraintBottom_toTopOf="@+id/butttonram"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/butttonBp"
+        android:id="@+id/butttonram"
         android:layout_width="340dp"
         android:layout_height="47dp"
         android:text="@string/ram"
-        app:layout_constraintBottom_toTopOf="@+id/buttoncolers"
+        app:layout_constraintBottom_toTopOf="@+id/hdd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttoncolers"
+        android:id="@+id/hdd"
         android:layout_width="340dp"
         android:layout_height="47dp"
         android:text="@string/hdd"
-        app:layout_constraintBottom_toTopOf="@+id/buttonvint"
+        app:layout_constraintBottom_toTopOf="@+id/buttonssd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonhdd"
+        android:id="@+id/buttoncooler"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:text="@string/vint"
-        app:layout_constraintBottom_toTopOf="@+id/buttonssd"
+        android:text="@string/cooler"
+        app:layout_constraintBottom_toTopOf="@+id/buttonbp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonbp"
+        android:layout_width="340dp"
+        android:layout_height="47dp"
+        android:text="@string/bp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonbody"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -100,18 +111,17 @@
         android:id="@+id/buttonssd"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:text="@string/bp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonbody"
+        android:text="@string/ssd"
+        app:layout_constraintBottom_toTopOf="@+id/buttonM2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonvint"
+        android:id="@+id/buttonM2"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:text="@string/ssdm2"
-        app:layout_constraintBottom_toTopOf="@+id/buttonhdd"
+        android:text="@string/M2"
+        app:layout_constraintBottom_toTopOf="@+id/buttoncooler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
