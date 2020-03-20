@@ -31,7 +31,7 @@ public class Catalog_Activity extends AppCompatActivity implements View.OnClickL
 
     public void onClickMotherBoard(View view) {
         Intent m;
-        m = new Intent(Catalog_Activity.this, motherboard_active.class);
+        m = new Intent(Catalog_Activity.this, MarketActivity.class);
         startActivity(m);
     }
 }

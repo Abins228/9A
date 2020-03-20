@@ -10,7 +10,7 @@
         android:id="@+id/buttonbody"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:text="@string/body"
+        android:text="@string/bodies"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
@@ -46,57 +46,52 @@
         android:id="@+id/gpubutton"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:text="@string/gpu"
+        android:text="@string/proces"
         app:layout_constraintBottom_toTopOf="@+id/buttonproces"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-         />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonproces"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:text="@string/proces"
+        android:text="@string/coolers"
         app:layout_constraintBottom_toTopOf="@+id/buttonram"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonram"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:text="@string/ram"
+        android:text="@string/gpu"
         app:layout_constraintBottom_toTopOf="@+id/butttonBp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-         />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/butttonBp"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:text="@string/bp"
+        android:text="@string/ram"
         app:layout_constraintBottom_toTopOf="@+id/buttoncolers"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-         />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttoncolers"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:text="@string/coolers"
+        android:text="@string/hdd"
         app:layout_constraintBottom_toTopOf="@+id/buttonvint"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonhdd"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:text="@string/hdd"
+        android:text="@string/vint"
         app:layout_constraintBottom_toTopOf="@+id/buttonssd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -105,7 +100,7 @@
         android:id="@+id/buttonssd"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:text="@string/ssdm2"
+        android:text="@string/bp"
         app:layout_constraintBottom_toTopOf="@+id/buttonbody"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
@@ -115,10 +110,9 @@
         android:id="@+id/buttonvint"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:text="@string/vint"
+        android:text="@string/ssdm2"
         app:layout_constraintBottom_toTopOf="@+id/buttonhdd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-         />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
