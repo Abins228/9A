@@ -11,8 +11,11 @@
         android:id="@+id/buttonbody"
         android:layout_width="340dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="108dp"
+        android:layout_marginBottom="28dp"
+        android:background="#696969"
+        android:onClick="onClickBody"
         android:text="@string/bodies"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
@@ -36,94 +39,141 @@
         android:id="@+id/motherboardbutton"
         android:layout_width="340dp"
         android:layout_height="47dp"
+        android:background="#696969"
         android:onClick="onClickMotherBoard"
         android:text="@string/motherboard"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/cpubutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.884" />
 
     <Button
         android:id="@+id/cpubutton"
         android:layout_width="340dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="12dp"
+        android:background="#696969"
+        android:onClick="onClickProcessor"
         android:text="@string/proces"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/buttonCPUcooler"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonCPUcooler"
         android:layout_width="340dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="12dp"
+        android:background="#696969"
+        android:onClick="onClickCpuCooler"
         android:text="@string/CPUCOOLERS"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/buttongpu"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttongpu"
         android:layout_width="340dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="12dp"
+        android:background="#696969"
+        android:onClick="onClickGpu"
         android:text="@string/gpu"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/butttonram"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/butttonram"
         android:layout_width="340dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="12dp"
+        android:background="#696969"
+        android:onClick="onClickRam"
         android:text="@string/ram"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/hdd"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/hdd"
         android:layout_width="340dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="12dp"
+        android:background="#696969"
+        android:onClick="onClickHdd"
         android:text="@string/hdd"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/buttonssd"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttoncooler"
         android:layout_width="340dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="12dp"
+        android:background="#696969"
+        android:onClick="onClickCooler"
         android:text="@string/cooler"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/buttonbp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonbp"
         android:layout_width="340dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="12dp"
+        android:background="#696969"
+        android:onClick="onClickBp"
         android:text="@string/bp"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/buttonbody"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonssd"
         android:layout_width="340dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="12dp"
+        android:background="#696969"
+        android:onClick="onClickSsd"
         android:text="@string/ssd"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/buttonM2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonM2"
         android:layout_width="340dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="12dp"
+        android:background="#696969"
+        android:onClick="onClickM2"
         android:text="@string/M2"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/buttoncooler"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
