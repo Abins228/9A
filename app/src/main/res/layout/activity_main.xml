@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorBlack"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -11,7 +10,7 @@
         android:id="@+id/button"
         android:layout_width="244dp"
         android:layout_height="244dp"
-        android:background="@drawable/glavn2"
+        android:background="@drawable/new3"
         android:onClick="onClickSborka"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +29,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.96"
-        app:srcCompat="@drawable/lupa" />
+        app:srcCompat="@drawable/lupa3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
