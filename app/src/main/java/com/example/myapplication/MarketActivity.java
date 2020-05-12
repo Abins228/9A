@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,8 +20,9 @@ import java.util.ArrayList;
 public class MarketActivity extends AppCompatActivity {
 
     DBServer dbServer;
-    DBServer.Products products;
     ListView list;
+    ListAdapter<BP> listAdapter;
+    Selectable<BP> table;
 
 
     @Override
@@ -31,11 +31,8 @@ public class MarketActivity extends AppCompatActivity {
         setContentView(R.layout.market_activity);
 
         dbServer = new DBServer(this);
-        products = dbServer.new Products();
 
-//        list = findViewById(R.id.listView);
-//        ListAdapter listAdapter = new ListAdapter(this, products.selectAll());
-//        list.setAdapter(listAdapter);
+        list = findViewById(R.id.listView);
 
         if (getIntent().hasExtra("MotherBoard")) {
             int value = getIntent().getIntExtra("MotherBoard", 1);
@@ -95,6 +92,8 @@ public class MarketActivity extends AppCompatActivity {
             int value = getIntent().getIntExtra("BP", 10);
             if (value == BuildActivity.BP) {
                 Toast.makeText(getApplicationContext(), "блоки питания", Toast.LENGTH_SHORT).show();
+                table = dbServer.new BPTable();
+                listAdapter = new ListAdapter<BP>(this, table.selectAll());
             }
         }
         if (getIntent().hasExtra("BODY")) {
@@ -105,14 +104,16 @@ public class MarketActivity extends AppCompatActivity {
 
 
         }
+        list.setAdapter(listAdapter);
 
     }
 
-    public class ListAdapter extends BaseAdapter {
-        LayoutInflater inflater;
-        ArrayList<Preview> data;
 
-        public ListAdapter(Context context, ArrayList<Preview> data) {
+    public class ListAdapter<T extends Idetificate> extends BaseAdapter {
+        LayoutInflater inflater;
+        ArrayList<T> data;
+
+        public ListAdapter(Context context, ArrayList<T> data) {
             inflater = LayoutInflater.from(context);
             this.data = data;
         }
@@ -129,7 +130,7 @@ public class MarketActivity extends AppCompatActivity {
 
         @Override
         public long getItemId(int position) {
-            Preview ob = data.get(position);
+            T ob = data.get(position);
             if (ob != null) {
                 return ob.getId();
             }
@@ -141,16 +142,19 @@ public class MarketActivity extends AppCompatActivity {
             if (convertView == null)
                 convertView = getLayoutInflater().inflate(R.layout.item, null);
 
-            ImageView image = convertView.findViewById(R.id.image);
-            TextView description = convertView.findViewById(R.id.text);
+//            ImageView image = convertView.findViewById(R.id.image);
+            TextView name = convertView.findViewById(R.id.name);
+            TextView description = convertView.findViewById(R.id.description);
+            TextView price = convertView.findViewById(R.id.price);
 
-            Preview preview = (Preview) getItem(position);
+            T preview = (T) getItem(position);
 
-            ByteArrayInputStream imageStream = new ByteArrayInputStream(preview.getImage());
-            Bitmap theImage = BitmapFactory.decodeStream(imageStream);
-            image.setImageBitmap(theImage);
-
-            description.setText(preview.getDescripton());
+//            ByteArrayInputStream imageStream = new ByteArrayInputStream(preview.getImage());
+////            Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+//////            image.setImageBitmap(theImage);
+            name.setText(preview.getName());
+            description.setText(preview.getDescription());
+            price.setText(preview.getPrice());
 
             return convertView;
         }

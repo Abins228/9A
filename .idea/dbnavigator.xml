@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4">
-        <schema name="main" object-types="view, constraint, table, index, column, dataset trigger" />
+        <schema name="main" object-types="index, column, view, dataset trigger, constraint, table" />
       </connection>
     </loaded-nodes>
   </component>
@@ -281,6 +281,7 @@ alter table "bp" add COLUMN ImageBlob blob;]]></console>
         <condition column="Chip" operator="is not null" value="" active="true" />
       </filter>
     </filter-actions>
+    <filter-actions connection-id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4" dataset="main.Coolers_CPU" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4" dataset="main.M2" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4" dataset="main.HDD" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4" dataset="main.CPU" active-filter-id="EMPTY_FILTER" />
@@ -330,7 +331,7 @@ alter table "bp" add COLUMN ImageBlob blob;]]></console>
           <deprecated-pwd value="" />
         </database>
         <properties>
-          <auto-commit value="true" />
+          <auto-commit value="false" />
         </properties>
         <ssh-settings>
           <active value="false" />

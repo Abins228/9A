@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     ImageButton bt;
     DBServer dbServer;
-    DBServer.Products products;
+   // DBServer.Products products;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
