@@ -113,7 +113,7 @@ public class DBServer {
         private String DB_PATH = "/data/data/com.example.myapplication/databases/";
 
         public OpenHelper(Context context) {
-            super(context, DATABASE_NAME, null, 1);
+            super(context, DATABASE_NAME, null, DATABASE_VERSION);
             this.myContext = context;
             outFileName = DB_PATH + DATABASE_NAME;
         }
