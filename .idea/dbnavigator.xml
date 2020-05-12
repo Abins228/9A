@@ -31,7 +31,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4">
-      <console name="Parts" type="STANDARD" schema="main" session="Main">create table Motherboards
+      <console name="Parts" type="STANDARD" schema="main" session="Main"><![CDATA[create table Motherboards
 (ID integer primary key autoincrement,
 Name text not null,
 Form_factor text not null,
@@ -255,9 +255,9 @@ USB_3_1_Gen2   integer not null,
 Supported_GPU_length  text not null,
 Name text not null)
 
-drop 
+SELECT * FROM BP
 
-alter table &quot;bp&quot; add COLUMN ImageBlob blob;</console>
+alter table "bp" add COLUMN ImageBlob blob;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

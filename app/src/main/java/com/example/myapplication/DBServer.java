@@ -31,6 +31,7 @@ public class DBServer {
             e.printStackTrace();
         }
         this.database = openHelper.getReadableDatabase();
+        System.out.println(database.getPath());
 
     }
 
@@ -115,7 +116,6 @@ public class DBServer {
         public OpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
             this.myContext = context;
-            outFileName = DB_PATH + DATABASE_NAME;
         }
 
         /**
@@ -128,6 +128,7 @@ public class DBServer {
             } else {
                 // При вызове этого метода пустая база данных будет создана в системном пути по умолчанию
                 this.getReadableDatabase();
+                this.close();
                 try {
                     copyDataBase();
                 } catch (IOException e) {
@@ -142,21 +143,9 @@ public class DBServer {
          * @ return true, если существует, false, если нет
          */
         private boolean checkDataBase() {
-            SQLiteDatabase checkDB = null;
-            try {
-                checkDB = SQLiteDatabase.openDatabase(outFileName, null, SQLiteDatabase.OPEN_READWRITE);
-            } catch (SQLiteException e) {
-                try {
-                    copyDataBase();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-
-            if (checkDB != null) {
-                checkDB.close();
-            }
-            return checkDB != null;
+            File databasePath = myContext.getDatabasePath(DATABASE_NAME);
+            Log.i("TAG", databasePath.getPath());
+            return databasePath.exists();
         }
 
         /**
@@ -173,7 +162,7 @@ public class DBServer {
             InputStream myInput = null;
             try {
                 myInput = myContext.getAssets().open(DATABASE_NAME);
-                myOutput = new FileOutputStream(DB_PATH + DATABASE_NAME);
+                myOutput = new FileOutputStream(myContext.getDatabasePath(DATABASE_NAME));
                 while ((length = myInput.read(buffer)) > 0) {
                     myOutput.write(buffer, 0, length);
                 }
@@ -186,7 +175,7 @@ public class DBServer {
         }
 
         public void openDataBase() throws SQLException {
-            String myPath = DB_PATH + DATABASE_NAME;
+            String myPath = myContext.getDatabasePath(DATABASE_NAME).getPath();
             database = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
         }
 
