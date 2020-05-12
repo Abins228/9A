@@ -2,14 +2,13 @@ package com.example.myapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import androidx.annotation.Nullable;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,7 +25,13 @@ public class DBServer {
 
     public DBServer(Context context) {
         OpenHelper openHelper = new OpenHelper(context);
-//        this.database = openHelper.getWritableDatabase();
+        try {
+            openHelper.createDataBase();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        this.database = openHelper.getReadableDatabase();
+
     }
 
     public class BPTable implements Selectable<BP>{
@@ -60,11 +65,11 @@ public class DBServer {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<com.example.myapplication.BP> selectAll(){
+        public ArrayList<BP> selectAll(){
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
-            ArrayList<com.example.myapplication.BP> arr = new ArrayList<>();
+            ArrayList<BP> arr = new ArrayList<>();
             cursor.moveToFirst();
             if (!cursor.isAfterLast()) {
                 do {
@@ -103,119 +108,102 @@ public class DBServer {
 
 
     private class OpenHelper extends SQLiteOpenHelper {
+        private final Context myContext;
+        String outFileName;
+        private String DB_PATH = "/data/data/com.example.myapplication/databases/";
 
-        private String DATABASE_PATH = "/data/data/com.example.myapplication/databases/";
-        private Context myContext;
-
-        public OpenHelper(@Nullable Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-            myContext = context;
+        public OpenHelper(Context context) {
+            super(context, DATABASE_NAME, null, 1);
+            this.myContext = context;
+            outFileName = DB_PATH + DATABASE_NAME;
         }
 
-        public void createDatabase() throws IOException
-        {
-
+        /**
+         * Создание пустой системной БД и её перезапись БД из ассетов
+         */
+        public void createDataBase() throws IOException {
             boolean dbExist = checkDataBase();
-
-            if(dbExist)
-            {
-                Log.v("DB Exists", "db exists");
-                openDatabase();
-            }
-
-            boolean dbExist1 = checkDataBase();
-            if(!dbExist1)
-            {
+            if (dbExist) {
+                // ничего не делать - БД уже создана
+            } else {
+                // При вызове этого метода пустая база данных будет создана в системном пути по умолчанию
                 this.getReadableDatabase();
-                try
-                {
-                    this.close();
+                try {
                     copyDataBase();
+                } catch (IOException e) {
+                    throw new Error("Не удалось скопировать БД");
                 }
-                catch (IOException e)
-                {
-                    throw new Error("Error copying database");
+            }
+        }
+
+        /**
+         * Проверка, существует ли база данных, необходима чтобы избежать повторного копирования при каждом открытии приложения.
+         *
+         * @ return true, если существует, false, если нет
+         */
+        private boolean checkDataBase() {
+            SQLiteDatabase checkDB = null;
+            try {
+                checkDB = SQLiteDatabase.openDatabase(outFileName, null, SQLiteDatabase.OPEN_READWRITE);
+            } catch (SQLiteException e) {
+                try {
+                    copyDataBase();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
                 }
             }
 
-        }
-        //Check database already exist or not
-        private boolean checkDataBase()
-        {
-            boolean checkDB = false;
-            try
-            {
-                String myPath = DATABASE_PATH + DATABASE_NAME;
-                File dbfile = new File(myPath);
-                checkDB = dbfile.exists();
+            if (checkDB != null) {
+                checkDB.close();
             }
-            catch(SQLiteException e)
-            {
-            }
-            return checkDB;
+            return checkDB != null;
         }
-        //Copies your database from your local assets-folder to the just created empty database in the system folder
-        private void copyDataBase() throws IOException
-        {
 
-            InputStream mInput = myContext.getAssets().open(DATABASE_NAME);
-            String outFileName = DATABASE_PATH + DATABASE_NAME;
-            OutputStream mOutput = new FileOutputStream(outFileName);
-            byte[] mBuffer = new byte[2024];
-            int mLength;
-            while ((mLength = mInput.read(mBuffer)) > 0) {
-                mOutput.write(mBuffer, 0, mLength);
+        /**
+         * Копирует вашу базу данных из вашей локальной папки ресурсов в только что созданную пустую базу данных в
+         * системнай папке, откуда она может быть доступна и обработана.
+         * Используется bytestream.
+         */
+
+        private void copyDataBase() throws IOException {
+            byte[] buffer = new byte[1024];
+            OutputStream myOutput = null;
+            int length;
+            // Open your local db as the input stream
+            InputStream myInput = null;
+            try {
+                myInput = myContext.getAssets().open(DATABASE_NAME);
+                myOutput = new FileOutputStream(DB_PATH + DATABASE_NAME);
+                while ((length = myInput.read(buffer)) > 0) {
+                    myOutput.write(buffer, 0, length);
+                }
+                myOutput.close();
+                myOutput.flush();
+                myInput.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            mOutput.flush();
-            mOutput.close();
-            mInput.close();
         }
-        //delete database
-        public void db_delete()
-        {
-            File file = new File(DATABASE_PATH + DATABASE_NAME);
-            if(file.exists())
-            {
-                file.delete();
-                System.out.println("delete database file.");
-            }
-        }
-        //Open database
-        public void openDatabase() throws SQLException
-        {
-            String myPath = DATABASE_PATH + DATABASE_NAME;
+
+        public void openDataBase() throws SQLException {
+            String myPath = DB_PATH + DATABASE_NAME;
             database = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
         }
 
-        public synchronized void closeDataBase()throws SQLException
-        {
-            if(database != null)
+        @Override
+        public synchronized void close() {
+            if (database != null)
                 database.close();
             super.close();
         }
 
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            try {
-                createDatabase();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-//            String query = "CREATE TABLE " + BPTable.TABLE_NAME + " (" +
-////                    BPTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
-////                    BPTable.COLUMN_NAME + " TEXT NOT NULL, " +
-////                    BPTable.COLUMN_TYPE + " TEXT NOT NULL," +
-////                    BPTable.COLUMN_POWER + " TEXT NOT NULL,"+
-////                    BPTable.COLUMN_PRICE + " TEXT NOT NULL," +
-////                    BPTable.COLUMN_DNS + " TEXT NOT NULL);";
-////
-////            db.execSQL(query);
+        public void onCreate(SQLiteDatabase arg0) {
+
         }
 
         @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("DROP TABLE IF EXISTS " + BPTable.TABLE_NAME); ///11 таблиц
-            onCreate(db);
+        public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
+
         }
     }
 
