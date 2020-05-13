@@ -12,10 +12,10 @@ public class Motherboards implements Serializable,Idetificate {
     private String price;
     private String dns;
 
-    public Motherboards(int id, String name, String soket, String chip, String typeram, String formf, String price, String dns) {
+    public Motherboards(int id, String name, String socket, String chip, String typeram, String formf, String price, String dns) {
         this.id = id;
         this.name = name;
-        this.soket = soket;
+        this.soket = socket;
         this.chip = chip;
         this.typeram = typeram;
         this.formf = formf;

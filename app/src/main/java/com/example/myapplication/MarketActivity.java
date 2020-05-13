@@ -48,6 +48,8 @@ public class MarketActivity extends AppCompatActivity {
             int value = getIntent().getIntExtra("Central processor", 2);
             if (value == BuildActivity.PROCES) {
                 Toast.makeText(getApplicationContext(), "Процы", Toast.LENGTH_SHORT).show();
+                table = dbServer.new CPUTable();
+                listAdapter = new ListAdapter<CPU>(this, table.selectAll());
             }
         }
         if (getIntent().hasExtra("Cooler")) {
