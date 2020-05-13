@@ -21,8 +21,10 @@ public class MarketActivity extends AppCompatActivity {
 
     DBServer dbServer;
     ListView list;
-    ListAdapter<BP> listAdapter;
-    Selectable<BP> table;
+    ListAdapter listAdapter;
+    Selectable table;
+
+
 
 
     @Override
@@ -38,6 +40,8 @@ public class MarketActivity extends AppCompatActivity {
             int value = getIntent().getIntExtra("MotherBoard", 1);
             if (value == BuildActivity.MOTHERBOARD) {
                 Toast.makeText(getApplicationContext(), "материнки", Toast.LENGTH_SHORT).show();
+                table = dbServer.new MotherboardsTable();
+                listAdapter = new ListAdapter<Motherboards>(this, table.selectAll());
             }
         }
         if (getIntent().hasExtra("Central processor")) {
@@ -153,8 +157,8 @@ public class MarketActivity extends AppCompatActivity {
 ////            Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 //////            image.setImageBitmap(theImage);
             name.setText(preview.getName());
-            description.setText(preview.getDescription());
-            price.setText(preview.getPrice());
+            description.setText("Краткое описание: " + preview.getDescription());
+            price.setText("Цена: " + preview.getPrice() + " ₽");
 
             return convertView;
         }

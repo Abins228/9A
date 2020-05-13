@@ -23,11 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4">
-        <schema name="main" object-types="table, index, dataset trigger, column, constraint, view" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4">
@@ -527,8 +523,6 @@ alter table "bp" add COLUMN ImageBlob blob;]]></console>
           <content-type name="Java" enabled="true" />
           <content-type name="SQL" enabled="true" />
           <content-type name="PL/SQL" enabled="true" />
-          <content-type name="JSON" enabled="true" />
-          <content-type name="JSON5" enabled="true" />
           <content-type name="Groovy" enabled="true" />
           <content-type name="AIDL" enabled="true" />
           <content-type name="YAML" enabled="true" />

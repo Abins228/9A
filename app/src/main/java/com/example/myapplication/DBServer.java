@@ -107,6 +107,88 @@ public class DBServer {
         }
     }
 
+    public class MotherboardsTable implements Selectable<Motherboards>{
+        private static final String TABLE_NAME = "Motherboards";
+
+        private static final String COLUMN_ID= "id";
+        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_SOKET= "Soket";
+        private static final String COLUMN_CHIP = "Chip";
+        private static final String COLUMN_TYPERAM = "TypeRAM";
+        private static final String COLUMN_FORM_FACTOR = "Form_factor";
+        private static final String COLUMN_PRICE = "Price";
+        private static final String COLUMN_DNS = "DNS";
+
+        private static final int NUM_COLUMN_ID = 0;
+        private static final int NUM_COLUMN_NAME = 1;
+        private static final int NUM_COLUMN_SOKET = 2;
+        private static final int NUM_COLUMN_CHIP = 3;
+        private static final int NUM_COLUMN_TYPERAM = 4;
+        private static final int NUM_COLUMN_FORM_FACTOR = 5;
+        private static final int NUM_COLUMN_PRICE = 6;
+        private static final int NUM_COLUMN_DNS = 7;
+
+        public long insert(String name, String soket, String chip, String typeram, String formf, String price, String dns){
+            ContentValues cv = new ContentValues();
+            cv.put(COLUMN_NAME, name);
+            cv.put(COLUMN_SOKET, soket);
+            cv.put(COLUMN_CHIP, chip);
+            cv.put(COLUMN_TYPERAM, typeram);
+            cv.put(COLUMN_FORM_FACTOR, formf);
+            cv.put(COLUMN_PRICE, price);
+            cv.put(COLUMN_DNS, dns);
+            return database.insert(TABLE_NAME, null, cv);
+        }
+
+        public void deleteall(){
+            database.delete(TABLE_NAME, null, null);
+        }
+
+        public ArrayList<Motherboards> selectAll(){
+            Cursor cursor = database.query(TABLE_NAME, null, null,
+                    null, null, null, null);
+
+            ArrayList<Motherboards> arr = new ArrayList<>();
+            cursor.moveToFirst();
+            if (!cursor.isAfterLast()) {
+                do {
+                    int id = cursor.getInt(NUM_COLUMN_ID);
+                    String name = cursor.getString(NUM_COLUMN_NAME);
+                    String soket = cursor.getString(NUM_COLUMN_SOKET);
+                    String chip= cursor.getString(NUM_COLUMN_CHIP);
+                    String typeram = cursor.getString(NUM_COLUMN_TYPERAM);
+                    String formf = cursor.getString(NUM_COLUMN_FORM_FACTOR);
+                    String price= cursor.getString(NUM_COLUMN_PRICE);
+                    String dns= cursor.getString(NUM_COLUMN_DNS);
+                    arr.add(new Motherboards(id,name,soket,chip,typeram,formf,price,dns));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            return arr;
+
+        }
+
+        public Motherboards select(int id){
+            Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
+                    new String[]{String.valueOf(id)}, null, null, null);
+
+            Motherboards out = null;
+            if (cursor.getCount() > 0){
+                cursor.moveToFirst();
+                String name = cursor.getString(NUM_COLUMN_NAME);
+                String soket = cursor.getString(NUM_COLUMN_SOKET);
+                String chip= cursor.getString(NUM_COLUMN_CHIP);
+                String typeram = cursor.getString(NUM_COLUMN_TYPERAM);
+                String formf = cursor.getString(NUM_COLUMN_FORM_FACTOR);
+                String price= cursor.getString(NUM_COLUMN_PRICE);
+                String dns= cursor.getString(NUM_COLUMN_DNS);
+                out = new Motherboards(id,name,soket,chip,typeram,formf,price,dns);
+            }
+            cursor.close();
+            return out;
+        }
+    }
+
 
     private class OpenHelper extends SQLiteOpenHelper {
         private final Context myContext;

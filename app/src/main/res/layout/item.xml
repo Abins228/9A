@@ -25,19 +25,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#EC8B8B"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#1C3788" />
+            android:background="#1C3788"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:textSize="14sp"
             tools:layout_editor_absoluteX="213dp"
             tools:layout_editor_absoluteY="206dp" />
 
