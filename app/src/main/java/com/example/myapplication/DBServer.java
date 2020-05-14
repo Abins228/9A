@@ -487,6 +487,82 @@ public class DBServer {
             return out;
         }
     }
+    public class videoCardsTable implements Selectable<video_cards>{
+        private static final String TABLE_NAME = "video_cards";
+
+        private static final String COLUMN_ID= "id";
+        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_CAPASITY = "Capasity";
+        private static final String COLUMN_TYPECAPASITY = "TypeCapasity";
+        private static final String COLUMN_FREQUENCY = "Frequency";
+        private static final String COLUMN_PRICE = "Price";
+        private static final String COLUMN_DNS = "DNS";
+
+        private static final int NUM_COLUMN_ID = 0;
+        private static final int NUM_COLUMN_NAME = 1;
+        private static final int NUM_COLUMN_CAPASITY = 2;
+        private static final int NUM_COLUMN_TYPECAPASITY = 3;
+        private static final int NUM_COLUMN_FREQUENCY = 4;
+        private static final int NUM_COLUMN_PRICE = 5;
+        private static final int NUM_COLUMN_DNS = 6;
+
+        public long insert(String name, String сapasity, String typecapasity, String frequency, String price, String dns){
+            ContentValues cv = new ContentValues();
+            cv.put(COLUMN_NAME, name);
+            cv.put(COLUMN_CAPASITY, сapasity);
+            cv.put(COLUMN_TYPECAPASITY, typecapasity);
+            cv.put(COLUMN_FREQUENCY, frequency);
+            cv.put(COLUMN_PRICE, price);
+            cv.put(COLUMN_DNS, dns);
+            return database.insert(TABLE_NAME, null, cv);
+        }
+
+        public void deleteall(){
+            database.delete(TABLE_NAME, null, null);
+        }
+
+        public ArrayList<video_cards> selectAll(){
+            Cursor cursor = database.query(TABLE_NAME, null, null,
+                    null, null, null, null);
+
+            ArrayList<video_cards> arr = new ArrayList<>();
+            cursor.moveToFirst();
+            if (!cursor.isAfterLast()) {
+                do {
+                    int id = cursor.getInt(NUM_COLUMN_ID);
+                    String name = cursor.getString(NUM_COLUMN_NAME);
+                    String сapasity = cursor.getString(NUM_COLUMN_CAPASITY);
+                    String typecapasity= cursor.getString(NUM_COLUMN_TYPECAPASITY);
+                    String frequency = cursor.getString(NUM_COLUMN_FREQUENCY);
+                    String price= cursor.getString(NUM_COLUMN_PRICE);
+                    String dns= cursor.getString(NUM_COLUMN_DNS);
+                    arr.add(new video_cards(id,name,сapasity,typecapasity,frequency,price,dns));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            return arr;
+
+        }
+
+        public video_cards select(int id){
+            Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
+                    new String[]{String.valueOf(id)}, null, null, null);
+
+            video_cards out = null;
+            if (cursor.getCount() > 0){
+                cursor.moveToFirst();
+                String name = cursor.getString(NUM_COLUMN_NAME);
+                String сapasity = cursor.getString(NUM_COLUMN_CAPASITY);
+                String typecapasity= cursor.getString(NUM_COLUMN_TYPECAPASITY);
+                String frequency = cursor.getString(NUM_COLUMN_FREQUENCY);
+                String price= cursor.getString(NUM_COLUMN_PRICE);
+                String dns= cursor.getString(NUM_COLUMN_DNS);
+                out = new video_cards(id,name,сapasity,typecapasity,frequency,price,dns);
+            }
+            cursor.close();
+            return out;
+        }
+    }
 
     private class OpenHelper extends SQLiteOpenHelper {
         private final Context myContext;
