@@ -92,6 +92,8 @@ public class MarketActivity extends AppCompatActivity {
             int value = getIntent().getIntExtra("CPUCOOLER", 9);
             if (value == BuildActivity.CPUCOOLER) {
                 Toast.makeText(getApplicationContext(), "кулер проца", Toast.LENGTH_SHORT).show();
+                table = dbServer.new Coolers_CPUTable();
+                listAdapter = new ListAdapter<Coolers_CPU>(this, table.selectAll());
             }
         }
         if (getIntent().hasExtra("BP")) {

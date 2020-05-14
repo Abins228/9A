@@ -187,6 +187,78 @@ public class DBServer {
         }
     }
 
+    public class Coolers_CPUTable implements Selectable<Coolers_CPU>{
+        private static final String TABLE_NAME = "Coolers_CPU";
+
+        private static final String COLUMN_ID= "id";
+        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_POWER = "Power";
+        private static final String COLUMN_NOISE_LEVEL = "Noise_Level";
+        private static final String COLUMN_PRICE = "Price";
+        private static final String COLUMN_DNS = "DNS";
+
+        private static final int NUM_COLUMN_ID = 0;
+        private static final int NUM_COLUMN_NAME = 3;
+        private static final int NUM_COLUMN_POWER = 1;
+        private static final int NUM_NOISE_LEVEL = 2;
+        private static final int NUM_COLUMN_PRICE = 4;
+        private static final int NUM_COLUMN_DNS = 5;
+
+        public long insert(String name, String power, String noise_level, String price, String dns){
+            ContentValues cv = new ContentValues();
+            cv.put(COLUMN_NAME, name);
+            cv.put(COLUMN_POWER, power);
+            cv.put(COLUMN_NOISE_LEVEL, noise_level);
+            cv.put(COLUMN_PRICE, price);
+            cv.put(COLUMN_DNS, dns);
+            return database.insert(TABLE_NAME, null, cv);
+        }
+
+        public void deleteall(){
+            database.delete(TABLE_NAME, null, null);
+        }
+
+        public ArrayList<Coolers_CPU> selectAll(){
+            Cursor cursor = database.query(TABLE_NAME, null, null,
+                    null, null, null, null);
+
+            ArrayList<Coolers_CPU> arr = new ArrayList<>();
+            cursor.moveToFirst();
+            if (!cursor.isAfterLast()) {
+                do {
+                    int id = cursor.getInt(NUM_COLUMN_ID);
+                    String name = cursor.getString(NUM_COLUMN_NAME);
+                    String power = cursor.getString(NUM_COLUMN_POWER);
+                    String noise_level= cursor.getString(NUM_NOISE_LEVEL);
+                    String price= cursor.getString(NUM_COLUMN_PRICE);
+                    String dns= cursor.getString(NUM_COLUMN_DNS);
+                    arr.add(new Coolers_CPU(id,name,power,noise_level,price,dns));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            return arr;
+
+        }
+
+        public Coolers_CPU select(int id){
+            Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
+                    new String[]{String.valueOf(id)}, null, null, null);
+
+            Coolers_CPU out = null;
+            if (cursor.getCount() > 0){
+                cursor.moveToFirst();
+                String name = cursor.getString(NUM_COLUMN_NAME);
+                String power = cursor.getString(NUM_COLUMN_POWER);
+                String noise_level= cursor.getString(NUM_NOISE_LEVEL);
+                String price= cursor.getString(NUM_COLUMN_PRICE);
+                String dns= cursor.getString(NUM_COLUMN_DNS);
+                out = new Coolers_CPU(id,name,power,noise_level,price,dns);
+            }
+            cursor.close();
+            return out;
+        }
+    }
+
     public class CPUTable implements Selectable<CPU>{
         private static final String TABLE_NAME = "CPU";
 
@@ -206,7 +278,7 @@ public class DBServer {
         private static final int NUM_CORES_THREADS = 2;
         private static final int NUM_COLUMN_DDR = 7;
         private static final int NUM_COLUMN_PRICE = 5;
-        private static final int NUM_COLUMN_DNS = 7;
+        private static final int NUM_COLUMN_DNS = 6;
 
         public long insert(String name, String soket, String chip, String typeram, String formf, String price, String dns){
             ContentValues cv = new ContentValues();

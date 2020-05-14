@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd">
-        <schema name="main" object-types="index, dataset trigger, table, constraint, column, view" />
+        <schema name="main" object-types="view, table" />
       </connection>
     </loaded-nodes>
   </component>
@@ -267,9 +267,7 @@ alter table &quot;bp&quot; add COLUMN ImageBlob blob;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd" object-ref="schemas/main/tables/CPU" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4" />
