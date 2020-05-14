@@ -52,8 +52,10 @@ public class MarketActivity extends AppCompatActivity {
         }
         if (getIntent().hasExtra("Cooler")) {
             int value = getIntent().getIntExtra("Cooler", 3);
-            if (value == BuildActivity.COOLERS)
-                namemarket.setText("Вентиляторы");{
+            if (value == BuildActivity.COOLERS){
+                namemarket.setText("Вентиляторы");
+                table = dbServer.new CoolersTable();
+                listAdapter = new ListAdapter<Coolers>(this, table.selectAll());
             }
         }
         if (getIntent().hasExtra("Graphics card")) {
@@ -68,6 +70,8 @@ public class MarketActivity extends AppCompatActivity {
             int value = getIntent().getIntExtra("Ram", 5);
             if (value == BuildActivity.RAM) {
                 namemarket.setText("Оперативная память");
+                table = dbServer.new RAMTable();
+                listAdapter = new ListAdapter<RAM>(this, table.selectAll());
             }
         }
         if (getIntent().hasExtra("HDD")) {

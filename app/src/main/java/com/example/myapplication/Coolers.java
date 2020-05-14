@@ -2,21 +2,20 @@ package com.example.myapplication;
 
 import java.io.Serializable;
 
-public class video_cards implements Idetificate, Serializable {
+public class Coolers implements Serializable, Idetificate {
+
     private int id;
     private String name;
-    private String capacity;
-    private String typeCapasity;
-    private String frequency;
+    private String fan_size;
+    private String max_vol;
     private String price;
     private String dns;
 
-    public video_cards(int id, String name, String capacity, String typeCapasity, String frequency, String price, String dns) {
+    public Coolers(int id, String name, String fan_size, String max_vol, String price, String dns) {
         this.id = id;
         this.name = name;
-        this.capacity = capacity;
-        this.typeCapasity = typeCapasity;
-        this.frequency = frequency;
+        this.fan_size = fan_size;
+        this.max_vol = max_vol;
         this.price = price;
         this.dns = dns;
     }
@@ -43,31 +42,23 @@ public class video_cards implements Idetificate, Serializable {
 
     @Override
     public String getDescription() {
-        return capacity+", "+typeCapasity+", "+frequency;
+        return fan_size + ", " + max_vol;
     }
 
-    public String getCapacity() {
-        return capacity;
+    public String getFan_size() {
+        return fan_size;
     }
 
-    public void setCapacity(String capacity) {
-        this.capacity = capacity;
+    public void setFan_size(String fan_size) {
+        this.fan_size = fan_size;
     }
 
-    public String getTypeCapasity() {
-        return typeCapasity;
+    public String getMax_vol() {
+        return max_vol;
     }
 
-    public void setTypeCapasity(String typeCapasity) {
-        this.typeCapasity = typeCapasity;
-    }
-
-    public String getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(String frequency) {
-        this.frequency = frequency;
+    public void setMax_vol(String max_vol) {
+        this.max_vol = max_vol;
     }
 
     @Override
