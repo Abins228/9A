@@ -3,8 +3,6 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class MarketActivity extends AppCompatActivity {
@@ -56,12 +52,15 @@ public class MarketActivity extends AppCompatActivity {
         }
         if (getIntent().hasExtra("Cooler")) {
             int value = getIntent().getIntExtra("Cooler", 3);
-            if (value == BuildActivity.COOLERS) {
+            if (value == BuildActivity.COOLERS)
+                namemarket.setText("Вентиляторы");{
             }
         }
         if (getIntent().hasExtra("Graphics card")) {
             int value = getIntent().getIntExtra("Graphics card", 4);
             if (value == BuildActivity.GPU) {
+                table = dbServer.new videoCardsTable();
+                listAdapter = new ListAdapter<video_cards>(this, table.selectAll());
                 namemarket.setText("Видеокарты");
             }
         }
