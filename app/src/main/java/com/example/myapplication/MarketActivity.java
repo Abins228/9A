@@ -74,6 +74,8 @@ public class MarketActivity extends AppCompatActivity {
             int value = getIntent().getIntExtra("HDD", 6);
             if (value == BuildActivity.HDD) {
                 Toast.makeText(getApplicationContext(), "жесткие", Toast.LENGTH_SHORT).show();
+                table = dbServer.new HDDTable();
+                listAdapter = new ListAdapter<HDD>(this, table.selectAll());
             }
         }
         if (getIntent().hasExtra("SSD")) {
@@ -86,6 +88,8 @@ public class MarketActivity extends AppCompatActivity {
             int value = getIntent().getIntExtra("M2", 8);
             if (value == BuildActivity.M2) {
                 Toast.makeText(getApplicationContext(), "M2", Toast.LENGTH_SHORT).show();
+                table = dbServer.new M2Table();
+                listAdapter = new ListAdapter<M2>(this, table.selectAll());
             }
         }
         if (getIntent().hasExtra("CPUCOOLER")) {

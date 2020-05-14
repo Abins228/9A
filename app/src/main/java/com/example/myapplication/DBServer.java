@@ -340,7 +340,153 @@ public class DBServer {
             return out;
         }
     }
+    public class HDDTable implements Selectable<HDD>{
+        private static final String TABLE_NAME = "HDD";
 
+        private static final String COLUMN_ID= "id";
+        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_CAPACITY = "Capacity";
+        private static final String COLUMN_MAXRW = "MaxR/W";
+        private static final String COLUMN_PRICE = "Price";
+        private static final String COLUMN_DNS = "DNS";
+
+        private static final int NUM_COLUMN_ID = 0;
+        private static final int NUM_COLUMN_NAME = 1;
+        private static final int NUM_COLUMN_CAPACITY = 2;
+        private static final int NUM_COLUMN_MAXRW = 3;
+        private static final int NUM_COLUMN_PRICE = 4;
+        private static final int NUM_COLUMN_DNS = 5;
+
+        public long insert(String name, String capacity, String maxrw, String price, String dns){
+            ContentValues cv = new ContentValues();
+            cv.put(COLUMN_NAME, name);
+            cv.put(COLUMN_CAPACITY, capacity);
+            cv.put(COLUMN_MAXRW, maxrw);
+            cv.put(COLUMN_PRICE, price);
+            cv.put(COLUMN_DNS, dns);
+            return database.insert(TABLE_NAME, null, cv);
+        }
+
+        public void deleteall(){
+            database.delete(TABLE_NAME, null, null);
+        }
+
+        public ArrayList<HDD> selectAll(){
+            Cursor cursor = database.query(TABLE_NAME, null, null,
+                    null, null, null, null);
+
+            ArrayList<HDD> arr = new ArrayList<>();
+            cursor.moveToFirst();
+            if (!cursor.isAfterLast()) {
+                do {
+                    int id = cursor.getInt(NUM_COLUMN_ID);
+                    String name = cursor.getString(NUM_COLUMN_NAME);
+                    String capacity = cursor.getString(NUM_COLUMN_CAPACITY);
+                    String maxrw= cursor.getString(NUM_COLUMN_MAXRW);
+                    String price= cursor.getString(NUM_COLUMN_PRICE);
+                    String dns= cursor.getString(NUM_COLUMN_DNS);
+                    arr.add(new HDD(id,name,capacity,maxrw,price,dns));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            return arr;
+
+        }
+
+        public HDD select(int id){
+            Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
+                    new String[]{String.valueOf(id)}, null, null, null);
+
+            HDD out = null;
+            if (cursor.getCount() > 0){
+                cursor.moveToFirst();
+                String name = cursor.getString(NUM_COLUMN_NAME);
+                String capacity = cursor.getString(NUM_COLUMN_CAPACITY);
+                String maxrw= cursor.getString(NUM_COLUMN_MAXRW);
+                String price= cursor.getString(NUM_COLUMN_PRICE);
+                String dns= cursor.getString(NUM_COLUMN_DNS);
+                out = new HDD(id,name,capacity,maxrw,price,dns);
+            }
+            cursor.close();
+            return out;
+        }
+    }
+    public class M2Table implements Selectable<M2>{
+        private static final String TABLE_NAME = "M2";
+
+        private static final String COLUMN_ID= "id";
+        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_WRITING_SPEED = "Writing_speed";
+        private static final String COLUMN_READING_SPEED = "Reading_speed";
+        private static final String COLUMN_PRICE = "Price";
+        private static final String COLUMN_CAPACITY = "Capacity";
+        private static final String COLUMN_DNS = "DNS";
+
+        private static final int NUM_COLUMN_ID = 0;
+        private static final int NUM_COLUMN_NAME = 1;
+        private static final int NUM_COLUMN_CAPACITY = 2;
+        private static final int NUM_COLUMN_WRITING_SPEED = 3;
+        private static final int NUM_COLUMN_READING_SPEED = 4;
+        private static final int NUM_COLUMN_PRICE = 5;
+        private static final int NUM_COLUMN_DNS = 6;
+
+        public long insert(String name, String capacity, String writing_speed, String reading_speed, String price, String dns){
+            ContentValues cv = new ContentValues();
+            cv.put(COLUMN_NAME, name);
+            cv.put(COLUMN_CAPACITY, capacity);
+            cv.put(COLUMN_WRITING_SPEED, writing_speed);
+            cv.put(COLUMN_READING_SPEED, reading_speed);
+            cv.put(COLUMN_PRICE, price);
+            cv.put(COLUMN_DNS, dns);
+            return database.insert(TABLE_NAME, null, cv);
+        }
+
+        public void deleteall(){
+            database.delete(TABLE_NAME, null, null);
+        }
+
+        public ArrayList<M2> selectAll(){
+            Cursor cursor = database.query(TABLE_NAME, null, null,
+                    null, null, null, null);
+
+            ArrayList<M2> arr = new ArrayList<>();
+            cursor.moveToFirst();
+            if (!cursor.isAfterLast()) {
+                do {
+                    int id = cursor.getInt(NUM_COLUMN_ID);
+                    String name = cursor.getString(NUM_COLUMN_NAME);
+                    String capacity = cursor.getString(NUM_COLUMN_CAPACITY);
+                    String writing_speed= cursor.getString(NUM_COLUMN_WRITING_SPEED);
+                    String reading_speed = cursor.getString(NUM_COLUMN_READING_SPEED);
+                    String price= cursor.getString(NUM_COLUMN_PRICE);
+                    String dns= cursor.getString(NUM_COLUMN_DNS);
+                    arr.add(new M2(id,name,capacity,writing_speed,reading_speed,price,dns));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            return arr;
+
+        }
+
+        public M2 select(int id){
+            Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
+                    new String[]{String.valueOf(id)}, null, null, null);
+
+            M2 out = null;
+            if (cursor.getCount() > 0){
+                cursor.moveToFirst();
+                String name = cursor.getString(NUM_COLUMN_NAME);
+                String capacity = cursor.getString(NUM_COLUMN_CAPACITY);
+                String writing_speed= cursor.getString(NUM_COLUMN_WRITING_SPEED);
+                String reading_speed = cursor.getString(NUM_COLUMN_READING_SPEED);
+                String price= cursor.getString(NUM_COLUMN_PRICE);
+                String dns= cursor.getString(NUM_COLUMN_DNS);
+                out = new M2(id,name,capacity,writing_speed,reading_speed,price,dns);
+            }
+            cursor.close();
+            return out;
+        }
+    }
 
     private class OpenHelper extends SQLiteOpenHelper {
         private final Context myContext;
