@@ -83,6 +83,8 @@ public class MarketActivity extends AppCompatActivity {
             int value = getIntent().getIntExtra("SSD", 7);
             if (value == BuildActivity.SSD) {
                 namemarket.setText("SSD диски");
+                table = dbServer.new SSDTable();
+                listAdapter = new ListAdapter<SSD>(this, table.selectAll());
             }
         }
         if (getIntent().hasExtra("M2")) {
@@ -113,6 +115,8 @@ public class MarketActivity extends AppCompatActivity {
             int value = getIntent().getIntExtra("BODY", 11);
             if (value == BuildActivity.BODY) {
                 namemarket.setText("Корпуса");
+                table = dbServer.new BodyTable();
+                listAdapter = new ListAdapter<Body>(this, table.selectAll());
             }
 
 
