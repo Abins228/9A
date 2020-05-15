@@ -18,6 +18,7 @@ public class HDD implements Idetificate, Serializable {
         this.maxrw = maxrw;
         this.price = price;
         this.dns = dns;
+        this.image = image;
     }
 
     @Override

@@ -19,6 +19,7 @@ public class Coolers implements Serializable, Idetificate {
         this.max_vol = max_vol;
         this.price = price;
         this.dns = dns;
+        this.image = image;
     }
 
     @Override
@@ -87,5 +88,6 @@ public class Coolers implements Serializable, Idetificate {
 
     public void setImage(byte[] image) {
         this.image = image;
+
     }
 }

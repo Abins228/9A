@@ -20,6 +20,7 @@ public class video_cards implements Idetificate, Serializable {
         this.frequency = frequency;
         this.price = price;
         this.dns = dns;
+        this.image = image;
     }
 
     @Override

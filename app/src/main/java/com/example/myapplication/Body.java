@@ -18,6 +18,7 @@ public class Body implements Serializable,Idetificate {
         this.form_factors = form_factors;
         this.price = price;
         this.dns = dns;
+        this.image = image;
     }
 
     @Override

@@ -22,6 +22,7 @@ public class CPU implements Serializable,Idetificate {
         this.ddr = ddr;
         this.price = price;
         this.dns = dns;
+        this.image = image;
     }
 
     @Override

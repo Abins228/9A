@@ -22,6 +22,7 @@ public class RAM implements Serializable, Idetificate {
         this.price = price;
         this.dns = dns;
         this.ram_type = ram_type;
+        this.image = image;
     }
 
     @Override

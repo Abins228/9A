@@ -20,6 +20,7 @@ public class M2 implements Idetificate, Serializable {
         this.reading_speed = reading_speed;
         this.price = price;
         this.dns = dns;
+        this.image = image;
     }
 
     @Override

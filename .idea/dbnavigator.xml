@@ -276,13 +276,7 @@ alter table "bp" add COLUMN ImageBlob blob;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="0c1ca913-8073-494b-b902-3495047526c7" object-ref="schemas/main/tables/video_cards" />
-      <object connection-id="0c1ca913-8073-494b-b902-3495047526c7" object-ref="schemas/main/tables/Coolers" />
-      <object connection-id="0c1ca913-8073-494b-b902-3495047526c7" object-ref="schemas/main/tables/Body" />
-      <object connection-id="0c1ca913-8073-494b-b902-3495047526c7" object-ref="schemas/main/tables/CPU" />
-      <object connection-id="0c1ca913-8073-494b-b902-3495047526c7" object-ref="schemas/main/tables/BP" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4" />

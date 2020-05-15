@@ -18,6 +18,7 @@ public class Coolers_CPU implements Idetificate, Serializable {
         this.noise_level = noise_level;
         this.price = price;
         this.dns = dns;
+        this.image = image;
     }
 
     @Override

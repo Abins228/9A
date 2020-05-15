@@ -18,6 +18,7 @@ public class BP implements Serializable,Idetificate {
         this.power = power;
         this.price = price;
         this.dns = dns;
+        this.image = image;
     }
 
     public int getId() {
