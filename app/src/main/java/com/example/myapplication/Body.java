@@ -9,8 +9,9 @@ public class Body implements Serializable,Idetificate {
     private String form_factors;
     private String price;
     private String dns;
+    private byte[] image;
 
-    public Body(int id, String name, String form, String form_factors, String price, String dns) {
+    public Body(int id, String name, String form, String form_factors, String price, String dns, byte[] image) {
         this.id = id;
         this.name = name;
         this.form = form;
@@ -76,5 +77,14 @@ public class Body implements Serializable,Idetificate {
 
     public void setDns(String dns) {
         this.dns = dns;
+    }
+
+    @Override
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

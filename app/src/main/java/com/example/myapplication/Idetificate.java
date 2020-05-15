@@ -8,4 +8,5 @@ public interface Idetificate {
     String getDescription();
     String getPrice();
     void setPrice(String price);
+    byte[] getImage();
 }

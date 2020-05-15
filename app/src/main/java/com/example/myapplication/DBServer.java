@@ -45,6 +45,7 @@ public class DBServer {
         private static final String COLUMN_POWER = "Power";
         private static final String COLUMN_PRICE = "Price";
         private static final String COLUMN_DNS = "DNS";
+        private static final String COLUMN_IMAGE = "Image";
 
         private static final int NUM_COLUMN_ID = 0;
         private static final int NUM_COLUMN_NAME = 1;
@@ -52,6 +53,7 @@ public class DBServer {
         private static final int NUM_COLUMN_POWER = 3;
         private static final int NUM_COLUMN_PRICE = 4;
         private static final int NUM_COLUMN_DNS = 5;
+        private static final int NUM_COLUMN_IMAGE = 6;
 
         public long insert(String name, String type, String power, String price, String dns){
             ContentValues cv = new ContentValues();
@@ -81,7 +83,8 @@ public class DBServer {
                     String power= cursor.getString(NUM_COLUMN_POWER);
                     String price= cursor.getString(NUM_COLUMN_PRICE);
                     String dns= cursor.getString(NUM_COLUMN_DNS);
-                    arr.add(new com.example.myapplication.BP(id,name,type,power,price,dns));
+                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new com.example.myapplication.BP(id,name,type,power,price,dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -101,7 +104,8 @@ public class DBServer {
                 String power= cursor.getString(NUM_COLUMN_POWER);
                 String price= cursor.getString(NUM_COLUMN_PRICE);
                 String dns= cursor.getString(NUM_COLUMN_DNS);
-                out = new BP(id,name,type,power,price,dns);
+                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new BP(id,name,type,power,price,dns, image);
             }
             cursor.close();
             return out;
@@ -119,6 +123,7 @@ public class DBServer {
         private static final String COLUMN_FORM_FACTOR = "Form_factor";
         private static final String COLUMN_PRICE = "Price";
         private static final String COLUMN_DNS = "DNS";
+        private static final String COLUMN_IMAGE = "Image";
 
         private static final int NUM_COLUMN_ID = 0;
         private static final int NUM_COLUMN_NAME = 1;
@@ -128,8 +133,9 @@ public class DBServer {
         private static final int NUM_COLUMN_FORM_FACTOR = 5;
         private static final int NUM_COLUMN_PRICE = 6;
         private static final int NUM_COLUMN_DNS = 7;
+        private static final int NUM_COLUMN_IMAGE = 8;
 
-        public long insert(String name, String soket, String chip, String typeram, String formf, String price, String dns){
+        public long insert(String name, String soket, String chip, String typeram, String formf, String price, String dns, byte[] image){
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_NAME, name);
             cv.put(COLUMN_SOCKET, soket);
@@ -138,6 +144,7 @@ public class DBServer {
             cv.put(COLUMN_FORM_FACTOR, formf);
             cv.put(COLUMN_PRICE, price);
             cv.put(COLUMN_DNS, dns);
+            cv.put(COLUMN_IMAGE, image);
             return database.insert(TABLE_NAME, null, cv);
         }
 
@@ -155,13 +162,14 @@ public class DBServer {
                 do {
                     int id = cursor.getInt(NUM_COLUMN_ID);
                     String name = cursor.getString(NUM_COLUMN_NAME);
-                    String soket = cursor.getString(NUM_COLUMN_SOCKET);
+                    String socket = cursor.getString(NUM_COLUMN_SOCKET);
                     String chip= cursor.getString(NUM_COLUMN_CHIP);
                     String typeram = cursor.getString(NUM_COLUMN_TYPERAM);
                     String formf = cursor.getString(NUM_COLUMN_FORM_FACTOR);
                     String price= cursor.getString(NUM_COLUMN_PRICE);
                     String dns= cursor.getString(NUM_COLUMN_DNS);
-                    arr.add(new Motherboards(id,name,soket,chip,typeram,formf,price,dns));
+                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new Motherboards(id,name,socket,chip,typeram,formf,price,dns,image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -183,7 +191,8 @@ public class DBServer {
                 String formf = cursor.getString(NUM_COLUMN_FORM_FACTOR);
                 String price= cursor.getString(NUM_COLUMN_PRICE);
                 String dns= cursor.getString(NUM_COLUMN_DNS);
-                out = new Motherboards(id,name,socket,chip,typeram,formf,price,dns);
+                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new Motherboards(id,name,socket,chip,typeram,formf,price,dns,image);
             }
             cursor.close();
             return out;
@@ -199,6 +208,7 @@ public class DBServer {
         private static final String COLUMN_NOISE_LEVEL = "Noise_Level";
         private static final String COLUMN_PRICE = "Price";
         private static final String COLUMN_DNS = "DNS";
+        private static final String COLUMN_IMAGE = "Image";
 
         private static final int NUM_COLUMN_ID = 0;
         private static final int NUM_COLUMN_NAME = 3;
@@ -206,6 +216,7 @@ public class DBServer {
         private static final int NUM_NOISE_LEVEL = 2;
         private static final int NUM_COLUMN_PRICE = 4;
         private static final int NUM_COLUMN_DNS = 5;
+        private static final int NUM_COLUMN_IMAGE = 6;
 
         public long insert(String name, String power, String noise_level, String price, String dns){
             ContentValues cv = new ContentValues();
@@ -235,7 +246,8 @@ public class DBServer {
                     String noise_level= cursor.getString(NUM_NOISE_LEVEL);
                     String price= cursor.getString(NUM_COLUMN_PRICE);
                     String dns= cursor.getString(NUM_COLUMN_DNS);
-                    arr.add(new Coolers_CPU(id,name,power,noise_level,price,dns));
+                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new Coolers_CPU(id,name,power,noise_level,price,dns,image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -255,7 +267,8 @@ public class DBServer {
                 String noise_level= cursor.getString(NUM_NOISE_LEVEL);
                 String price= cursor.getString(NUM_COLUMN_PRICE);
                 String dns= cursor.getString(NUM_COLUMN_DNS);
-                out = new Coolers_CPU(id,name,power,noise_level,price,dns);
+                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new Coolers_CPU(id,name,power,noise_level,price,dns,image);
             }
             cursor.close();
             return out;
@@ -274,6 +287,7 @@ public class DBServer {
         private static final String COLUMN_DDR = "DDR";
         private static final String COLUMN_PRICE = "Price";
         private static final String COLUMN_DNS = "DNS";
+        private static final String COLUMN_IMAGE = "Image";
 
         private static final int NUM_COLUMN_ID = 0;
         private static final int NUM_COLUMN_NAME = 4;
@@ -283,6 +297,7 @@ public class DBServer {
         private static final int NUM_COLUMN_DDR = 7;
         private static final int NUM_COLUMN_PRICE = 5;
         private static final int NUM_COLUMN_DNS = 6;
+        private static final int NUM_COLUMN_IMAGE = 8;
 
         public long insert(String name, String soket, String chip, String typeram, String formf, String price, String dns){
             ContentValues cv = new ContentValues();
@@ -316,7 +331,8 @@ public class DBServer {
                     String ddr = cursor.getString(NUM_COLUMN_DDR);
                     String price= cursor.getString(NUM_COLUMN_PRICE);
                     String dns= cursor.getString(NUM_COLUMN_DNS);
-                    arr.add(new CPU(id,name,processor_socket,cpu_speed,cores_threads,ddr,price,dns));
+                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new CPU(id,name,processor_socket,cpu_speed,cores_threads,ddr,price,dns,image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -338,7 +354,8 @@ public class DBServer {
                 String ddr = cursor.getString(NUM_COLUMN_DDR);
                 String price= cursor.getString(NUM_COLUMN_PRICE);
                 String dns= cursor.getString(NUM_COLUMN_DNS);
-                out = new CPU(id,name,processor_socket,cpu_speed,cores_threads,ddr,price,dns);
+                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new CPU(id,name,processor_socket,cpu_speed,cores_threads,ddr,price,dns,image);
             }
             cursor.close();
             return out;
@@ -353,6 +370,7 @@ public class DBServer {
         private static final String COLUMN_MAXRW = "MaxR/W";
         private static final String COLUMN_PRICE = "Price";
         private static final String COLUMN_DNS = "DNS";
+        private static final String COLUMN_IMAGE = "Image";
 
         private static final int NUM_COLUMN_ID = 0;
         private static final int NUM_COLUMN_NAME = 1;
@@ -360,6 +378,7 @@ public class DBServer {
         private static final int NUM_COLUMN_MAXRW = 3;
         private static final int NUM_COLUMN_PRICE = 4;
         private static final int NUM_COLUMN_DNS = 5;
+        private static final int NUM_COLUMN_IMAGE = 6;
 
         public long insert(String name, String capacity, String maxrw, String price, String dns){
             ContentValues cv = new ContentValues();
@@ -389,7 +408,8 @@ public class DBServer {
                     String maxrw= cursor.getString(NUM_COLUMN_MAXRW);
                     String price= cursor.getString(NUM_COLUMN_PRICE);
                     String dns= cursor.getString(NUM_COLUMN_DNS);
-                    arr.add(new HDD(id,name,capacity,maxrw,price,dns));
+                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new HDD(id,name,capacity,maxrw,price,dns,image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -409,7 +429,8 @@ public class DBServer {
                 String maxrw= cursor.getString(NUM_COLUMN_MAXRW);
                 String price= cursor.getString(NUM_COLUMN_PRICE);
                 String dns= cursor.getString(NUM_COLUMN_DNS);
-                out = new HDD(id,name,capacity,maxrw,price,dns);
+                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new HDD(id,name,capacity,maxrw,price,dns,image);
             }
             cursor.close();
             return out;
@@ -426,6 +447,7 @@ public class DBServer {
         private static final String COLUMN_READING_SPEED = "Reading_speed";
         private static final String COLUMN_PRICE = "Price";
         private static final String COLUMN_DNS = "DNS";
+        private static final String COLUMN_IMAGE = "Image";
 
         private static final int NUM_COLUMN_ID = 0;
         private static final int NUM_COLUMN_NAME = 1;
@@ -434,6 +456,7 @@ public class DBServer {
         private static final int NUM_COLUMN_READING_SPEED = 4;
         private static final int NUM_COLUMN_PRICE = 5;
         private static final int NUM_COLUMN_DNS = 6;
+        private static final int NUM_COLUMN_IMAGE = 7;
 
         public long insert(String name, String capacity, String writing_speed, String reading_speed, String price, String dns){
             ContentValues cv = new ContentValues();
@@ -465,7 +488,8 @@ public class DBServer {
                     String reading_speed = cursor.getString(NUM_COLUMN_READING_SPEED);
                     String price= cursor.getString(NUM_COLUMN_PRICE);
                     String dns= cursor.getString(NUM_COLUMN_DNS);
-                    arr.add(new SSD(id,name,capacity,writing_speed,reading_speed,price,dns));
+                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new SSD(id,name,capacity,writing_speed,reading_speed,price,dns,image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -486,7 +510,8 @@ public class DBServer {
                 String reading_speed = cursor.getString(NUM_COLUMN_READING_SPEED);
                 String price= cursor.getString(NUM_COLUMN_PRICE);
                 String dns= cursor.getString(NUM_COLUMN_DNS);
-                out = new SSD(id,name,capacity,writing_speed,reading_speed,price,dns);
+                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new SSD(id,name,capacity,writing_speed,reading_speed,price,dns,image);
             }
             cursor.close();
             return out;
@@ -503,6 +528,7 @@ public class DBServer {
         private static final String COLUMN_PRICE = "Price";
         private static final String COLUMN_CAPACITY = "Capacity";
         private static final String COLUMN_DNS = "DNS";
+        private static final String COLUMN_IMAGE = "Image";
 
         private static final int NUM_COLUMN_ID = 0;
         private static final int NUM_COLUMN_NAME = 1;
@@ -511,6 +537,7 @@ public class DBServer {
         private static final int NUM_COLUMN_READING_SPEED = 4;
         private static final int NUM_COLUMN_PRICE = 5;
         private static final int NUM_COLUMN_DNS = 6;
+        private static final int NUM_COLUMN_IMAGE = 7;
 
         public long insert(String name, String capacity, String writing_speed, String reading_speed, String price, String dns){
             ContentValues cv = new ContentValues();
@@ -542,7 +569,8 @@ public class DBServer {
                     String reading_speed = cursor.getString(NUM_COLUMN_READING_SPEED);
                     String price= cursor.getString(NUM_COLUMN_PRICE);
                     String dns= cursor.getString(NUM_COLUMN_DNS);
-                    arr.add(new M2(id,name,capacity,writing_speed,reading_speed,price,dns));
+                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new M2(id,name,capacity,writing_speed,reading_speed,price,dns,image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -563,7 +591,8 @@ public class DBServer {
                 String reading_speed = cursor.getString(NUM_COLUMN_READING_SPEED);
                 String price= cursor.getString(NUM_COLUMN_PRICE);
                 String dns= cursor.getString(NUM_COLUMN_DNS);
-                out = new M2(id,name,capacity,writing_speed,reading_speed,price,dns);
+                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new M2(id,name,capacity,writing_speed,reading_speed,price,dns,image);
             }
             cursor.close();
             return out;
@@ -579,6 +608,7 @@ public class DBServer {
         private static final String COLUMN_FREQUENCY = "Frequency";
         private static final String COLUMN_PRICE = "Price";
         private static final String COLUMN_DNS = "DNS";
+        private static final String COLUMN_IMAGE = "Image";
 
         private static final int NUM_COLUMN_ID = 0;
         private static final int NUM_COLUMN_NAME = 1;
@@ -587,6 +617,7 @@ public class DBServer {
         private static final int NUM_COLUMN_FREQUENCY = 4;
         private static final int NUM_COLUMN_PRICE = 5;
         private static final int NUM_COLUMN_DNS = 6;
+        private static final int NUM_COLUMN_IMAGE = 7;
 
         public long insert(String name, String сapasity, String typecapasity, String frequency, String price, String dns){
             ContentValues cv = new ContentValues();
@@ -618,7 +649,8 @@ public class DBServer {
                     String frequency = cursor.getString(NUM_COLUMN_FREQUENCY);
                     String price= cursor.getString(NUM_COLUMN_PRICE);
                     String dns= cursor.getString(NUM_COLUMN_DNS);
-                    arr.add(new video_cards(id,name,сapasity,typecapasity,frequency,price,dns));
+                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new video_cards(id,name,сapasity,typecapasity,frequency,price,dns,image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -639,7 +671,8 @@ public class DBServer {
                 String frequency = cursor.getString(NUM_COLUMN_FREQUENCY);
                 String price= cursor.getString(NUM_COLUMN_PRICE);
                 String dns= cursor.getString(NUM_COLUMN_DNS);
-                out = new video_cards(id,name,сapasity,typecapasity,frequency,price,dns);
+                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new video_cards(id,name,сapasity,typecapasity,frequency,price,dns,image);
             }
             cursor.close();
             return out;
@@ -655,6 +688,7 @@ public class DBServer {
         private static final String COLUMN_FORM = "form";
         private static final String COLUMN_PRICE = "Price";
         private static final String COLUMN_DNS = "DNS";
+        private static final String COLUMN_IMAGE = "Image";
 
         private static final int NUM_COLUMN_ID = 0;
         private static final int NUM_COLUMN_NAME = 1;
@@ -662,6 +696,7 @@ public class DBServer {
         private static final int NUM_COLUMN_FORM = 4;
         private static final int NUM_COLUMN_PRICE = 2;
         private static final int NUM_COLUMN_DNS = 5;
+        private static final int NUM_COLUMN_IMAGE = 6;
 
         public long insert(String name, String form_facrors, String form, String price, String dns){
             ContentValues cv = new ContentValues();
@@ -691,7 +726,8 @@ public class DBServer {
                     String form = cursor.getString(NUM_COLUMN_FORM);
                     String price= cursor.getString(NUM_COLUMN_PRICE);
                     String dns= cursor.getString(NUM_COLUMN_DNS);
-                    arr.add(new Body(id,name,form,form_facrors,price,dns));
+                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new Body(id,name,form,form_facrors,price,dns,image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -711,7 +747,8 @@ public class DBServer {
                 String form = cursor.getString(NUM_COLUMN_FORM);
                 String price= cursor.getString(NUM_COLUMN_PRICE);
                 String dns= cursor.getString(NUM_COLUMN_DNS);
-                out = new Body(id,name,form,form_facrors,price,dns);
+                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new Body(id,name,form,form_facrors,price,dns, image);
             }
             cursor.close();
             return out;
@@ -729,6 +766,7 @@ public class DBServer {
         private static final String COLUMN_PRICE = "Price";
         private static final String COLUMN_DNS = "DNS";
         private static final String COLUMN_RAMTYPE = "RAMType";
+        private static final String COLUMN_IMAGE = "Image";
 
         private static final int NUM_COLUMN_ID = 0;
         private static final int NUM_COLUMN_NAME = 1;
@@ -738,6 +776,7 @@ public class DBServer {
         private static final int NUM_COLUMN_PRICE = 5;
         private static final int NUM_COLUMN_DNS = 6;
         private static final int NUM_COLUMN_RAMTYPE = 7;
+        private static final int NUM_COLUMN_IMAGE = 8;
 
         public long insert(String name, String capacity, String ram_speed, String number_of_modules, String price, String dns, String ramtype){
             ContentValues cv = new ContentValues();
@@ -771,7 +810,8 @@ public class DBServer {
                     String price= cursor.getString(NUM_COLUMN_PRICE);
                     String dns= cursor.getString(NUM_COLUMN_DNS);
                     String ramtype = cursor.getString(NUM_COLUMN_RAMTYPE);
-                    arr.add(new RAM(id,name,capacity,ram_speed,number_of_modules,price,dns,ramtype));
+                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new RAM(id,name,capacity,ram_speed,number_of_modules,price,dns,ramtype, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -793,7 +833,8 @@ public class DBServer {
                 String price= cursor.getString(NUM_COLUMN_PRICE);
                 String dns= cursor.getString(NUM_COLUMN_DNS);
                 String ramtype = cursor.getString(NUM_COLUMN_RAMTYPE);
-                out = new RAM(id,name,capacity,ram_speed,number_of_modules,price,dns,ramtype);
+                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new RAM(id,name,capacity,ram_speed,number_of_modules,price,dns,ramtype, image);
             }
             cursor.close();
             return out;
@@ -808,6 +849,7 @@ public class DBServer {
         private static final String COLUMN_FAN_SIZE = "Fan_size";
         private static final String COLUMN_MAXIMUM_VOLUME = "maximum_Volume";
         private static final String COLUMN_DNS = "DNS";
+        private static final String COLUMN_IMAGE = "Image";
 
         private static final int NUM_COLUMN_ID = 0;
         private static final int NUM_COLUMN_NAME = 1;
@@ -815,6 +857,7 @@ public class DBServer {
         private static final int NUM_COLUMN_MAXIMUM_VOLUME = 3;
         private static final int NUM_COLUMN_PRICE = 4;
         private static final int NUM_COLUMN_DNS = 5;
+        private static final int NUM_COLUMN_IMAGE = 6;
 
         public long insert(String name, String fan_size, String maximum_volume, String dns){
             ContentValues cv = new ContentValues();
@@ -843,7 +886,8 @@ public class DBServer {
                     String maximum_volume= cursor.getString(NUM_COLUMN_MAXIMUM_VOLUME);
                     String price= cursor.getString(NUM_COLUMN_PRICE);
                     String dns= cursor.getString(NUM_COLUMN_DNS);
-                    arr.add(new Coolers(id,name,fan_size,maximum_volume,price,dns));
+                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new Coolers(id,name,fan_size,maximum_volume,price,dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -858,46 +902,14 @@ public class DBServer {
             Coolers out = null;
               if (cursor.getCount() > 0){
                 cursor.moveToFirst();
-//                InputStream inputStream = null;
-//                OutputStream outputStream = null;
 //
-//                try {
-//                    URL url = new URL(imageUrl);
-//                    inputStream = url.openStream();
-//                    outputStream = new FileOutputStream("c:\\spring-file-upload-eclipse-setup.jpg");
-//
-//                    byte[] buffer = new byte[2048];
-//                    int length;
-//
-//                    while ((length = inputStream.read(buffer)) != -1) {
-//                        outputStream.write(buffer, 0, length);
-//                    }
-//
-//                } catch (MalformedURLException e) {
-//                    System.out.println("MalformedURLException :- " + e.getMessage());
-//
-//                } catch (FileNotFoundException e) {
-//                    System.out.println("FileNotFoundException :- " + e.getMessage());
-//
-//                } catch (IOException e) {
-//                    System.out.println("IOException :- " + e.getMessage());
-//
-//                } finally {
-//                    try {
-//
-//                        inputStream.close();
-//                        outputStream.close();
-//
-//                    } catch (IOException e) {
-//                        System.out.println("Finally IOException :- " + e.getMessage());
-//                    }
-//                }
                 String name = cursor.getString(NUM_COLUMN_NAME);
                 String fan_size = cursor.getString(NUM_COLUMN_FAN_SIZE);
                 String maximum_volume= cursor.getString(NUM_COLUMN_MAXIMUM_VOLUME);
                 String price= cursor.getString(NUM_COLUMN_PRICE);
                 String dns= cursor.getString(NUM_COLUMN_DNS);
-                out = new Coolers(id,name,fan_size,maximum_volume,price,dns);
+                  byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new Coolers(id,name,fan_size,maximum_volume,price,dns, image);
             }
             cursor.close();
             return out;

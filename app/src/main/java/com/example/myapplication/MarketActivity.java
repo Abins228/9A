@@ -3,14 +3,18 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class MarketActivity extends AppCompatActivity {
@@ -120,6 +124,7 @@ public class MarketActivity extends AppCompatActivity {
                 namemarket.setText("Корпуса");
                 table = dbServer.new BodyTable();
                 listAdapter = new ListAdapter<Body>(this, table.selectAll());
+
             }
 
 
@@ -162,16 +167,16 @@ public class MarketActivity extends AppCompatActivity {
             if (convertView == null)
                 convertView = getLayoutInflater().inflate(R.layout.item, null);
 
-//            ImageView image = convertView.findViewById(R.id.image);
+            ImageView image = convertView.findViewById(R.id.image);
             TextView name = convertView.findViewById(R.id.name);
             TextView description = convertView.findViewById(R.id.description);
             TextView price = convertView.findViewById(R.id.price);
 
             T preview = (T) getItem(position);
 
-//            ByteArrayInputStream imageStream = new ByteArrayInputStream(preview.getImage());
-////            Bitmap theImage = BitmapFactory.decodeStream(imageStream);
-//////            image.setImageBitmap(theImage);
+            ByteArrayInputStream imageStream = new ByteArrayInputStream(preview.getImage());
+            Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+            image.setImageBitmap(theImage);
             name.setText(preview.getName());
             description.setText("Краткое описание: " + preview.getDescription());
             price.setText("Цена: " + preview.getPrice() + " ₽");

@@ -10,8 +10,9 @@ public class Coolers implements Serializable, Idetificate {
     private String max_vol;
     private String price;
     private String dns;
+    private byte[] image;
 
-    public Coolers(int id, String name, String fan_size, String max_vol, String price, String dns) {
+    public Coolers(int id, String name, String fan_size, String max_vol, String price, String dns, byte[] image) {
         this.id = id;
         this.name = name;
         this.fan_size = fan_size;
@@ -77,5 +78,14 @@ public class Coolers implements Serializable, Idetificate {
 
     public void setDns(String dns) {
         this.dns = dns;
+    }
+
+    @Override
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

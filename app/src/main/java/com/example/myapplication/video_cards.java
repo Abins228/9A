@@ -10,8 +10,9 @@ public class video_cards implements Idetificate, Serializable {
     private String frequency;
     private String price;
     private String dns;
+    private byte[] image;
 
-    public video_cards(int id, String name, String capacity, String typeCapasity, String frequency, String price, String dns) {
+    public video_cards(int id, String name, String capacity, String typeCapasity, String frequency, String price, String dns, byte[] image) {
         this.id = id;
         this.name = name;
         this.capacity = capacity;
@@ -86,5 +87,14 @@ public class video_cards implements Idetificate, Serializable {
 
     public void setDns(String dns) {
         this.dns = dns;
+    }
+
+    @Override
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

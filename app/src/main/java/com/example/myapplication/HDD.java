@@ -9,8 +9,9 @@ public class HDD implements Idetificate, Serializable {
     private String maxrw;
     private String price;
     private String dns;
+    private byte[] image;
 
-    public HDD(int id, String name, String capacity, String maxrw, String price, String dns) {
+    public HDD(int id, String name, String capacity, String maxrw, String price, String dns, byte[] image) {
         this.id = id;
         this.name = name;
         this.capacity = capacity;
@@ -76,5 +77,14 @@ public class HDD implements Idetificate, Serializable {
 
     public void setDns(String dns) {
         this.dns = dns;
+    }
+
+    @Override
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

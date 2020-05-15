@@ -11,8 +11,9 @@ public class CPU implements Serializable,Idetificate {
     private String ddr;
     private String price;
     private String dns;
+    private byte[] image;
 
-    public CPU(int id, String name, String processor_socket, String cpu_speed, String cores_thread, String ddr, String price, String dns) {
+    public CPU(int id, String name, String processor_socket, String cpu_speed, String cores_thread, String ddr, String price, String dns, byte[] image) {
         this.id = id;
         this.name = name;
         this.processor_socket = processor_socket;
@@ -96,5 +97,22 @@ public class CPU implements Serializable,Idetificate {
 
     public void setDns(String dns) {
         this.dns = dns;
+    }
+
+    public String getCores_threads() {
+        return cores_threads;
+    }
+
+    public void setCores_threads(String cores_threads) {
+        this.cores_threads = cores_threads;
+    }
+
+    @Override
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

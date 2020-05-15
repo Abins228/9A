@@ -10,8 +10,9 @@ public class SSD implements Serializable,Idetificate {
     private String reading_speed;
     private String price;
     private String dns;
+    private byte[] image;
 
-    public SSD(int id, String name, String capacity, String writing_speed, String reading_speed, String price, String dns) {
+    public SSD(int id, String name, String capacity, String writing_speed, String reading_speed, String price, String dns, byte[] image) {
         this.id = id;
         this.name = name;
         this.capacity = capacity;
@@ -86,5 +87,14 @@ public class SSD implements Serializable,Idetificate {
 
     public void setDns(String dns) {
         this.dns = dns;
+    }
+
+    @Override
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

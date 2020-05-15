@@ -9,8 +9,9 @@ public class BP implements Serializable,Idetificate {
     private String power;
     private String price;
     private String dns;
+    private byte[] image;
 
-    public BP(int id, String name, String type, String power, String price, String dns) {
+    public BP(int id, String name, String type, String power, String price, String dns,byte[] image) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -71,5 +72,14 @@ public class BP implements Serializable,Idetificate {
 
     public void setDns(String dns) {
         this.dns = dns;
+    }
+
+    @Override
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

@@ -9,8 +9,9 @@ public class Coolers_CPU implements Idetificate, Serializable {
     private String noise_level;
     private String price;
     private String dns;
+    private byte[] image;
 
-    public Coolers_CPU(int id, String name, String power, String noise_level, String price, String dns) {
+    public Coolers_CPU(int id, String name, String power, String noise_level, String price, String dns, byte[] image) {
         this.id = id;
         this.name = name;
         this.power = power;
@@ -76,5 +77,14 @@ public class Coolers_CPU implements Idetificate, Serializable {
 
     public void setDns(String dns) {
         this.dns = dns;
+    }
+
+    @Override
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

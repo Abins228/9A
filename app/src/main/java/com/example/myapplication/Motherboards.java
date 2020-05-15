@@ -11,16 +11,18 @@ public class Motherboards implements Serializable,Idetificate {
     private String formf;
     private String price;
     private String dns;
+    private byte[] image;
 
-    public Motherboards(int id, String name, String socket, String chip, String typeram, String formf, String price, String dns) {
+    public Motherboards(int id, String name, String soket, String chip, String typeram, String formf, String price, String dns, byte[] image) {
         this.id = id;
         this.name = name;
-        this.soket = socket;
+        this.soket = soket;
         this.chip = chip;
         this.typeram = typeram;
         this.formf = formf;
         this.price = price;
         this.dns = dns;
+        this.image = image;
     }
 
     @Override
@@ -96,5 +98,14 @@ public class Motherboards implements Serializable,Idetificate {
 
     public void setDns(String dns) {
         this.dns = dns;
+    }
+
+    @Override
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

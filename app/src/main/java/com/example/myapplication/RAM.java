@@ -11,8 +11,9 @@ public class RAM implements Serializable, Idetificate {
     private String price;
     private String dns;
     private String ram_type;
+    private byte[] image;
 
-    public RAM(int id, String name, String capacity, String ram_speed, String number_of_modules, String price, String dns, String ram_type) {
+    public RAM(int id, String name, String capacity, String ram_speed, String number_of_modules, String price, String dns, String ram_type, byte[] image) {
         this.id = id;
         this.name = name;
         this.capacity = capacity;
@@ -96,5 +97,14 @@ public class RAM implements Serializable, Idetificate {
 
     public void setRam_type(String ram_type) {
         this.ram_type = ram_type;
+    }
+
+    @Override
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }
