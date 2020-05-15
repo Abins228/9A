@@ -9,10 +9,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class DBServer {
@@ -853,8 +856,42 @@ public class DBServer {
                     new String[]{String.valueOf(id)}, null, null, null);
 
             Coolers out = null;
-            if (cursor.getCount() > 0){
+              if (cursor.getCount() > 0){
                 cursor.moveToFirst();
+//                InputStream inputStream = null;
+//                OutputStream outputStream = null;
+//
+//                try {
+//                    URL url = new URL(imageUrl);
+//                    inputStream = url.openStream();
+//                    outputStream = new FileOutputStream("c:\\spring-file-upload-eclipse-setup.jpg");
+//
+//                    byte[] buffer = new byte[2048];
+//                    int length;
+//
+//                    while ((length = inputStream.read(buffer)) != -1) {
+//                        outputStream.write(buffer, 0, length);
+//                    }
+//
+//                } catch (MalformedURLException e) {
+//                    System.out.println("MalformedURLException :- " + e.getMessage());
+//
+//                } catch (FileNotFoundException e) {
+//                    System.out.println("FileNotFoundException :- " + e.getMessage());
+//
+//                } catch (IOException e) {
+//                    System.out.println("IOException :- " + e.getMessage());
+//
+//                } finally {
+//                    try {
+//
+//                        inputStream.close();
+//                        outputStream.close();
+//
+//                    } catch (IOException e) {
+//                        System.out.println("Finally IOException :- " + e.getMessage());
+//                    }
+//                }
                 String name = cursor.getString(NUM_COLUMN_NAME);
                 String fan_size = cursor.getString(NUM_COLUMN_FAN_SIZE);
                 String maximum_volume= cursor.getString(NUM_COLUMN_MAXIMUM_VOLUME);

@@ -49,7 +49,7 @@ public class Catalog_Activity extends AppCompatActivity implements View.OnClickL
     public void onClickProcessor(View view) {
         Intent s;
         s = new Intent(Catalog_Activity.this, MarketActivity.class);
-        s.putExtra("2",PROCES);
+        s.putExtra("Central processor",PROCES);
         startActivity(s);
     }
 

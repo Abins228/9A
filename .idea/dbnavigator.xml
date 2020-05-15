@@ -31,7 +31,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4">
-      <console name="Parts" type="STANDARD" schema="main" session="Main">create table Motherboards
+      <console name="Parts" type="STANDARD" schema="main" session="Main"><![CDATA[create table Motherboards
 (ID integer primary key autoincrement,
 Name text not null,
 Form_factor text not null,
@@ -257,7 +257,7 @@ Name text not null)
 
 SELECT * FROM BP
 
-alter table &quot;bp&quot; add COLUMN ImageBlob blob;</console>
+alter table "bp" add COLUMN ImageBlob blob;]]></console>
     </connection>
     <connection id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd">
       <console name="Parts MMcomp" type="STANDARD" schema="main" session="Main" />
@@ -271,7 +271,10 @@ alter table &quot;bp&quot; add COLUMN ImageBlob blob;</console>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
+      <object connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd" object-ref="schemas/main/tables/video_cards" />
       <object connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd" object-ref="schemas/main/tables/RAM" />
+      <object connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd" object-ref="schemas/main/tables/Motherboards" />
+      <object connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd" object-ref="schemas/main/tables/Coolers_CPU" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
@@ -281,7 +284,10 @@ alter table &quot;bp&quot; add COLUMN ImageBlob blob;</console>
     <connection id="d557e475-9c86-40b9-bdaf-3f96ac4081db" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd" dataset="main.video_cards" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd" dataset="main.RAM" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd" dataset="main.Motherboards" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd" dataset="main.Coolers_CPU" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd" dataset="main.CPU" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4" dataset="main.SSD" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4" dataset="main.BP" active-filter-id="EMPTY_FILTER" />
