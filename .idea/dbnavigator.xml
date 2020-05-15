@@ -282,7 +282,6 @@ alter table "bp" add COLUMN ImageBlob blob;]]></console>
       <object connection-id="0c1ca913-8073-494b-b902-3495047526c7" object-ref="schemas/main/tables/Body" />
       <object connection-id="0c1ca913-8073-494b-b902-3495047526c7" object-ref="schemas/main/tables/CPU" />
       <object connection-id="0c1ca913-8073-494b-b902-3495047526c7" object-ref="schemas/main/tables/BP" />
-      <object connection-id="0c1ca913-8073-494b-b902-3495047526c7" object-ref="schemas/main/tables/RAM" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
