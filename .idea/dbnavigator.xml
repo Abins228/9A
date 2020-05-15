@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd">
-        <schema name="main" object-types="view, table" />
+        <schema name="main" object-types="table, view, index, column, dataset trigger, constraint" />
       </connection>
     </loaded-nodes>
   </component>
@@ -270,7 +270,9 @@ alter table &quot;bp&quot; add COLUMN ImageBlob blob;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd" object-ref="schemas/main/tables/RAM" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4" />
@@ -279,6 +281,7 @@ alter table &quot;bp&quot; add COLUMN ImageBlob blob;</console>
     <connection id="d557e475-9c86-40b9-bdaf-3f96ac4081db" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd" dataset="main.RAM" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="cb9e6eef-c684-4ee5-bfe4-ea9d082012fd" dataset="main.CPU" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4" dataset="main.SSD" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4" dataset="main.BP" active-filter-id="EMPTY_FILTER" />

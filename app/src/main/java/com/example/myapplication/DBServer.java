@@ -810,8 +810,8 @@ public class DBServer {
         private static final int NUM_COLUMN_NAME = 1;
         private static final int NUM_COLUMN_FAN_SIZE = 2;
         private static final int NUM_COLUMN_MAXIMUM_VOLUME = 3;
-        private static final int NUM_COLUMN_PRICE = 3;
-        private static final int NUM_COLUMN_DNS = 4;
+        private static final int NUM_COLUMN_PRICE = 4;
+        private static final int NUM_COLUMN_DNS = 5;
 
         public long insert(String name, String fan_size, String maximum_volume, String dns){
             ContentValues cv = new ContentValues();
