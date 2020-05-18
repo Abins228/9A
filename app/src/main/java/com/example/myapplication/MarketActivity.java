@@ -249,7 +249,7 @@ public class MarketActivity extends AppCompatActivity {
     }
     public void onClick(View view) {
         Intent i;
-        i = new Intent(MarketActivity.this, Catalog_Activity.class);
+        i = new Intent(MarketActivity.this, BuildActivity.class);
         startActivity(i);
     }
 
