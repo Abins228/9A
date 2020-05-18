@@ -23,15 +23,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="0c1ca913-8073-494b-b902-3495047526c7">
-        <schema name="main" object-types="view, table" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="2b678b9a-5bb9-4ec1-aa34-5596d89ca2f4">
-      <console name="Parts" type="STANDARD" schema="main" session="Main">create table Motherboards
+      <console name="Parts" type="STANDARD" schema="main" session="Main"><![CDATA[create table Motherboards
 (ID integer primary key autoincrement,
 Name text not null,
 Form_factor text not null,
@@ -257,10 +253,10 @@ Name text not null)
 
 SELECT * FROM BP
 
-alter table &quot;bp&quot; add COLUMN ImageBlob blob;</console>
+alter table "bp" add COLUMN ImageBlob blob;]]></console>
     </connection>
     <connection id="0c1ca913-8073-494b-b902-3495047526c7">
-      <console name="Parts MM im project" type="STANDARD" schema="main" session="Main">ALTER TABLE &quot;video_cards&quot; ADD COLUMN Image blob;</console>
+      <console name="Parts MM im project" type="STANDARD" schema="main" session="Main"><![CDATA[ALTER TABLE "video_cards" ADD COLUMN Image blob;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -294,8 +290,8 @@ alter table &quot;bp&quot; add COLUMN ImageBlob blob;</console>
     <filter-actions connection-id="0c1ca913-8073-494b-b902-3495047526c7" dataset="main.BP" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="0c1ca913-8073-494b-b902-3495047526c7" dataset="main.Body" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="0c1ca913-8073-494b-b902-3495047526c7" dataset="main.Coolers" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="0c1ca913-8073-494b-b902-3495047526c7" dataset="main.HDD" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="0c1ca913-8073-494b-b902-3495047526c7" dataset="main.CPU" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="0c1ca913-8073-494b-b902-3495047526c7" dataset="main.HDD" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />

@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class MarketActivity extends AppCompatActivity {
     ListAdapter listAdapter;
     Selectable table;
     TextView namemarket;
+    String type;
 
 
 
@@ -37,6 +39,7 @@ public class MarketActivity extends AppCompatActivity {
 
         list = findViewById(R.id.listView);
         namemarket = findViewById(R.id.namemarket);
+
 
         if (getIntent().hasExtra("MotherBoard")) {
             int value = getIntent().getIntExtra("MotherBoard", 1);
@@ -130,8 +133,69 @@ public class MarketActivity extends AppCompatActivity {
 
         }
         list.setAdapter(listAdapter);
-
     }
+
+    void IntentfinishMother(){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable(type, new Motherboards(0,null,null,null,null,null,null,null,null));
+        getIntent().putExtras(bundle);
+        setResult(RESULT_OK);
+    }
+    void IntentfinishCpu(){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable(type, new CPU(0,null,null,null,null,null,null,null,null));
+        getIntent().putExtras(bundle);
+        setResult(RESULT_OK);
+    }
+    void IntentfinishCpuCool(){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable(type, new Coolers_CPU(0,null,null,null,null,null,null));
+        getIntent().putExtras(bundle);
+        setResult(RESULT_OK);
+    }
+    void IntentfinishGpu(){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable(type, new video_cards(0,null,null,null,null,null,null,null));
+        getIntent().putExtras(bundle);
+        setResult(RESULT_OK);
+    }
+    void IntentfinishRam(){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable(type, new RAM(0,null,null,null,null,null,null,null,null));
+        getIntent().putExtras(bundle);
+        setResult(RESULT_OK);
+    }
+    void IntentfinishSsd(){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable(type, new SSD(0,null,null,null,null,null,null,null));
+        getIntent().putExtras(bundle);
+        setResult(RESULT_OK);
+    }
+    void IntentfinishM2(){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable(type, new M2(0,null,null,null,null,null,null,null));
+        getIntent().putExtras(bundle);
+        setResult(RESULT_OK);
+    }
+    void IntentfinishCooler(){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable(type, new Coolers(0,null,null,null,null,null,null));
+        getIntent().putExtras(bundle);
+        setResult(RESULT_OK);
+    }
+    void Intentfinishbp(){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable(type, new BP(0,null,null,null,null,null,null));
+        getIntent().putExtras(bundle);
+        setResult(RESULT_OK);
+    }
+    void IntentfinishBody(){
+        Bundle bundle=new Bundle();
+        bundle.putSerializable(type, new Body(0,null,null,null,null,null,null));
+        getIntent().putExtras(bundle);
+        setResult(RESULT_OK);
+    }
+
 
 
     public class ListAdapter<T extends Idetificate> extends BaseAdapter {
@@ -173,10 +237,9 @@ public class MarketActivity extends AppCompatActivity {
             TextView price = convertView.findViewById(R.id.price);
 
             T preview = (T) getItem(position);
-
-            ByteArrayInputStream imageStream = new ByteArrayInputStream(preview.getImage());
-            Bitmap theImage = BitmapFactory.decodeStream(imageStream);
-            image.setImageBitmap(theImage);
+        //    ByteArrayInputStream imageStream = new ByteArrayInputStream(preview.getImage());
+          //  Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+            //image.setImageBitmap(theImage);
             name.setText(preview.getName());
             description.setText("Краткое описание: " + preview.getDescription());
             price.setText("Цена: " + preview.getPrice() + " ₽");
@@ -184,6 +247,12 @@ public class MarketActivity extends AppCompatActivity {
             return convertView;
         }
     }
+    public void onClick(View view) {
+        Intent i;
+        i = new Intent(MarketActivity.this, Catalog_Activity.class);
+        startActivity(i);
+    }
+
 }
 
 
