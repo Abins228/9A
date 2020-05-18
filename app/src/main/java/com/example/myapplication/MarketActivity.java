@@ -237,9 +237,9 @@ public class MarketActivity extends AppCompatActivity {
             TextView price = convertView.findViewById(R.id.price);
 
             T preview = (T) getItem(position);
-        //    ByteArrayInputStream imageStream = new ByteArrayInputStream(preview.getImage());
-          //  Bitmap theImage = BitmapFactory.decodeStream(imageStream);
-            //image.setImageBitmap(theImage);
+            ByteArrayInputStream imageStream = new ByteArrayInputStream(preview.getImage());
+            Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+            image.setImageBitmap(theImage);
             name.setText(preview.getName());
             description.setText("Краткое описание: " + preview.getDescription());
             price.setText("Цена: " + preview.getPrice() + " ₽");
