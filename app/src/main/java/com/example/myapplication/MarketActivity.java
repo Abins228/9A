@@ -257,7 +257,7 @@ public class MarketActivity extends AppCompatActivity implements ListView.OnItem
             image.setImageBitmap(theImage);
             name.setText(preview.getName());
             description.setText("Краткое описание: " + preview.getDescription());
-            price.setText("Цена: " + preview.getPrice() + " ₽");
+            price.setText("Цена: " + preview.getPrice() + "₽");
 
             return convertView;
         }

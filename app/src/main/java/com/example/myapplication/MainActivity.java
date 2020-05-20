@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton bt;
+    ImageButton bt, sb;
     DBServer dbServer;
     // DBServer.Products products;
     private final static int GET_PERMISSION_STORAGE = 0;
@@ -51,25 +51,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-        bt.setOnClickListener(new View.OnClickListener() {
-            int height, width;
-            @Override
-            public void onClick(final View v) {
-                v.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        height = v.getHeight();
-                        width = v.getWidth();
-                    }
-                });
-                // дальше код
-            }
-        });
+//        bt.setOnClickListener(new View.OnClickListener() {
+//            int height, width;
+//            @Override
+//            public void onClick(final View v) {
+//                v.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        height = v.getHeight();
+//                        width = v.getWidth();
+//                    }
+//                });
+//                // дальше код
+//            }
+//        });
+//
+  }
 
-    }
 
-    @Override
-    public void onClick(View view) {
+    public void onClickCatalog(View view) {
         Intent i;
         i = new Intent(MainActivity.this, Catalog_Activity.class);
         startActivity(i);
@@ -100,5 +100,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent i;
+        i = new Intent(MainActivity.this, Catalog_Activity.class);
+        startActivity(i);
     }
 }

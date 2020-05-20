@@ -55,7 +55,7 @@ public class Catalog_Activity extends AppCompatActivity implements View.OnClickL
 
     public void onClickCpuCooler(View view) {
         Intent s;
-        s = new Intent(Catalog_Activity.this, MarketActivity.class);
+        s = new Intent(Catalog_Activity.this,MarketActivity .class);
         s.putExtra("CPUCOOLER",CPUCOOLER);
         startActivity(s);
     }

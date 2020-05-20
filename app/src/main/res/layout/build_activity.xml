@@ -7,41 +7,249 @@
     android:layout_height="match_parent"
     tools:context=".BuildActivity">
 
-    <ScrollView
-        android:id="@+id/scrollView3"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
+            <ImageButton
+                android:id="@+id/sborkaBack"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClickBack"
+                app:srcCompat="@android:drawable/ic_menu_revert" />
 
+            <TextView
+                android:id="@+id/motherTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Материнская плата" />
+
+            <FrameLayout
+                android:id="@+id/motherContainer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <ImageButton
+                    android:id="@+id/motherIm"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="93dp"
+                    android:layout_gravity="bottom|left"
+                    app:srcCompat="@drawable/sborka1" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/cpuTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Процессор" />
+
+            <FrameLayout
+                android:id="@+id/cpuContainer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <ImageButton
+                    android:id="@+id/cpuIm"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="93dp"
+                    android:layout_gravity="bottom|left"
+                    app:srcCompat="@drawable/sborka1" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/CPUcoollerTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Кулер для процессора" />
+
+            <FrameLayout
+                android:id="@+id/CPUcoollerContainer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <ImageButton
+                    android:id="@+id/CPUcoollerIm"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="93dp"
+                    android:layout_gravity="bottom|left"
+                    app:srcCompat="@drawable/sborka1" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/gpuTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Видеокарта" />
+
+            <FrameLayout
+                android:id="@+id/gpuContainer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <ImageButton
+                    android:id="@+id/gpuIm"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="93dp"
+                    android:layout_gravity="bottom|left"
+                    app:srcCompat="@drawable/sborka1" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/ramTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Оперативная память" />
+
+            <FrameLayout
+                android:id="@+id/ramContainer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <ImageButton
+                    android:id="@+id/ramIm"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="93dp"
+                    android:layout_gravity="bottom|left"
+                    app:srcCompat="@drawable/sborka1" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/hddTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Жёсткие диски" />
+
+            <FrameLayout
+                android:id="@+id/hddContainer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <ImageButton
+                    android:id="@+id/hddIm"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="93dp"
+                    android:layout_gravity="bottom|left"
+                    app:srcCompat="@drawable/sborka1" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/ssdTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" SSD накопитель" />
+
+            <FrameLayout
+                android:id="@+id/ssdContainer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <ImageButton
+                    android:id="@+id/ssdIm"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="93dp"
+                    android:layout_gravity="bottom|left"
+                    app:srcCompat="@drawable/sborka1" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/m2TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="M.2 накопители" />
+
+            <FrameLayout
+                android:id="@+id/m2Container"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <ImageButton
+                    android:id="@+id/m2Im"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="93dp"
+                    android:layout_gravity="bottom|left"
+                    app:srcCompat="@drawable/sborka1" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/bpTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Блок питания" />
 
             <FrameLayout
                 android:id="@+id/bpContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintVertical_bias="0.0">
+                android:layout_height="100dp">
+
                 <ImageButton
-                    android:id="@+id/bpImgBt"
+                    android:id="@+id/bpIm"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="93dp"
+                    android:layout_gravity="bottom|left"
                     app:srcCompat="@drawable/sborka1" />
             </FrameLayout>
 
+            <TextView
+                android:id="@+id/bodyTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Корпус" />
 
+            <FrameLayout
+                android:id="@+id/bodyContainer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+                <ImageButton
+                    android:id="@+id/bodyIm"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="93dp"
+                    android:layout_gravity="bottom|left"
+                    app:srcCompat="@drawable/sborka1" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/coollersTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вентиляторы" />
+
+            <FrameLayout
+                android:id="@+id/coollersContainer"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <ImageButton
+                    android:id="@+id/coollersIm"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="93dp"
+                    android:layout_gravity="bottom|left"
+                    app:srcCompat="@drawable/sborka1" />
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

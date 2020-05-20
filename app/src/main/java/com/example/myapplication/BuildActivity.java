@@ -39,13 +39,13 @@ public class BuildActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.build_activity);
-        bpImgBt = findViewById(R.id.bpImgBt);
+        bpImgBt = findViewById(R.id.bpIm);
         bpContainer = findViewById(R.id.bpContainer);
         DBServer dbServer = new DBServer(this);
         user_carts = dbServer.new UserCart();
-        // раскомментировать когда добавится кнопка назад
-//        bt = findViewById(R.id.back2);
-//        bt.setOnClickListener(onBackClickListener());
+
+        bt = findViewById(R.id.sborkaBack);
+        bt.setOnClickListener(onBackClickListener());
 
         bpImgBt.setOnClickListener(onClickListener());
 
@@ -66,7 +66,7 @@ public class BuildActivity extends AppCompatActivity{
             image.setImageBitmap(buildImg(preview.getImage()));
             name.setText(preview.getName());
             description.setText(preview.getDescription());
-            price.setText(preview.getPrice());
+            price.setText("Цена: "+preview.getPrice()+"₽");
             replaceView(view, bpContainer);
         }
     }
@@ -84,10 +84,10 @@ public class BuildActivity extends AppCompatActivity{
             public void onClick(View v) {
                 int id = v.getId();
                 Intent s = new Intent(BuildActivity.this, MarketActivity.class);
-                if (id == R.id.bpImgBt || id == R.id.bpContainer) {
+                if (id == R.id.bpIm || id == R.id.bpContainer) {
                     s.putExtra("BP", BP);
                     startActivityForResult(s, BP);
-                } else if (id == R.id.bpImgBt || id == R.id.bpContainer) // вставить id motherboard и id motherboard container
+                } else if (id == R.id.bpIm || id == R.id.bpContainer) // вставить id motherboard и id motherboard container
                 {
                     s.putExtra("MotherBoard", MOTHERBOARD);
                     startActivityForResult(s, MOTHERBOARD);
