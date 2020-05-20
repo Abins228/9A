@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bt = findViewById(R.id.catalogbutton);
-        bt.setOnClickListener(this);
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
@@ -49,6 +49,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         GET_PERMISSION_STORAGE);
             }
         }
+
+
+        bt.setOnClickListener(new View.OnClickListener() {
+            int height, width;
+            @Override
+            public void onClick(final View v) {
+                v.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        height = v.getHeight();
+                        width = v.getWidth();
+                    }
+                });
+                // дальше код
+            }
+        });
+
     }
 
     @Override

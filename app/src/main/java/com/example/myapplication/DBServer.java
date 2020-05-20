@@ -37,12 +37,12 @@ public class DBServer {
 
     }
 
-    public class BPTable implements Selectable<BP>{
+    public class BPTable implements Selectable<BP> {
         private static final String TABLE_NAME = "BP";
 
-        private static final String COLUMN_ID= "id";
-        private static final String COLUMN_NAME= "Name";
-        private static final String COLUMN_TYPE= "Type";
+        private static final String COLUMN_ID = "id";
+        private static final String COLUMN_NAME = "Name";
+        private static final String COLUMN_TYPE = "Type";
         private static final String COLUMN_POWER = "Power";
         private static final String COLUMN_PRICE = "Price";
         private static final String COLUMN_DNS = "DNS";
@@ -56,7 +56,7 @@ public class DBServer {
         private static final int NUM_COLUMN_DNS = 5;
         private static final int NUM_COLUMN_IMAGE = 6;
 
-        public long insert(String name, String type, String power, String price, String dns){
+        public long insert(String name, String type, String power, String price, String dns) {
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_NAME, name);
             cv.put(COLUMN_TYPE, type);
@@ -66,11 +66,11 @@ public class DBServer {
             return database.insert(TABLE_NAME, null, cv);
         }
 
-        public void deleteall(){
+        public void deleteall() {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<BP> selectAll(){
+        public ArrayList<BP> selectAll() {
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
@@ -81,11 +81,11 @@ public class DBServer {
                     int id = cursor.getInt(NUM_COLUMN_ID);
                     String name = cursor.getString(NUM_COLUMN_NAME);
                     String type = cursor.getString(NUM_COLUMN_TYPE);
-                    String power= cursor.getString(NUM_COLUMN_POWER);
-                    String price= cursor.getString(NUM_COLUMN_PRICE);
-                    String dns= cursor.getString(NUM_COLUMN_DNS);
-                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                    arr.add(new com.example.myapplication.BP(id,name,type,power,price,dns, image));
+                    String power = cursor.getString(NUM_COLUMN_POWER);
+                    String price = cursor.getString(NUM_COLUMN_PRICE);
+                    String dns = cursor.getString(NUM_COLUMN_DNS);
+                    byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new com.example.myapplication.BP(id, name, type, power, price, dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -93,31 +93,31 @@ public class DBServer {
 
         }
 
-        public BP select(int id){
+        public BP select(int id) {
             Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
                     new String[]{String.valueOf(id)}, null, null, null);
 
             BP out = null;
-            if (cursor.getCount() > 0){
+            if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 String name = cursor.getString(NUM_COLUMN_NAME);
                 String type = cursor.getString(NUM_COLUMN_TYPE);
-                String power= cursor.getString(NUM_COLUMN_POWER);
-                String price= cursor.getString(NUM_COLUMN_PRICE);
-                String dns= cursor.getString(NUM_COLUMN_DNS);
-                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new BP(id,name,type,power,price,dns, image);
+                String power = cursor.getString(NUM_COLUMN_POWER);
+                String price = cursor.getString(NUM_COLUMN_PRICE);
+                String dns = cursor.getString(NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new BP(id, name, type, power, price, dns, image);
             }
             cursor.close();
             return out;
         }
     }
 
-    public class MotherboardsTable implements Selectable<Motherboards>{
+    public class MotherboardsTable implements Selectable<Motherboards> {
         private static final String TABLE_NAME = "Motherboards";
 
-        private static final String COLUMN_ID= "id";
-        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_ID = "id";
+        private static final String COLUMN_NAME = "Name";
         private static final String COLUMN_SOCKET = "Socket";
         private static final String COLUMN_CHIP = "Chip";
         private static final String COLUMN_TYPERAM = "TypeRAM";
@@ -136,7 +136,7 @@ public class DBServer {
         private static final int NUM_COLUMN_DNS = 7;
         private static final int NUM_COLUMN_IMAGE = 8;
 
-        public long insert(String name, String soket, String chip, String typeram, String formf, String price, String dns, byte[] image){
+        public long insert(String name, String soket, String chip, String typeram, String formf, String price, String dns, byte[] image) {
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_NAME, name);
             cv.put(COLUMN_SOCKET, soket);
@@ -149,11 +149,11 @@ public class DBServer {
             return database.insert(TABLE_NAME, null, cv);
         }
 
-        public void deleteall(){
+        public void deleteall() {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<Motherboards> selectAll(){
+        public ArrayList<Motherboards> selectAll() {
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
@@ -164,13 +164,13 @@ public class DBServer {
                     int id = cursor.getInt(NUM_COLUMN_ID);
                     String name = cursor.getString(NUM_COLUMN_NAME);
                     String socket = cursor.getString(NUM_COLUMN_SOCKET);
-                    String chip= cursor.getString(NUM_COLUMN_CHIP);
+                    String chip = cursor.getString(NUM_COLUMN_CHIP);
                     String typeram = cursor.getString(NUM_COLUMN_TYPERAM);
                     String formf = cursor.getString(NUM_COLUMN_FORM_FACTOR);
-                    String price= cursor.getString(NUM_COLUMN_PRICE);
-                    String dns= cursor.getString(NUM_COLUMN_DNS);
-                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                    arr.add(new Motherboards(id,name,socket,chip,typeram,formf,price,dns,image));
+                    String price = cursor.getString(NUM_COLUMN_PRICE);
+                    String dns = cursor.getString(NUM_COLUMN_DNS);
+                    byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new Motherboards(id, name, socket, chip, typeram, formf, price, dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -178,33 +178,33 @@ public class DBServer {
 
         }
 
-        public Motherboards select(int id){
+        public Motherboards select(int id) {
             Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
                     new String[]{String.valueOf(id)}, null, null, null);
 
             Motherboards out = null;
-            if (cursor.getCount() > 0){
+            if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 String name = cursor.getString(NUM_COLUMN_NAME);
                 String socket = cursor.getString(NUM_COLUMN_SOCKET);
-                String chip= cursor.getString(NUM_COLUMN_CHIP);
+                String chip = cursor.getString(NUM_COLUMN_CHIP);
                 String typeram = cursor.getString(NUM_COLUMN_TYPERAM);
                 String formf = cursor.getString(NUM_COLUMN_FORM_FACTOR);
-                String price= cursor.getString(NUM_COLUMN_PRICE);
-                String dns= cursor.getString(NUM_COLUMN_DNS);
-                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new Motherboards(id,name,socket,chip,typeram,formf,price,dns,image);
+                String price = cursor.getString(NUM_COLUMN_PRICE);
+                String dns = cursor.getString(NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new Motherboards(id, name, socket, chip, typeram, formf, price, dns, image);
             }
             cursor.close();
             return out;
         }
     }
 
-    public class Coolers_CPUTable implements Selectable<Coolers_CPU>{
+    public class Coolers_CPUTable implements Selectable<Coolers_CPU> {
         private static final String TABLE_NAME = "Coolers_CPU";
 
-        private static final String COLUMN_ID= "id";
-        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_ID = "id";
+        private static final String COLUMN_NAME = "Name";
         private static final String COLUMN_POWER = "Power";
         private static final String COLUMN_NOISE_LEVEL = "Noise_Level";
         private static final String COLUMN_PRICE = "Price";
@@ -219,7 +219,7 @@ public class DBServer {
         private static final int NUM_COLUMN_DNS = 5;
         private static final int NUM_COLUMN_IMAGE = 6;
 
-        public long insert(String name, String power, String noise_level, String price, String dns){
+        public long insert(String name, String power, String noise_level, String price, String dns) {
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_NAME, name);
             cv.put(COLUMN_POWER, power);
@@ -229,11 +229,11 @@ public class DBServer {
             return database.insert(TABLE_NAME, null, cv);
         }
 
-        public void deleteall(){
+        public void deleteall() {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<Coolers_CPU> selectAll(){
+        public ArrayList<Coolers_CPU> selectAll() {
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
@@ -244,11 +244,11 @@ public class DBServer {
                     int id = cursor.getInt(NUM_COLUMN_ID);
                     String name = cursor.getString(NUM_COLUMN_NAME);
                     String power = cursor.getString(NUM_COLUMN_POWER);
-                    String noise_level= cursor.getString(NUM_NOISE_LEVEL);
-                    String price= cursor.getString(NUM_COLUMN_PRICE);
-                    String dns= cursor.getString(NUM_COLUMN_DNS);
-                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                    arr.add(new Coolers_CPU(id,name,power,noise_level,price,dns,image));
+                    String noise_level = cursor.getString(NUM_NOISE_LEVEL);
+                    String price = cursor.getString(NUM_COLUMN_PRICE);
+                    String dns = cursor.getString(NUM_COLUMN_DNS);
+                    byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new Coolers_CPU(id, name, power, noise_level, price, dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -256,20 +256,20 @@ public class DBServer {
 
         }
 
-        public Coolers_CPU select(int id){
+        public Coolers_CPU select(int id) {
             Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
                     new String[]{String.valueOf(id)}, null, null, null);
 
             Coolers_CPU out = null;
-            if (cursor.getCount() > 0){
+            if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 String name = cursor.getString(NUM_COLUMN_NAME);
                 String power = cursor.getString(NUM_COLUMN_POWER);
-                String noise_level= cursor.getString(NUM_NOISE_LEVEL);
-                String price= cursor.getString(NUM_COLUMN_PRICE);
-                String dns= cursor.getString(NUM_COLUMN_DNS);
-                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new Coolers_CPU(id,name,power,noise_level,price,dns,image);
+                String noise_level = cursor.getString(NUM_NOISE_LEVEL);
+                String price = cursor.getString(NUM_COLUMN_PRICE);
+                String dns = cursor.getString(NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new Coolers_CPU(id, name, power, noise_level, price, dns, image);
             }
             cursor.close();
             return out;
@@ -277,12 +277,12 @@ public class DBServer {
     }
 
 
-    public class CPUTable implements Selectable<CPU>{
+    public class CPUTable implements Selectable<CPU> {
         private static final String TABLE_NAME = "CPU";
 
-        private static final String COLUMN_ID= "id";
-        private static final String COLUMN_NAME= "Name";
-        private static final String COLUMN_PROCESSOR_SOCKET= "Processor_Socket";
+        private static final String COLUMN_ID = "id";
+        private static final String COLUMN_NAME = "Name";
+        private static final String COLUMN_PROCESSOR_SOCKET = "Processor_Socket";
         private static final String COLUMN_CPU_SPEED = "CPU_Speed";
         private static final String COLUMN_CORES_THREADS = "Cores_Threads";
         private static final String COLUMN_DDR = "DDR";
@@ -300,7 +300,7 @@ public class DBServer {
         private static final int NUM_COLUMN_DNS = 6;
         private static final int NUM_COLUMN_IMAGE = 8;
 
-        public long insert(String name, String soket, String chip, String typeram, String formf, String price, String dns){
+        public long insert(String name, String soket, String chip, String typeram, String formf, String price, String dns) {
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_NAME, name);
             cv.put(COLUMN_PROCESSOR_SOCKET, soket);
@@ -312,11 +312,11 @@ public class DBServer {
             return database.insert(TABLE_NAME, null, cv);
         }
 
-        public void deleteall(){
+        public void deleteall() {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<CPU> selectAll(){
+        public ArrayList<CPU> selectAll() {
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
@@ -327,13 +327,13 @@ public class DBServer {
                     int id = cursor.getInt(NUM_COLUMN_ID);
                     String name = cursor.getString(NUM_COLUMN_NAME);
                     String processor_socket = cursor.getString(NUM_COLUMN_PROCESSOR_SOCKET);
-                    String cpu_speed= cursor.getString(NUM_COLUMN_CPU_SPEED);
+                    String cpu_speed = cursor.getString(NUM_COLUMN_CPU_SPEED);
                     String cores_threads = cursor.getString(NUM_CORES_THREADS);
                     String ddr = cursor.getString(NUM_COLUMN_DDR);
-                    String price= cursor.getString(NUM_COLUMN_PRICE);
-                    String dns= cursor.getString(NUM_COLUMN_DNS);
-                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                    arr.add(new CPU(id,name,processor_socket,cpu_speed,cores_threads,ddr,price,dns,image));
+                    String price = cursor.getString(NUM_COLUMN_PRICE);
+                    String dns = cursor.getString(NUM_COLUMN_DNS);
+                    byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new CPU(id, name, processor_socket, cpu_speed, cores_threads, ddr, price, dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -341,32 +341,33 @@ public class DBServer {
 
         }
 
-        public CPU select(int id){
+        public CPU select(int id) {
             Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
                     new String[]{String.valueOf(id)}, null, null, null);
 
             CPU out = null;
-            if (cursor.getCount() > 0){
+            if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 String name = cursor.getString(NUM_COLUMN_NAME);
                 String processor_socket = cursor.getString(NUM_COLUMN_PROCESSOR_SOCKET);
-                String cpu_speed= cursor.getString(NUM_COLUMN_CPU_SPEED);
+                String cpu_speed = cursor.getString(NUM_COLUMN_CPU_SPEED);
                 String cores_threads = cursor.getString(NUM_CORES_THREADS);
                 String ddr = cursor.getString(NUM_COLUMN_DDR);
-                String price= cursor.getString(NUM_COLUMN_PRICE);
-                String dns= cursor.getString(NUM_COLUMN_DNS);
-                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new CPU(id,name,processor_socket,cpu_speed,cores_threads,ddr,price,dns,image);
+                String price = cursor.getString(NUM_COLUMN_PRICE);
+                String dns = cursor.getString(NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new CPU(id, name, processor_socket, cpu_speed, cores_threads, ddr, price, dns, image);
             }
             cursor.close();
             return out;
         }
     }
-    public class HDDTable implements Selectable<HDD>{
+
+    public class HDDTable implements Selectable<HDD> {
         private static final String TABLE_NAME = "HDD";
 
-        private static final String COLUMN_ID= "id";
-        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_ID = "id";
+        private static final String COLUMN_NAME = "Name";
         private static final String COLUMN_CAPACITY = "Capacity";
         private static final String COLUMN_MAXRW = "MaxR/W";
         private static final String COLUMN_PRICE = "Price";
@@ -381,7 +382,7 @@ public class DBServer {
         private static final int NUM_COLUMN_DNS = 5;
         private static final int NUM_COLUMN_IMAGE = 6;
 
-        public long insert(String name, String capacity, String maxrw, String price, String dns){
+        public long insert(String name, String capacity, String maxrw, String price, String dns) {
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_NAME, name);
             cv.put(COLUMN_CAPACITY, capacity);
@@ -391,11 +392,11 @@ public class DBServer {
             return database.insert(TABLE_NAME, null, cv);
         }
 
-        public void deleteall(){
+        public void deleteall() {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<HDD> selectAll(){
+        public ArrayList<HDD> selectAll() {
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
@@ -406,11 +407,11 @@ public class DBServer {
                     int id = cursor.getInt(NUM_COLUMN_ID);
                     String name = cursor.getString(NUM_COLUMN_NAME);
                     String capacity = cursor.getString(NUM_COLUMN_CAPACITY);
-                    String maxrw= cursor.getString(NUM_COLUMN_MAXRW);
-                    String price= cursor.getString(NUM_COLUMN_PRICE);
-                    String dns= cursor.getString(NUM_COLUMN_DNS);
-                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                    arr.add(new HDD(id,name,capacity,maxrw,price,dns,image));
+                    String maxrw = cursor.getString(NUM_COLUMN_MAXRW);
+                    String price = cursor.getString(NUM_COLUMN_PRICE);
+                    String dns = cursor.getString(NUM_COLUMN_DNS);
+                    byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new HDD(id, name, capacity, maxrw, price, dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -418,31 +419,31 @@ public class DBServer {
 
         }
 
-        public HDD select(int id){
+        public HDD select(int id) {
             Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
                     new String[]{String.valueOf(id)}, null, null, null);
 
             HDD out = null;
-            if (cursor.getCount() > 0){
+            if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 String name = cursor.getString(NUM_COLUMN_NAME);
                 String capacity = cursor.getString(NUM_COLUMN_CAPACITY);
-                String maxrw= cursor.getString(NUM_COLUMN_MAXRW);
-                String price= cursor.getString(NUM_COLUMN_PRICE);
-                String dns= cursor.getString(NUM_COLUMN_DNS);
-                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new HDD(id,name,capacity,maxrw,price,dns,image);
+                String maxrw = cursor.getString(NUM_COLUMN_MAXRW);
+                String price = cursor.getString(NUM_COLUMN_PRICE);
+                String dns = cursor.getString(NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new HDD(id, name, capacity, maxrw, price, dns, image);
             }
             cursor.close();
             return out;
         }
     }
 
-    public class SSDTable implements Selectable<SSD>{
+    public class SSDTable implements Selectable<SSD> {
         private static final String TABLE_NAME = "SSD";
 
-        private static final String COLUMN_ID= "id";
-        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_ID = "id";
+        private static final String COLUMN_NAME = "Name";
         private static final String COLUMN_CAPACITY = "Capacity";
         private static final String COLUMN_WRITING_SPEED = "Writing_speed";
         private static final String COLUMN_READING_SPEED = "Reading_speed";
@@ -459,7 +460,7 @@ public class DBServer {
         private static final int NUM_COLUMN_DNS = 6;
         private static final int NUM_COLUMN_IMAGE = 7;
 
-        public long insert(String name, String capacity, String writing_speed, String reading_speed, String price, String dns){
+        public long insert(String name, String capacity, String writing_speed, String reading_speed, String price, String dns) {
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_NAME, name);
             cv.put(COLUMN_CAPACITY, capacity);
@@ -470,11 +471,11 @@ public class DBServer {
             return database.insert(TABLE_NAME, null, cv);
         }
 
-        public void deleteall(){
+        public void deleteall() {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<SSD> selectAll(){
+        public ArrayList<SSD> selectAll() {
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
@@ -485,12 +486,12 @@ public class DBServer {
                     int id = cursor.getInt(NUM_COLUMN_ID);
                     String name = cursor.getString(NUM_COLUMN_NAME);
                     String capacity = cursor.getString(NUM_COLUMN_CAPACITY);
-                    String writing_speed= cursor.getString(NUM_COLUMN_WRITING_SPEED);
+                    String writing_speed = cursor.getString(NUM_COLUMN_WRITING_SPEED);
                     String reading_speed = cursor.getString(NUM_COLUMN_READING_SPEED);
-                    String price= cursor.getString(NUM_COLUMN_PRICE);
-                    String dns= cursor.getString(NUM_COLUMN_DNS);
-                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                    arr.add(new SSD(id,name,capacity,writing_speed,reading_speed,price,dns,image));
+                    String price = cursor.getString(NUM_COLUMN_PRICE);
+                    String dns = cursor.getString(NUM_COLUMN_DNS);
+                    byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new SSD(id, name, capacity, writing_speed, reading_speed, price, dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -498,32 +499,32 @@ public class DBServer {
 
         }
 
-        public SSD select(int id){
+        public SSD select(int id) {
             Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
                     new String[]{String.valueOf(id)}, null, null, null);
 
             SSD out = null;
-            if (cursor.getCount() > 0){
+            if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 String name = cursor.getString(NUM_COLUMN_NAME);
                 String capacity = cursor.getString(NUM_COLUMN_CAPACITY);
-                String writing_speed= cursor.getString(NUM_COLUMN_WRITING_SPEED);
+                String writing_speed = cursor.getString(NUM_COLUMN_WRITING_SPEED);
                 String reading_speed = cursor.getString(NUM_COLUMN_READING_SPEED);
-                String price= cursor.getString(NUM_COLUMN_PRICE);
-                String dns= cursor.getString(NUM_COLUMN_DNS);
-                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new SSD(id,name,capacity,writing_speed,reading_speed,price,dns,image);
+                String price = cursor.getString(NUM_COLUMN_PRICE);
+                String dns = cursor.getString(NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new SSD(id, name, capacity, writing_speed, reading_speed, price, dns, image);
             }
             cursor.close();
             return out;
         }
     }
 
-    public class M2Table implements Selectable<M2>{
+    public class M2Table implements Selectable<M2> {
         private static final String TABLE_NAME = "M2";
 
-        private static final String COLUMN_ID= "id";
-        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_ID = "id";
+        private static final String COLUMN_NAME = "Name";
         private static final String COLUMN_WRITING_SPEED = "Writing_speed";
         private static final String COLUMN_READING_SPEED = "Reading_speed";
         private static final String COLUMN_PRICE = "Price";
@@ -540,7 +541,7 @@ public class DBServer {
         private static final int NUM_COLUMN_DNS = 6;
         private static final int NUM_COLUMN_IMAGE = 7;
 
-        public long insert(String name, String capacity, String writing_speed, String reading_speed, String price, String dns){
+        public long insert(String name, String capacity, String writing_speed, String reading_speed, String price, String dns) {
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_NAME, name);
             cv.put(COLUMN_CAPACITY, capacity);
@@ -551,11 +552,11 @@ public class DBServer {
             return database.insert(TABLE_NAME, null, cv);
         }
 
-        public void deleteall(){
+        public void deleteall() {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<M2> selectAll(){
+        public ArrayList<M2> selectAll() {
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
@@ -566,12 +567,12 @@ public class DBServer {
                     int id = cursor.getInt(NUM_COLUMN_ID);
                     String name = cursor.getString(NUM_COLUMN_NAME);
                     String capacity = cursor.getString(NUM_COLUMN_CAPACITY);
-                    String writing_speed= cursor.getString(NUM_COLUMN_WRITING_SPEED);
+                    String writing_speed = cursor.getString(NUM_COLUMN_WRITING_SPEED);
                     String reading_speed = cursor.getString(NUM_COLUMN_READING_SPEED);
-                    String price= cursor.getString(NUM_COLUMN_PRICE);
-                    String dns= cursor.getString(NUM_COLUMN_DNS);
-                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                    arr.add(new M2(id,name,capacity,writing_speed,reading_speed,price,dns,image));
+                    String price = cursor.getString(NUM_COLUMN_PRICE);
+                    String dns = cursor.getString(NUM_COLUMN_DNS);
+                    byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new M2(id, name, capacity, writing_speed, reading_speed, price, dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -579,31 +580,32 @@ public class DBServer {
 
         }
 
-        public M2 select(int id){
+        public M2 select(int id) {
             Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
                     new String[]{String.valueOf(id)}, null, null, null);
 
             M2 out = null;
-            if (cursor.getCount() > 0){
+            if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 String name = cursor.getString(NUM_COLUMN_NAME);
                 String capacity = cursor.getString(NUM_COLUMN_CAPACITY);
-                String writing_speed= cursor.getString(NUM_COLUMN_WRITING_SPEED);
+                String writing_speed = cursor.getString(NUM_COLUMN_WRITING_SPEED);
                 String reading_speed = cursor.getString(NUM_COLUMN_READING_SPEED);
-                String price= cursor.getString(NUM_COLUMN_PRICE);
-                String dns= cursor.getString(NUM_COLUMN_DNS);
-                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new M2(id,name,capacity,writing_speed,reading_speed,price,dns,image);
+                String price = cursor.getString(NUM_COLUMN_PRICE);
+                String dns = cursor.getString(NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new M2(id, name, capacity, writing_speed, reading_speed, price, dns, image);
             }
             cursor.close();
             return out;
         }
     }
-    public class videoCardsTable implements Selectable<video_cards>{
+
+    public class videoCardsTable implements Selectable<video_cards> {
         private static final String TABLE_NAME = "video_cards";
 
-        private static final String COLUMN_ID= "id";
-        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_ID = "id";
+        private static final String COLUMN_NAME = "Name";
         private static final String COLUMN_CAPASITY = "Capasity";
         private static final String COLUMN_TYPECAPASITY = "TypeCapasity";
         private static final String COLUMN_FREQUENCY = "Frequency";
@@ -620,7 +622,7 @@ public class DBServer {
         private static final int NUM_COLUMN_DNS = 6;
         private static final int NUM_COLUMN_IMAGE = 7;
 
-        public long insert(String name, String сapasity, String typecapasity, String frequency, String price, String dns){
+        public long insert(String name, String сapasity, String typecapasity, String frequency, String price, String dns) {
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_NAME, name);
             cv.put(COLUMN_CAPASITY, сapasity);
@@ -631,11 +633,11 @@ public class DBServer {
             return database.insert(TABLE_NAME, null, cv);
         }
 
-        public void deleteall(){
+        public void deleteall() {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<video_cards> selectAll(){
+        public ArrayList<video_cards> selectAll() {
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
@@ -646,12 +648,12 @@ public class DBServer {
                     int id = cursor.getInt(NUM_COLUMN_ID);
                     String name = cursor.getString(NUM_COLUMN_NAME);
                     String сapasity = cursor.getString(NUM_COLUMN_CAPASITY);
-                    String typecapasity= cursor.getString(NUM_COLUMN_TYPECAPASITY);
+                    String typecapasity = cursor.getString(NUM_COLUMN_TYPECAPASITY);
                     String frequency = cursor.getString(NUM_COLUMN_FREQUENCY);
-                    String price= cursor.getString(NUM_COLUMN_PRICE);
-                    String dns= cursor.getString(NUM_COLUMN_DNS);
-                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                    arr.add(new video_cards(id,name,сapasity,typecapasity,frequency,price,dns,image));
+                    String price = cursor.getString(NUM_COLUMN_PRICE);
+                    String dns = cursor.getString(NUM_COLUMN_DNS);
+                    byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new video_cards(id, name, сapasity, typecapasity, frequency, price, dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -659,32 +661,32 @@ public class DBServer {
 
         }
 
-        public video_cards select(int id){
+        public video_cards select(int id) {
             Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
                     new String[]{String.valueOf(id)}, null, null, null);
 
             video_cards out = null;
-            if (cursor.getCount() > 0){
+            if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 String name = cursor.getString(NUM_COLUMN_NAME);
                 String сapasity = cursor.getString(NUM_COLUMN_CAPASITY);
-                String typecapasity= cursor.getString(NUM_COLUMN_TYPECAPASITY);
+                String typecapasity = cursor.getString(NUM_COLUMN_TYPECAPASITY);
                 String frequency = cursor.getString(NUM_COLUMN_FREQUENCY);
-                String price= cursor.getString(NUM_COLUMN_PRICE);
-                String dns= cursor.getString(NUM_COLUMN_DNS);
-                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new video_cards(id,name,сapasity,typecapasity,frequency,price,dns,image);
+                String price = cursor.getString(NUM_COLUMN_PRICE);
+                String dns = cursor.getString(NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new video_cards(id, name, сapasity, typecapasity, frequency, price, dns, image);
             }
             cursor.close();
             return out;
         }
     }
 
-    public class BodyTable implements Selectable<Body>{
+    public class BodyTable implements Selectable<Body> {
         private static final String TABLE_NAME = "Body";
 
-        private static final String COLUMN_ID= "id";
-        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_ID = "id";
+        private static final String COLUMN_NAME = "Name";
         private static final String COLUMN_FORM_FACRORS = "form_facrors";
         private static final String COLUMN_FORM = "form";
         private static final String COLUMN_PRICE = "Price";
@@ -699,7 +701,7 @@ public class DBServer {
         private static final int NUM_COLUMN_DNS = 5;
         private static final int NUM_COLUMN_IMAGE = 6;
 
-        public long insert(String name, String form_facrors, String form, String price, String dns){
+        public long insert(String name, String form_facrors, String form, String price, String dns) {
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_NAME, name);
             cv.put(COLUMN_FORM_FACRORS, form_facrors);
@@ -709,11 +711,11 @@ public class DBServer {
             return database.insert(TABLE_NAME, null, cv);
         }
 
-        public void deleteall(){
+        public void deleteall() {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<Body> selectAll(){
+        public ArrayList<Body> selectAll() {
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
@@ -723,12 +725,12 @@ public class DBServer {
                 do {
                     int id = cursor.getInt(NUM_COLUMN_ID);
                     String name = cursor.getString(NUM_COLUMN_NAME);
-                    String form_facrors= cursor.getString(NUM_COLUMN_FORM_FACRORS);
+                    String form_facrors = cursor.getString(NUM_COLUMN_FORM_FACRORS);
                     String form = cursor.getString(NUM_COLUMN_FORM);
-                    String price= cursor.getString(NUM_COLUMN_PRICE);
-                    String dns= cursor.getString(NUM_COLUMN_DNS);
-                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                    arr.add(new Body(id,name,form,form_facrors,price,dns,image));
+                    String price = cursor.getString(NUM_COLUMN_PRICE);
+                    String dns = cursor.getString(NUM_COLUMN_DNS);
+                    byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new Body(id, name, form, form_facrors, price, dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -736,31 +738,31 @@ public class DBServer {
 
         }
 
-        public Body select(int id){
+        public Body select(int id) {
             Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
                     new String[]{String.valueOf(id)}, null, null, null);
 
             Body out = null;
-            if (cursor.getCount() > 0){
+            if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 String name = cursor.getString(NUM_COLUMN_NAME);
-                String form_facrors= cursor.getString(NUM_COLUMN_FORM_FACRORS);
+                String form_facrors = cursor.getString(NUM_COLUMN_FORM_FACRORS);
                 String form = cursor.getString(NUM_COLUMN_FORM);
-                String price= cursor.getString(NUM_COLUMN_PRICE);
-                String dns= cursor.getString(NUM_COLUMN_DNS);
-                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new Body(id,name,form,form_facrors,price,dns, image);
+                String price = cursor.getString(NUM_COLUMN_PRICE);
+                String dns = cursor.getString(NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new Body(id, name, form, form_facrors, price, dns, image);
             }
             cursor.close();
             return out;
         }
     }
 
-    public class RAMTable implements Selectable<RAM>{
+    public class RAMTable implements Selectable<RAM> {
         private static final String TABLE_NAME = "RAM";
 
-        private static final String COLUMN_ID= "id";
-        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_ID = "id";
+        private static final String COLUMN_NAME = "Name";
         private static final String COLUMN_CAPACITY = "Capacity";
         private static final String COLUMN_RAM_SPEED = "RAM_Speed";
         private static final String COLUMN_NUMBER_OF_MODULES = "Number_of_modules";
@@ -779,7 +781,7 @@ public class DBServer {
         private static final int NUM_COLUMN_RAMTYPE = 7;
         private static final int NUM_COLUMN_IMAGE = 8;
 
-        public long insert(String name, String capacity, String ram_speed, String number_of_modules, String price, String dns, String ramtype){
+        public long insert(String name, String capacity, String ram_speed, String number_of_modules, String price, String dns, String ramtype) {
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_NAME, name);
             cv.put(COLUMN_CAPACITY, capacity);
@@ -791,11 +793,11 @@ public class DBServer {
             return database.insert(TABLE_NAME, null, cv);
         }
 
-        public void deleteall(){
+        public void deleteall() {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<RAM> selectAll(){
+        public ArrayList<RAM> selectAll() {
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
@@ -806,13 +808,13 @@ public class DBServer {
                     int id = cursor.getInt(NUM_COLUMN_ID);
                     String name = cursor.getString(NUM_COLUMN_NAME);
                     String capacity = cursor.getString(NUM_COLUMN_CAPACITY);
-                    String ram_speed= cursor.getString(NUM_COLUMN_RAM_SPEED);
-                    String number_of_modules= cursor.getString(NUM_COLUMN_NUMBER_OF_MODULES);
-                    String price= cursor.getString(NUM_COLUMN_PRICE);
-                    String dns= cursor.getString(NUM_COLUMN_DNS);
+                    String ram_speed = cursor.getString(NUM_COLUMN_RAM_SPEED);
+                    String number_of_modules = cursor.getString(NUM_COLUMN_NUMBER_OF_MODULES);
+                    String price = cursor.getString(NUM_COLUMN_PRICE);
+                    String dns = cursor.getString(NUM_COLUMN_DNS);
                     String ramtype = cursor.getString(NUM_COLUMN_RAMTYPE);
-                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                    arr.add(new RAM(id,name,capacity,ram_speed,number_of_modules,price,dns,ramtype, image));
+                    byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new RAM(id, name, capacity, ram_speed, number_of_modules, price, dns, ramtype, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -820,33 +822,33 @@ public class DBServer {
 
         }
 
-        public RAM select(int id){
+        public RAM select(int id) {
             Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
                     new String[]{String.valueOf(id)}, null, null, null);
 
             RAM out = null;
-            if (cursor.getCount() > 0){
+            if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 String name = cursor.getString(NUM_COLUMN_NAME);
                 String capacity = cursor.getString(NUM_COLUMN_CAPACITY);
-                String ram_speed= cursor.getString(NUM_COLUMN_RAM_SPEED);
-                String number_of_modules= cursor.getString(NUM_COLUMN_NUMBER_OF_MODULES);
-                String price= cursor.getString(NUM_COLUMN_PRICE);
-                String dns= cursor.getString(NUM_COLUMN_DNS);
+                String ram_speed = cursor.getString(NUM_COLUMN_RAM_SPEED);
+                String number_of_modules = cursor.getString(NUM_COLUMN_NUMBER_OF_MODULES);
+                String price = cursor.getString(NUM_COLUMN_PRICE);
+                String dns = cursor.getString(NUM_COLUMN_DNS);
                 String ramtype = cursor.getString(NUM_COLUMN_RAMTYPE);
-                byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new RAM(id,name,capacity,ram_speed,number_of_modules,price,dns,ramtype, image);
+                byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new RAM(id, name, capacity, ram_speed, number_of_modules, price, dns, ramtype, image);
             }
             cursor.close();
             return out;
         }
     }
 
-    public class CoolersTable implements Selectable<Coolers>{
+    public class CoolersTable implements Selectable<Coolers> {
         private static final String TABLE_NAME = "Coolers";
 
-        private static final String COLUMN_ID= "id";
-        private static final String COLUMN_NAME= "Name";
+        private static final String COLUMN_ID = "id";
+        private static final String COLUMN_NAME = "Name";
         private static final String COLUMN_FAN_SIZE = "Fan_size";
         private static final String COLUMN_MAXIMUM_VOLUME = "maximum_Volume";
         private static final String COLUMN_DNS = "DNS";
@@ -860,7 +862,7 @@ public class DBServer {
         private static final int NUM_COLUMN_DNS = 5;
         private static final int NUM_COLUMN_IMAGE = 6;
 
-        public long insert(String name, String fan_size, String maximum_volume, String dns){
+        public long insert(String name, String fan_size, String maximum_volume, String dns) {
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_NAME, name);
             cv.put(COLUMN_FAN_SIZE, fan_size);
@@ -869,11 +871,11 @@ public class DBServer {
             return database.insert(TABLE_NAME, null, cv);
         }
 
-        public void deleteall(){
+        public void deleteall() {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<Coolers> selectAll(){
+        public ArrayList<Coolers> selectAll() {
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
@@ -884,11 +886,11 @@ public class DBServer {
                     int id = cursor.getInt(NUM_COLUMN_ID);
                     String name = cursor.getString(NUM_COLUMN_NAME);
                     String fan_size = cursor.getString(NUM_COLUMN_FAN_SIZE);
-                    String maximum_volume= cursor.getString(NUM_COLUMN_MAXIMUM_VOLUME);
-                    String price= cursor.getString(NUM_COLUMN_PRICE);
-                    String dns= cursor.getString(NUM_COLUMN_DNS);
-                    byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                    arr.add(new Coolers(id,name,fan_size,maximum_volume,price,dns, image));
+                    String maximum_volume = cursor.getString(NUM_COLUMN_MAXIMUM_VOLUME);
+                    String price = cursor.getString(NUM_COLUMN_PRICE);
+                    String dns = cursor.getString(NUM_COLUMN_DNS);
+                    byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                    arr.add(new Coolers(id, name, fan_size, maximum_volume, price, dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -896,68 +898,95 @@ public class DBServer {
 
         }
 
-        public Coolers select(int id){
+        public Coolers select(int id) {
             Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
                     new String[]{String.valueOf(id)}, null, null, null);
 
             Coolers out = null;
-              if (cursor.getCount() > 0){
+            if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
 //
                 String name = cursor.getString(NUM_COLUMN_NAME);
                 String fan_size = cursor.getString(NUM_COLUMN_FAN_SIZE);
-                String maximum_volume= cursor.getString(NUM_COLUMN_MAXIMUM_VOLUME);
-                String price= cursor.getString(NUM_COLUMN_PRICE);
-                String dns= cursor.getString(NUM_COLUMN_DNS);
-                  byte[] image= cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new Coolers(id,name,fan_size,maximum_volume,price,dns, image);
+                String maximum_volume = cursor.getString(NUM_COLUMN_MAXIMUM_VOLUME);
+                String price = cursor.getString(NUM_COLUMN_PRICE);
+                String dns = cursor.getString(NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new Coolers(id, name, fan_size, maximum_volume, price, dns, image);
             }
             cursor.close();
             return out;
         }
     }
 
-    class user_cart{
-        private static final String TABLENAME="user_cart";
-        private static final String COLOMN_BP_ID="BP_id";
-        private static final String COLOMN_BODY_ID="Body_id";
-        private static final String COLOMN_CPU_ID="CPU_id";
-        private static final String COLOMN_COOLERS_CPU_ID="Coolers_CPU_id";
-        private static final String COLOMN_HDD_ID="HDD_id";
-        private static final String COLOMN_COOLERS_ID="Coolers_id";
-        private static final String COLOMN_M2_ID="M2_id";
-        private static final String COLOMN_MOTHERBOARDS_ID="Motherboards_id";
-        private static final String COLOMN_RAM_ID="RAM_id";
-        private static final String COLOMN_SSD_ID="SSD_id";
-        private static final String COLOMN_GPU_ID="GPU_id";
+    class UserCart {
+        private static final String TABLENAME = "user_cart";
+        private static final String COLUMN_BP_ID = "BP_id";
+        private static final String COLUMN_BODY_ID = "Body_id";
+        private static final String COLUMN_CPU_ID = "CPU_id";
+        private static final String COLUMN_COOLERS_CPU_ID = "Coolers_CPU_id";
+        private static final String COLUMN_HDD_ID = "HDD_id";
+        private static final String COLUMN_COOLERS_ID = "Coolers_id";
+        private static final String COLUMN_M2_ID = "M2_id";
+        private static final String COLUMN_MOTHERBOARDS_ID = "Motherboards_id";
+        private static final String COLUMN_RAM_ID = "RAM_id";
+        private static final String COLUMN_SSD_ID = "SSD_id";
+        private static final String COLUMN_GPU_ID = "GPU_id";
 
-        private static final int NUM_COLOMN_BP_ID = 0;
-        private static final int NUM_COLOMN_BODY_ID = 1;
-        private static final int NUM_COLOMN_CPU_ID = 2;
-        private static final int NUM_COLOMN_COOLERS_CPU_ID = 3;
-        private static final int NUM_COLOMN_HDD_ID = 4;
-        private static final int NUM_COLOMN_COOLERS_ID = 5;
-        private static final int NUM_COLOMN_M2_ID = 6;
-        private static final int NUM_COLOMN_MOTHERBOARDS_ID = 7;
-        private static final int NUM_COLOMN_RAM_ID = 8;
-        private static final int NUM_COLOMN_SSD_ID = 9;
-        private static final int NUM_COLOMN_GPU_ID = 10;
+        private static final int NUM_COLUMN_ID = 0;
+        private static final int NUM_COLUMN_BP_ID = 1;
+        private static final int NUM_COLUMN_BODY_ID = 2;
+        private static final int NUM_COLUMN_CPU_ID = 3;
+        private static final int NUM_COLUMN_COOLERS_CPU_ID = 4;
+        private static final int NUM_COLUMN_HDD_ID = 5;
+        private static final int NUM_COLUMN_COOLERS_ID = 6;
+        private static final int NUM_COLUMN_M2_ID = 7;
+        private static final int NUM_COLUMN_MOTHERBOARDS_ID = 8;
+        private static final int NUM_COLUMN_RAM_ID = 9;
+        private static final int NUM_COLUMN_SSD_ID = 10;
+        private static final int NUM_COLUMN_GPU_ID = 11;
 
-        boolean entry=false;
+        public boolean entry = false;
 
-        public void addBP(int id){
-            String quere=null;
-            if (!entry) {
-                quere = "INSERT INTO " + TABLENAME + " (" + COLOMN_BP_ID + ") VALUES (?)";
-                entry=true;
-            }else
-                quere= "UPDATE "+ TABLENAME+" SET "+COLOMN_BP_ID +"= ? WHERE (ID = 0)";
-            SQLiteStatement stmt=database.compileStatement(quere);
-            stmt.bindLong(1,id);
-            stmt.execute();
-
+        public UserCart() {
+            Cursor cursor = database.query(TABLENAME, null, null,
+                    null, null, null, null);
+            if (cursor.getCount() > 0)
+                entry = true;
+            cursor.close();
         }
 
+        public void addBP(int id) {
+            String quere = null;
+            if (!entry) {
+                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_BP_ID + ") VALUES (?)";
+                entry = true;
+            } else
+                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_BP_ID + "= ? WHERE (ID = 1)";
+            SQLiteStatement stmt = database.compileStatement(quere);
+            stmt.bindLong(1, id);
+            stmt.execute();
+        }
+
+        public BP getBP() {
+            Cursor cursor = database.query(BPTable.TABLE_NAME, null, BPTable.COLUMN_ID + "= (select user_cart.BP_id from user_cart where ID = 1)",
+                    null, null, null, null);
+            BP out = null;
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+
+                int id = cursor.getInt(BPTable.NUM_COLUMN_ID);
+                String name = cursor.getString(BPTable.NUM_COLUMN_NAME);
+                String type = cursor.getString(BPTable.NUM_COLUMN_TYPE);
+                String power = cursor.getString(BPTable.NUM_COLUMN_POWER);
+                String price = cursor.getString(BPTable.NUM_COLUMN_PRICE);
+                String dns = cursor.getString(BPTable.NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(BPTable.NUM_COLUMN_IMAGE);
+                out = new BP(id, name, type, power, price, dns, image);
+            }
+            cursor.close();
+            return out;
+        }
 
 
     }

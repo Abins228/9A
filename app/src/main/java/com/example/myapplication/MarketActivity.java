@@ -3,7 +3,6 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -19,12 +18,11 @@ import android.widget.Toast;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MarketActivity extends AppCompatActivity implements ListView.OnItemClickListener {
 
     DBServer dbServer;
-    DBServer.user_cart user_carts;
+    DBServer.UserCart user_carts;
     ListView list;
     ListAdapter listAdapter;
     Selectable table;
@@ -40,7 +38,7 @@ public class MarketActivity extends AppCompatActivity implements ListView.OnItem
         setContentView(R.layout.market_activity);
 
         dbServer = new DBServer(this);
-        user_carts=dbServer.new user_cart();
+        user_carts=dbServer.new UserCart();
 
 
         list = findViewById(R.id.listView);
@@ -122,7 +120,7 @@ public class MarketActivity extends AppCompatActivity implements ListView.OnItem
         if (getIntent().hasExtra("BP")) {
             int value = getIntent().getIntExtra("BP", 10);
             if (value == BuildActivity.BP) {
-                type=BuildActivity.BP;
+                type=BuildActivity.BP; // сделать также
                 table = dbServer.new BPTable();
                 listAdapter = new ListAdapter<BP>(this, table.selectAll());
                 namemarket.setText("Блоки питания");
@@ -209,9 +207,9 @@ public class MarketActivity extends AppCompatActivity implements ListView.OnItem
             BP bp=(BP) listAdapter.getItem(position);
             user_carts.addBP(bp.getId());
             Toast.makeText(this, "Вы добавили: "+bp.getName(),Toast.LENGTH_SHORT).show();
-
         }
 
+        // дополнить
     }
 
 
@@ -265,6 +263,7 @@ public class MarketActivity extends AppCompatActivity implements ListView.OnItem
         }
     }
     public void onClick(View view) {
+        setResult(RESULT_OK, getIntent());
         finish();
     }
 
