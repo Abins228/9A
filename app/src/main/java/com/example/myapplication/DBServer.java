@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import java.io.File;
@@ -916,6 +917,51 @@ public class DBServer {
         }
     }
 
+    class user_cart{
+        private static final String TABLENAME="user_cart";
+        private static final String COLOMN_BP_ID="BP_id";
+        private static final String COLOMN_BODY_ID="Body_id";
+        private static final String COLOMN_CPU_ID="CPU_id";
+        private static final String COLOMN_COOLERS_CPU_ID="Coolers_CPU_id";
+        private static final String COLOMN_HDD_ID="HDD_id";
+        private static final String COLOMN_COOLERS_ID="Coolers_id";
+        private static final String COLOMN_M2_ID="M2_id";
+        private static final String COLOMN_MOTHERBOARDS_ID="Motherboards_id";
+        private static final String COLOMN_RAM_ID="RAM_id";
+        private static final String COLOMN_SSD_ID="SSD_id";
+        private static final String COLOMN_GPU_ID="GPU_id";
+
+        private static final int NUM_COLOMN_BP_ID = 0;
+        private static final int NUM_COLOMN_BODY_ID = 1;
+        private static final int NUM_COLOMN_CPU_ID = 2;
+        private static final int NUM_COLOMN_COOLERS_CPU_ID = 3;
+        private static final int NUM_COLOMN_HDD_ID = 4;
+        private static final int NUM_COLOMN_COOLERS_ID = 5;
+        private static final int NUM_COLOMN_M2_ID = 6;
+        private static final int NUM_COLOMN_MOTHERBOARDS_ID = 7;
+        private static final int NUM_COLOMN_RAM_ID = 8;
+        private static final int NUM_COLOMN_SSD_ID = 9;
+        private static final int NUM_COLOMN_GPU_ID = 10;
+
+        boolean entry=false;
+
+        public void addBP(int id){
+            String quere=null;
+            if (!entry) {
+                quere = "INSERT INTO " + TABLENAME + " (" + COLOMN_BP_ID + ") VALUES (?)";
+                entry=true;
+            }else
+                quere= "UPDATE "+ TABLENAME+" SET "+COLOMN_BP_ID +"= ? WHERE (ID = 0)";
+            SQLiteStatement stmt=database.compileStatement(quere);
+            stmt.bindLong(1,id);
+            stmt.execute();
+
+        }
+
+
+
+    }
+
     private class OpenHelper extends SQLiteOpenHelper {
         private final Context myContext;
         String outFileName;
@@ -1003,5 +1049,6 @@ public class DBServer {
 
         }
     }
+
 
 }

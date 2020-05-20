@@ -10,22 +10,26 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+import java.util.List;
 
-public class MarketActivity extends AppCompatActivity {
+public class MarketActivity extends AppCompatActivity implements ListView.OnItemClickListener {
 
     DBServer dbServer;
+    DBServer.user_cart user_carts;
     ListView list;
     ListAdapter listAdapter;
     Selectable table;
     TextView namemarket;
-    String type;
+    int type;
 
 
 
@@ -36,6 +40,8 @@ public class MarketActivity extends AppCompatActivity {
         setContentView(R.layout.market_activity);
 
         dbServer = new DBServer(this);
+        user_carts=dbServer.new user_cart();
+
 
         list = findViewById(R.id.listView);
         namemarket = findViewById(R.id.namemarket);
@@ -116,6 +122,7 @@ public class MarketActivity extends AppCompatActivity {
         if (getIntent().hasExtra("BP")) {
             int value = getIntent().getIntExtra("BP", 10);
             if (value == BuildActivity.BP) {
+                type=BuildActivity.BP;
                 table = dbServer.new BPTable();
                 listAdapter = new ListAdapter<BP>(this, table.selectAll());
                 namemarket.setText("Блоки питания");
@@ -130,72 +137,82 @@ public class MarketActivity extends AppCompatActivity {
 
             }
 
-
         }
         list.setAdapter(listAdapter);
+        list.setOnItemClickListener(this);
     }
 
-    void IntentfinishMother(){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable(type, new Motherboards(0,null,null,null,null,null,null,null,null));
-        getIntent().putExtras(bundle);
-        setResult(RESULT_OK);
-    }
-    void IntentfinishCpu(){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable(type, new CPU(0,null,null,null,null,null,null,null,null));
-        getIntent().putExtras(bundle);
-        setResult(RESULT_OK);
-    }
-    void IntentfinishCpuCool(){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable(type, new Coolers_CPU(0,null,null,null,null,null,null));
-        getIntent().putExtras(bundle);
-        setResult(RESULT_OK);
-    }
-    void IntentfinishGpu(){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable(type, new video_cards(0,null,null,null,null,null,null,null));
-        getIntent().putExtras(bundle);
-        setResult(RESULT_OK);
-    }
-    void IntentfinishRam(){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable(type, new RAM(0,null,null,null,null,null,null,null,null));
-        getIntent().putExtras(bundle);
-        setResult(RESULT_OK);
-    }
-    void IntentfinishSsd(){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable(type, new SSD(0,null,null,null,null,null,null,null));
-        getIntent().putExtras(bundle);
-        setResult(RESULT_OK);
-    }
-    void IntentfinishM2(){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable(type, new M2(0,null,null,null,null,null,null,null));
-        getIntent().putExtras(bundle);
-        setResult(RESULT_OK);
-    }
-    void IntentfinishCooler(){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable(type, new Coolers(0,null,null,null,null,null,null));
-        getIntent().putExtras(bundle);
-        setResult(RESULT_OK);
-    }
-    void Intentfinishbp(){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable(type, new BP(0,null,null,null,null,null,null));
-        getIntent().putExtras(bundle);
-        setResult(RESULT_OK);
-    }
-    void IntentfinishBody(){
-        Bundle bundle=new Bundle();
-        bundle.putSerializable(type, new Body(0,null,null,null,null,null,null));
-        getIntent().putExtras(bundle);
-        setResult(RESULT_OK);
-    }
+//    void IntentfinishMother(){
+//        Bundle bundle=new Bundle();
+//        bundle.putSerializable(type, new Motherboards(0,null,null,null,null,null,null,null,null));
+//        getIntent().putExtras(bundle);
+//        setResult(RESULT_OK);
+//    }
+//    void IntentfinishCpu(){
+//        Bundle bundle=new Bundle();
+//        bundle.putSerializable(type, new CPU(0,null,null,null,null,null,null,null,null));
+//        getIntent().putExtras(bundle);
+//        setResult(RESULT_OK);
+//    }
+//    void IntentfinishCpuCool(){
+//        Bundle bundle=new Bundle();
+//        bundle.putSerializable(type, new Coolers_CPU(0,null,null,null,null,null,null));
+//        getIntent().putExtras(bundle);
+//        setResult(RESULT_OK);
+//    }
+//    void IntentfinishGpu(){
+//        Bundle bundle=new Bundle();
+//        bundle.putSerializable(type, new video_cards(0,null,null,null,null,null,null,null));
+//        getIntent().putExtras(bundle);
+//        setResult(RESULT_OK);
+//    }
+//    void IntentfinishRam(){
+//        Bundle bundle=new Bundle();
+//        bundle.putSerializable(type, new RAM(0,null,null,null,null,null,null,null,null));
+//        getIntent().putExtras(bundle);
+//        setResult(RESULT_OK);
+//    }
+//    void IntentfinishSsd(){
+//        Bundle bundle=new Bundle();
+//        bundle.putSerializable(type, new SSD(0,null,null,null,null,null,null,null));
+//        getIntent().putExtras(bundle);
+//        setResult(RESULT_OK);
+//    }
+//    void IntentfinishM2(){
+//        Bundle bundle=new Bundle();
+//        bundle.putSerializable(type, new M2(0,null,null,null,null,null,null,null));
+//        getIntent().putExtras(bundle);
+//        setResult(RESULT_OK);
+//    }
+//    void IntentfinishCooler(){
+//        Bundle bundle=new Bundle();
+//        bundle.putSerializable(type, new Coolers(0,null,null,null,null,null,null));
+//        getIntent().putExtras(bundle);
+//        setResult(RESULT_OK);
+//    }
+//    void Intentfinishbp(){
+//        Bundle bundle=new Bundle();
+//        bundle.putSerializable(type, new BP(0,null,null,null,null,null,null));
+//        getIntent().putExtras(bundle);
+//        setResult(RESULT_OK);
+//    }
+//    void IntentfinishBody(){
+//        Bundle bundle=new Bundle();
+//        bundle.putSerializable(type, new Body(0,null,null,null,null,null,null));
+//        getIntent().putExtras(bundle);
+//        setResult(RESULT_OK);
+//    }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (type==BuildActivity.BP){
+            BP bp=(BP) listAdapter.getItem(position);
+            user_carts.addBP(bp.getId());
+            Toast.makeText(this, "Вы добавили: "+bp.getName(),Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
 
 
     public class ListAdapter<T extends Idetificate> extends BaseAdapter {
@@ -248,9 +265,7 @@ public class MarketActivity extends AppCompatActivity {
         }
     }
     public void onClick(View view) {
-        Intent i;
-        i = new Intent(MarketActivity.this, BuildActivity.class);
-        startActivity(i);
+        finish();
     }
 
 }
