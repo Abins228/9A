@@ -69,11 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   }
 
 
-    public void onClickCatalog(View view) {
-        Intent i;
-        i = new Intent(MainActivity.this, Catalog_Activity.class);
-        startActivity(i);
-    }
 
     public void onClickSborka(View view) {
         Intent s;

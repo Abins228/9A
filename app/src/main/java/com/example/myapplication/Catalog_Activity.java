@@ -116,7 +116,4 @@ public class Catalog_Activity extends AppCompatActivity implements View.OnClickL
         s.putExtra("BODY",BODY);
         startActivity(s);
     }
-
-
-
 }

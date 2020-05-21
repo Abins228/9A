@@ -25,26 +25,13 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="4c768b92-084a-49b1-98bb-68ed20b75b6a">
-        <schema name="main" object-types="view, table, index" />
+        <schema name="main" object-types="dataset trigger, table, view, column, constraint, index" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="4c768b92-084a-49b1-98bb-68ed20b75b6a">
-      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[create table "User_cart" (
-ID integer primary key autoincrement,
-BP_id integer,
-Body_id integer,
-CPU_id integer,
-Coolers_id integer,
-Coolers_CPU_id integer,
-HDD_id integer,
-M2_id integer,
-Motherboards_id integer,
-RAM_id integer,
-SSD_id integer,
-GPU_id integer
-)]]></console>
+      <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -52,6 +39,9 @@ GPU_id integer
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="4c768b92-084a-49b1-98bb-68ed20b75b6a" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="4c768b92-084a-49b1-98bb-68ed20b75b6a" dataset="main.User_cart" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -78,7 +68,7 @@ GPU_id integer
     <connections>
       <connection id="4c768b92-084a-49b1-98bb-68ed20b75b6a" active="true">
         <database>
-          <name value="Connection" />
+          <name value="Connectionm" />
           <description value="" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />
@@ -91,7 +81,7 @@ GPU_id integer
           <port value="1234" />
           <database value="database" />
           <files>
-            <file path="C:\Users\Daniil\AndroidStudioProjects\9A228\app\src\main\assets\parts.db" schema="main" />
+            <file path="C:\AndroidProjects\9Aa\app\src\main\assets\parts.db" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />
@@ -294,8 +284,6 @@ GPU_id integer
           <content-type name="Java" enabled="true" />
           <content-type name="SQL" enabled="true" />
           <content-type name="PL/SQL" enabled="true" />
-          <content-type name="JSON" enabled="true" />
-          <content-type name="JSON5" enabled="true" />
           <content-type name="Groovy" enabled="true" />
           <content-type name="AIDL" enabled="true" />
           <content-type name="YAML" enabled="true" />

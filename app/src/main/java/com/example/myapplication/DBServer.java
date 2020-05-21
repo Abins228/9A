@@ -10,13 +10,10 @@ import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class DBServer {
@@ -601,7 +598,7 @@ public class DBServer {
         }
     }
 
-    public class videoCardsTable implements Selectable<video_cards> {
+    public class GPUTable implements Selectable<GPU> {
         private static final String TABLE_NAME = "video_cards";
 
         private static final String COLUMN_ID = "id";
@@ -637,11 +634,11 @@ public class DBServer {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<video_cards> selectAll() {
+        public ArrayList<GPU> selectAll() {
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
-            ArrayList<video_cards> arr = new ArrayList<>();
+            ArrayList<GPU> arr = new ArrayList<>();
             cursor.moveToFirst();
             if (!cursor.isAfterLast()) {
                 do {
@@ -653,7 +650,7 @@ public class DBServer {
                     String price = cursor.getString(NUM_COLUMN_PRICE);
                     String dns = cursor.getString(NUM_COLUMN_DNS);
                     byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
-                    arr.add(new video_cards(id, name, сapasity, typecapasity, frequency, price, dns, image));
+                    arr.add(new GPU(id, name, сapasity, typecapasity, frequency, price, dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -661,11 +658,11 @@ public class DBServer {
 
         }
 
-        public video_cards select(int id) {
+        public GPU select(int id) {
             Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
                     new String[]{String.valueOf(id)}, null, null, null);
 
-            video_cards out = null;
+            GPU out = null;
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 String name = cursor.getString(NUM_COLUMN_NAME);
@@ -675,7 +672,7 @@ public class DBServer {
                 String price = cursor.getString(NUM_COLUMN_PRICE);
                 String dns = cursor.getString(NUM_COLUMN_DNS);
                 byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new video_cards(id, name, сapasity, typecapasity, frequency, price, dns, image);
+                out = new GPU(id, name, сapasity, typecapasity, frequency, price, dns, image);
             }
             cursor.close();
             return out;
@@ -988,6 +985,314 @@ public class DBServer {
             return out;
         }
 
+        public void addMot(int id) {
+            String quere = null;
+            if (!entry) {
+                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_MOTHERBOARDS_ID + ") VALUES (?)";
+                entry = true;
+            } else
+                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_MOTHERBOARDS_ID + "= ? WHERE (ID = 8)";
+            SQLiteStatement stmt = database.compileStatement(quere);
+            stmt.bindLong(1, id);
+            stmt.execute();
+        }
+
+        public Motherboards getMot() {
+            Cursor cursor = database.query(MotherboardsTable.TABLE_NAME, null, MotherboardsTable.COLUMN_ID + "= (select user_cart.MOTHERBOARDS_id from user_cart where ID = 8)",
+                    null, null, null, null);
+            Motherboards out = null;
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+
+                int id = cursor.getInt(MotherboardsTable.NUM_COLUMN_ID);
+                String name = cursor.getString(MotherboardsTable.NUM_COLUMN_NAME);
+                String socket = cursor.getString(MotherboardsTable.NUM_COLUMN_SOCKET);
+                String chip = cursor.getString(MotherboardsTable.NUM_COLUMN_CHIP);
+                String typeram = cursor.getString(MotherboardsTable.NUM_COLUMN_TYPERAM);
+                String formf = cursor.getString(MotherboardsTable.NUM_COLUMN_FORM_FACTOR);
+                String price = cursor.getString(MotherboardsTable.NUM_COLUMN_PRICE);
+                String dns = cursor.getString(MotherboardsTable.NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(MotherboardsTable.NUM_COLUMN_IMAGE);
+                out = new Motherboards(id, name, socket, chip, typeram, formf, price, dns, image);
+            }
+            cursor.close();
+            return out;
+        }
+
+
+        public void addCPU(int id) {
+            String quere = null;
+            if (!entry) {
+                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_CPU_ID + ") VALUES (?)";
+                entry = true;
+            } else
+                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_CPU_ID + "= ? WHERE (ID = 3)";
+            SQLiteStatement stmt = database.compileStatement(quere);
+            stmt.bindLong(1, id);
+            stmt.execute();
+        }
+
+        public CPU getCPU() {
+            Cursor cursor = database.query(CPUTable.TABLE_NAME, null, CPUTable.COLUMN_ID + "= (select user_cart.CPU_id from user_cart where ID = 3)",
+                    null, null, null, null);
+            CPU out = null;
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+
+                int id = cursor.getInt(NUM_COLUMN_ID);
+                String name = cursor.getString(CPUTable.NUM_COLUMN_NAME);
+                String processor_socket = cursor.getString(CPUTable.NUM_COLUMN_PROCESSOR_SOCKET);
+                String cpu_speed = cursor.getString(CPUTable.NUM_COLUMN_CPU_SPEED);
+                String cores_threads = cursor.getString(CPUTable.NUM_CORES_THREADS);
+                String ddr = cursor.getString(CPUTable.NUM_COLUMN_DDR);
+                String price = cursor.getString(CPUTable.NUM_COLUMN_PRICE);
+                String dns = cursor.getString(CPUTable.NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(CPUTable.NUM_COLUMN_IMAGE);
+                out=new CPU(id, name, processor_socket, cpu_speed, cores_threads, ddr, price, dns, image);
+            }
+            cursor.close();
+            return out;
+        }
+        public void addCCPU(int id) {
+            String quere = null;
+            if (!entry) {
+                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_COOLERS_CPU_ID + ") VALUES (?)";
+                entry = true;
+            } else
+                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_COOLERS_CPU_ID + "= ? WHERE (ID = 4)";
+            SQLiteStatement stmt = database.compileStatement(quere);
+            stmt.bindLong(1, id);
+            stmt.execute();
+        }
+
+        public Coolers_CPU getCCPU() {
+            Cursor cursor = database.query(Coolers_CPUTable.TABLE_NAME, null, Coolers_CPUTable.COLUMN_ID + "= (select user_cart.Coolers_CPU_id from user_cart where ID = 4)",
+                    null, null, null, null);
+            Coolers_CPU out = null;
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+
+                int id = cursor.getInt(NUM_COLUMN_ID);
+                String name = cursor.getString(Coolers_CPUTable.NUM_COLUMN_NAME);
+                String power = cursor.getString(Coolers_CPUTable.NUM_COLUMN_POWER);
+                String noise_level = cursor.getString(Coolers_CPUTable.NUM_NOISE_LEVEL);
+                String price = cursor.getString(Coolers_CPUTable.NUM_COLUMN_PRICE);
+                String dns = cursor.getString(Coolers_CPUTable.NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(Coolers_CPUTable.NUM_COLUMN_IMAGE);
+                out=new Coolers_CPU(id, name, power, noise_level, price, dns, image);
+            }
+            cursor.close();
+            return out;
+        }
+        public void addGPU(int id) {
+            String quere = null;
+            if (!entry) {
+                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_GPU_ID + ") VALUES (?)";
+                entry = true;
+            } else
+                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_GPU_ID + "= ? WHERE (ID = 11)";
+            SQLiteStatement stmt = database.compileStatement(quere);
+            stmt.bindLong(1, id);
+            stmt.execute();
+        }
+
+        public GPU getGPU() {
+            Cursor cursor = database.query(GPUTable.TABLE_NAME, null, Coolers_CPUTable.COLUMN_ID + "= (select user_cart.GPU_id from user_cart where ID = 11)",
+                    null, null, null, null);
+            GPU out = null;
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                int id = cursor.getInt(NUM_COLUMN_ID);
+                String name = cursor.getString(GPUTable.NUM_COLUMN_NAME);
+                String сapasity = cursor.getString(GPUTable.NUM_COLUMN_CAPASITY);
+                String typecapasity = cursor.getString(GPUTable.NUM_COLUMN_TYPECAPASITY);
+                String frequency = cursor.getString(GPUTable.NUM_COLUMN_FREQUENCY);
+                String price = cursor.getString(GPUTable.NUM_COLUMN_PRICE);
+                String dns = cursor.getString(GPUTable.NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(GPUTable.NUM_COLUMN_IMAGE);
+                out = new GPU(id, name, сapasity, typecapasity, frequency, price, dns, image);
+            }
+
+            return out;
+        }
+        public void addRAM(int id) {
+            String quere = null;
+            if (!entry) {
+                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_RAM_ID + ") VALUES (?)";
+                entry = true;
+            } else
+                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_RAM_ID + "= ? WHERE (ID = 9)";
+            SQLiteStatement stmt = database.compileStatement(quere);
+            stmt.bindLong(1, id);
+            stmt.execute();
+        }
+
+        public RAM getRAM() {
+            Cursor cursor = database.query(RAMTable.TABLE_NAME, null, RAMTable.COLUMN_ID + "= (select user_cart.RAM_id from user_cart where ID = 9)",
+                    null, null, null, null);
+            RAM out = null;
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                int id = cursor.getInt(NUM_COLUMN_ID);
+                String name = cursor.getString(RAMTable.NUM_COLUMN_NAME);
+                String capacity = cursor.getString(RAMTable.NUM_COLUMN_CAPACITY);
+                String ram_speed = cursor.getString(RAMTable.NUM_COLUMN_RAM_SPEED);
+                String number_of_modules = cursor.getString(RAMTable.NUM_COLUMN_NUMBER_OF_MODULES);
+                String price = cursor.getString(RAMTable.NUM_COLUMN_PRICE);
+                String dns = cursor.getString(RAMTable.NUM_COLUMN_DNS);
+                String ramtype = cursor.getString(RAMTable.NUM_COLUMN_RAMTYPE);
+                byte[] image = cursor.getBlob(RAMTable.NUM_COLUMN_IMAGE);
+                out=new RAM(id, name, capacity, ram_speed, number_of_modules, price, dns, ramtype, image);
+            }
+            return out;
+        }
+        public void addHDD(int id) {
+            String quere = null;
+            if (!entry) {
+                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_HDD_ID + ") VALUES (?)";
+                entry = true;
+            } else
+                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_HDD_ID + "= ? WHERE (ID = 5)";
+            SQLiteStatement stmt = database.compileStatement(quere);
+            stmt.bindLong(1, id);
+            stmt.execute();
+        }
+
+        public HDD getHDD() {
+            Cursor cursor = database.query(HDDTable.TABLE_NAME, null, HDDTable.COLUMN_ID + "= (select user_cart.HDD_id from user_cart where ID = 5)",
+                    null, null, null, null);
+            HDD out = null;
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                int id = cursor.getInt(NUM_COLUMN_ID);
+                String name = cursor.getString(HDDTable.NUM_COLUMN_NAME);
+                String capacity = cursor.getString(HDDTable.NUM_COLUMN_CAPACITY);
+                String maxrw = cursor.getString(HDDTable.NUM_COLUMN_MAXRW);
+                String price = cursor.getString(HDDTable.NUM_COLUMN_PRICE);
+                String dns = cursor.getString(HDDTable.NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(HDDTable.NUM_COLUMN_IMAGE);
+                out=new HDD(id, name, capacity, maxrw, price, dns, image);
+            }
+            return out;
+        }
+        public void addSSD(int id) {
+            String quere = null;
+            if (!entry) {
+                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_SSD_ID + ") VALUES (?)";
+                entry = true;
+            } else
+                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_SSD_ID + "= ? WHERE (ID = 10)";
+            SQLiteStatement stmt = database.compileStatement(quere);
+            stmt.bindLong(1, id);
+            stmt.execute();
+        }
+
+        public SSD getSSD() {
+            Cursor cursor = database.query(SSDTable.TABLE_NAME, null, SSDTable.COLUMN_ID + "= (select user_cart.SSD_id from user_cart where ID = 10)",
+                    null, null, null, null);
+            SSD out = null;
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                int id = cursor.getInt(NUM_COLUMN_ID);
+                String name = cursor.getString(SSDTable.NUM_COLUMN_NAME);
+                String capacity = cursor.getString(SSDTable.NUM_COLUMN_CAPACITY);
+                String writing_speed = cursor.getString(SSDTable.NUM_COLUMN_WRITING_SPEED);
+                String reading_speed = cursor.getString(SSDTable.NUM_COLUMN_READING_SPEED);
+                String price = cursor.getString(SSDTable.NUM_COLUMN_PRICE);
+                String dns = cursor.getString(SSDTable.NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(SSDTable.NUM_COLUMN_IMAGE);
+                out = new SSD(id, name, capacity, writing_speed, reading_speed, price, dns, image);
+            }
+            return out;
+        }
+        public void addM2(int id) {
+            String quere = null;
+            if (!entry) {
+                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_M2_ID + ") VALUES (?)";
+                entry = true;
+            } else
+                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_M2_ID + "= ? WHERE (ID = 7)";
+            SQLiteStatement stmt = database.compileStatement(quere);
+            stmt.bindLong(1, id);
+            stmt.execute();
+        }
+
+        public M2 getM2() {
+            Cursor cursor = database.query(M2Table.TABLE_NAME, null, M2Table.COLUMN_ID + "= (select user_cart.M2_id from user_cart where ID = 7)",
+                    null, null, null, null);
+            M2 out = null;
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                int id = cursor.getInt(NUM_COLUMN_ID);
+                String name = cursor.getString(M2Table.NUM_COLUMN_NAME);
+                String capacity = cursor.getString(M2Table.NUM_COLUMN_CAPACITY);
+                String writing_speed = cursor.getString(M2Table.NUM_COLUMN_WRITING_SPEED);
+                String reading_speed = cursor.getString(M2Table.NUM_COLUMN_READING_SPEED);
+                String price = cursor.getString(M2Table.NUM_COLUMN_PRICE);
+                String dns = cursor.getString(M2Table.NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(M2Table.NUM_COLUMN_IMAGE);
+                out = new M2(id, name, capacity, writing_speed, reading_speed, price, dns, image);
+            }
+            return out;
+        }
+        public void addCoolers(int id) {
+            String quere = null;
+            if (!entry) {
+                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_COOLERS_ID + ") VALUES (?)";
+                entry = true;
+            } else
+                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_COOLERS_ID + "= ? WHERE (ID = 6)";
+            SQLiteStatement stmt = database.compileStatement(quere);
+            stmt.bindLong(1, id);
+            stmt.execute();
+        }
+
+        public Coolers getCoolers() {
+            Cursor cursor = database.query(CoolersTable.TABLE_NAME, null, CoolersTable.COLUMN_ID + "= (select user_cart.Coolers_id from user_cart where ID = 6)",
+                    null, null, null, null);
+            Coolers out = null;
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                int id = cursor.getInt(NUM_COLUMN_ID);
+                String name = cursor.getString(CoolersTable.NUM_COLUMN_NAME);
+                String fan_size = cursor.getString(CoolersTable.NUM_COLUMN_FAN_SIZE);
+                String maximum_volume = cursor.getString(CoolersTable.NUM_COLUMN_MAXIMUM_VOLUME);
+                String price = cursor.getString(CoolersTable.NUM_COLUMN_PRICE);
+                String dns = cursor.getString(CoolersTable.NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(CoolersTable.NUM_COLUMN_IMAGE);
+                out = new Coolers(id, name, fan_size, maximum_volume, price, dns, image);
+            }
+            return out;
+        }
+        public void addBody(int id) {
+            String quere = null;
+            if (!entry) {
+                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_BODY_ID + ") VALUES (?)";
+                entry = true;
+            } else
+                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_BODY_ID + "= ? WHERE (ID = 2)";
+            SQLiteStatement stmt = database.compileStatement(quere);
+            stmt.bindLong(1, id);
+            stmt.execute();
+        }
+
+        public Body getBody() {
+            Cursor cursor = database.query(BodyTable.TABLE_NAME, null, BodyTable.COLUMN_ID + "= (select user_cart.Body_id from user_cart where ID = 2)",
+                    null, null, null, null);
+            Body out = null;
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                int id = cursor.getInt(NUM_COLUMN_ID);
+                String name = cursor.getString(BodyTable.NUM_COLUMN_NAME);
+                String form_facrors = cursor.getString(BodyTable.NUM_COLUMN_FORM_FACRORS);
+                String form = cursor.getString(BodyTable.NUM_COLUMN_FORM);
+                String price = cursor.getString(BodyTable.NUM_COLUMN_PRICE);
+                String dns = cursor.getString(BodyTable.NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(BodyTable.NUM_COLUMN_IMAGE);
+                out = new Body(id, name, form, form_facrors, price, dns, image);
+            }
+            return out;
+        }
 
     }
 

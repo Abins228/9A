@@ -2,7 +2,7 @@ package com.example.myapplication;
 
 import java.io.Serializable;
 
-public class video_cards implements Idetificate, Serializable {
+public class GPU implements Idetificate, Serializable {
     private int id;
     private String name;
     private String capacity;
@@ -12,7 +12,7 @@ public class video_cards implements Idetificate, Serializable {
     private String dns;
     private byte[] image;
 
-    public video_cards(int id, String name, String capacity, String typeCapasity, String frequency, String price, String dns, byte[] image) {
+    public GPU(int id, String name, String capacity, String typeCapasity, String frequency, String price, String dns, byte[] image) {
         this.id = id;
         this.name = name;
         this.capacity = capacity;
