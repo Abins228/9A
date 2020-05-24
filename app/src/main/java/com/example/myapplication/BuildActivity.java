@@ -30,6 +30,8 @@ public class BuildActivity extends AppCompatActivity {
     static final int BP = 10;
     static final int BODY = 11;
 
+    UserCart userCart;
+
     ImageButton bpImgBt;
     ImageButton moImgBt;
     ImageButton cpuImgBt;
@@ -41,6 +43,8 @@ public class BuildActivity extends AppCompatActivity {
     ImageButton m2ImgBt;
     ImageButton bodyImgBt;
     ImageButton coolersImgBt;
+
+    TextView priceSborka;
 
     FrameLayout bpContainer;
     FrameLayout motherContainer;
@@ -84,8 +88,13 @@ public class BuildActivity extends AppCompatActivity {
         bodyContainer = findViewById(R.id.bodyContainer);
         coolersContainer = findViewById(R.id.coollersContainer);
 
+        priceSborka = findViewById(R.id.priceSborka);
+
         DBServer dbServer = new DBServer(this);
         user_carts = dbServer.new UserCartTable();
+        userCart = user_carts.getUserCart();
+        priceSborka.setText(String.valueOf(userCart.getAmount()));
+
         bt = findViewById(R.id.sborkaBack);
         bt.setOnClickListener(onBackClickListener());
         bpImgBt.setOnClickListener(onClickListener());
@@ -111,9 +120,9 @@ public class BuildActivity extends AppCompatActivity {
             invalidateHDDBt();
             invalidateSSDBt();
             invalidateM2Bt();
-            invalidateCoollersBt();
+            invalidateCoolersBt();
             invalidateBodyBt();
-            // повторить для всех элементов user_cart
+
         }
 
     }
@@ -130,6 +139,7 @@ public class BuildActivity extends AppCompatActivity {
             description.setText(preview.getDescription());
             price.setText("Цена: " + preview.getPrice() + "₽");
             replaceView(view, container);
+            priceSborka.setText(String.valueOf(userCart.getAmount()));
         }
     }
 
@@ -141,55 +151,64 @@ public class BuildActivity extends AppCompatActivity {
 
     public void invalidateMoBt() {
         Motherboards motherboards = user_carts.getMot();
+        userCart.setMotherboards(motherboards);
         invalidateBt(motherboards,motherContainer);
     }
 
     public void invalidateCPUBt() {
         CPU cpu = user_carts.getCPU();
+       userCart.setCpu(cpu);
         invalidateBt(cpu,cpuContainer);
     }
 
     public void invalidateGPUBt() {
         GPU gpu = user_carts.getGPU();
+        userCart.setGpu(gpu);
         invalidateBt(gpu,gpuContainer);
     }
 
     public void invalidateCCPUBt() {
         CoolersCPU coolers_cpu = user_carts.getCCPU();
+        userCart.setCoolersCPU(coolers_cpu);
         invalidateBt(coolers_cpu, ccpuContainer);
     }
 
     public void invalidateRAMBt() {
         RAM ram = user_carts.getRAM();
+        userCart.setRam(ram);
         invalidateBt(ram,ramContainer);
     }
 
     public void invalidateHDDBt() {
         HDD hdd = user_carts.getHDD();
+        userCart.setHdd(hdd);
         invalidateBt(hdd,hddContainer);
     }
 
     public void invalidateSSDBt() {
         SSD ssd = user_carts.getSSD();
+        userCart.setSsd(ssd);
         invalidateBt(ssd,ssdContainer);
     }
 
     public void invalidateM2Bt() {
         M2 m2 = user_carts.getM2();
+        userCart.setM2(m2);
         invalidateBt(m2,m2Container);
     }
 
-    public void invalidateCoollersBt() {
+    public void invalidateCoolersBt() {
         Coolers coolers = user_carts.getCoolers();
+        userCart.setCoolers(coolers);
         invalidateBt(coolers, coolersContainer);
     }
 
     public void invalidateBodyBt() {
         Body body = user_carts.getBody();
+        userCart.setBody(body);
         invalidateBt(body,bodyContainer);
     }
 
-    // дописать условия для остальных кнопок и контейнеров
     public View.OnClickListener onClickListener() {
         return new View.OnClickListener() {
             @Override
@@ -199,7 +218,7 @@ public class BuildActivity extends AppCompatActivity {
                 if (id == R.id.bpIm || id == R.id.bpContainer) {
                     s.putExtra("BP", BP);
                     startActivityForResult(s, BP);
-                } else if (id == R.id.motherIm || id == R.id.motherContainer) // вставить id motherboard и id motherboard container
+                } else if (id == R.id.motherIm || id == R.id.motherContainer)
                 { s.putExtra("MotherBoard", MOTHERBOARD);
                     startActivityForResult(s, MOTHERBOARD);
                 } else if (id == R.id.cpuIm || id == R.id.cpuContainer) {
@@ -231,8 +250,6 @@ public class BuildActivity extends AppCompatActivity {
                     startActivityForResult(s,GPU);
                 }
 
-                // вот сюда
-                // потом выкинуть все он клики которые были
             }
         };
     }
@@ -247,75 +264,7 @@ public class BuildActivity extends AppCompatActivity {
     }
 
 
-//    public void onClickP(View view) {
-//        Intent s;
-//        s = new Intent(BuildActivity.this, MarketActivity.class);
-//        s.putExtra("Central processor", PROCES);
-//        startActivity(s);
-//    }
-//
-//    public void onClickC(View view) {
-//        Intent s;
-//        s = new Intent(BuildActivity.this, MarketActivity.class);
-//        s.putExtra("Cooler", COOLERS);
-//        startActivity(s);
-//    }
-//
-//    public void onClickG(View view) {
-//        Intent s;
-//        s = new Intent(BuildActivity.this, MarketActivity.class);
-//        s.putExtra("Graphics card", GPU);
-//        startActivity(s);
-//    }
-//
-//    public void onClickR(View view) {
-//        Intent s;
-//        s = new Intent(BuildActivity.this, MarketActivity.class);
-//        s.putExtra("Ram", RAM);
-//        startActivity(s);
-//    }
-//
-//    public void onClickH(View view) {
-//        Intent s;
-//        s = new Intent(BuildActivity.this, MarketActivity.class);
-//        s.putExtra("HDD", HDD);
-//        startActivity(s);
-//    }
-//
-//    public void onClickS(View view) {
-//        Intent s;
-//        s = new Intent(BuildActivity.this, MarketActivity.class);
-//        s.putExtra("SSD", SSD);
-//        startActivity(s);
-//    }
-//
-//    public void onClickM2(View view) {
-//        Intent s;
-//        s = new Intent(BuildActivity.this, MarketActivity.class);
-//        s.putExtra("M2", M2);
-//        startActivity(s);
-//    }
-//
-//    public void onClickCPUCOOL(View view) {
-//        Intent s;
-//        s = new Intent(BuildActivity.this, MarketActivity.class);
-//        s.putExtra("CPUCOOLER", CPUCOOLER);
-//        startActivity(s);
-//    }
-//
-//    public void onClickB(View view) {
-//        Intent s;
-//        s = new Intent(BuildActivity.this, MarketActivity.class);
-//        s.putExtra("BP", BP);
-//        startActivityForResult(s, BP);
-//    }
-//
-//    public void onClickBo(View view) {
-//        Intent s;
-//        s = new Intent(BuildActivity.this, MarketActivity.class);
-//        s.putExtra("BODY", BODY);
-//        startActivity(s);
-//    }
+
 
     public Bitmap buildImg(byte[] bytes) {
         ByteArrayInputStream imageStream = new ByteArrayInputStream(bytes);
@@ -348,7 +297,7 @@ public class BuildActivity extends AppCompatActivity {
         } else if (requestCode == M2 && resultCode == RESULT_OK) {
             invalidateM2Bt();
         } else if (requestCode == COOLERS && resultCode == RESULT_OK) {
-            invalidateCoollersBt();
+            invalidateCoolersBt();
         } else if (requestCode == BODY && resultCode == RESULT_OK) {
             invalidateBodyBt();
         } else if (requestCode == BP && resultCode == RESULT_OK) {

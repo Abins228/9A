@@ -930,6 +930,19 @@ public class DBServer {
         private static final String COLUMN_SSD_ID = "SSD_id";
         private static final String COLUMN_GPU_ID = "GPU_id";
 
+        private static final int NUM_COLUMN_ID = 0;
+        private static final int NUM_COLUMN_BP_ID = 1;
+        private static final int NUM_COLUMN_BODY_ID = 2;
+        private static final int NUM_COLUMN_CPU_ID = 3;
+        private static final int NUM_COOLERS_CPU_ID = 4;
+        private static final int NUM_HDD_ID = 5;
+        private static final int NUM_COOLERS_ID = 6;
+        private static final int NUM_M2_ID = 7;
+        private static final int NUM_MOTHERBOARDS_ID = 8;
+        private static final int NUM_RAM_ID = 9;
+        private static final int NUM_SSD_ID = 10;
+        private static final int NUM_GPU_ID = 11;
+
         public boolean entry = false;
 
         public UserCartTable() {
@@ -940,23 +953,21 @@ public class DBServer {
             cursor.close();
         }
 
-        public UserCart getUserCart(){
-            Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
-                    new String[]{String.valueOf(id)}, null, null, null);
+        public UserCart getUserCart() {
 
-            Coolers out = null;
-            if (cursor.getCount() > 0) {
-                cursor.moveToFirst();
-//
-                String name = cursor.getString(NUM_COLUMN_NAME);
-                String fan_size = cursor.getString(NUM_COLUMN_FAN_SIZE);
-                String maximum_volume = cursor.getString(NUM_COLUMN_MAXIMUM_VOLUME);
-                String price = cursor.getString(NUM_COLUMN_PRICE);
-                String dns = cursor.getString(NUM_COLUMN_DNS);
-                byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new Coolers(id, name, fan_size, maximum_volume, price, dns, image);
-            }
-            cursor.close();
+            UserCart out ;
+            BP bp = getBP();
+            Body body = getBody();
+            CPU cpu = getCPU();
+            CoolersCPU coolersCPU = getCCPU();
+            HDD hdd = getHDD();
+            Coolers coolers = getCoolers();
+            M2 m2 = getM2();
+            Motherboards motherboards = getMot();
+            RAM ram = getRAM();
+            SSD ssd = getSSD();
+            GPU gpu = getGPU();
+            out = new UserCart(bp, body, cpu, coolers, hdd, m2, motherboards, ram, ssd, gpu, coolersCPU);
             return out;
 
         }
@@ -1056,11 +1067,12 @@ public class DBServer {
                 String price = cursor.getString(CPUTable.NUM_COLUMN_PRICE);
                 String dns = cursor.getString(CPUTable.NUM_COLUMN_DNS);
                 byte[] image = cursor.getBlob(CPUTable.NUM_COLUMN_IMAGE);
-                out=new CPU(id, name, processor_socket, cpu_speed, cores_threads, ddr, price, dns, image);
+                out = new CPU(id, name, processor_socket, cpu_speed, cores_threads, ddr, price, dns, image);
             }
             cursor.close();
             return out;
         }
+
         public void addCCPU(int id) {
             String quere = null;
             if (!entry) {
@@ -1087,11 +1099,12 @@ public class DBServer {
                 String price = cursor.getString(Coolers_CPUTable.NUM_COLUMN_PRICE);
                 String dns = cursor.getString(Coolers_CPUTable.NUM_COLUMN_DNS);
                 byte[] image = cursor.getBlob(Coolers_CPUTable.NUM_COLUMN_IMAGE);
-                out=new CoolersCPU(id, name, power, noise_level, price, dns, image);
+                out = new CoolersCPU(id, name, power, noise_level, price, dns, image);
             }
             cursor.close();
             return out;
         }
+
         public void addGPU(int id) {
             String quere = null;
             if (!entry) {
@@ -1123,6 +1136,7 @@ public class DBServer {
 
             return out;
         }
+
         public void addRAM(int id) {
             String quere = null;
             if (!entry) {
@@ -1150,10 +1164,11 @@ public class DBServer {
                 String dns = cursor.getString(RAMTable.NUM_COLUMN_DNS);
                 String ramtype = cursor.getString(RAMTable.NUM_COLUMN_RAMTYPE);
                 byte[] image = cursor.getBlob(RAMTable.NUM_COLUMN_IMAGE);
-                out=new RAM(id, name, capacity, ram_speed, number_of_modules, price, dns, ramtype, image);
+                out = new RAM(id, name, capacity, ram_speed, number_of_modules, price, dns, ramtype, image);
             }
             return out;
         }
+
         public void addHDD(int id) {
             String quere = null;
             if (!entry) {
@@ -1179,10 +1194,11 @@ public class DBServer {
                 String price = cursor.getString(HDDTable.NUM_COLUMN_PRICE);
                 String dns = cursor.getString(HDDTable.NUM_COLUMN_DNS);
                 byte[] image = cursor.getBlob(HDDTable.NUM_COLUMN_IMAGE);
-                out=new HDD(id, name, capacity, maxrw, price, dns, image);
+                out = new HDD(id, name, capacity, maxrw, price, dns, image);
             }
             return out;
         }
+
         public void addSSD(int id) {
             String quere = null;
             if (!entry) {
@@ -1213,6 +1229,7 @@ public class DBServer {
             }
             return out;
         }
+
         public void addM2(int id) {
             String quere = null;
             if (!entry) {
@@ -1243,6 +1260,7 @@ public class DBServer {
             }
             return out;
         }
+
         public void addCoolers(int id) {
             String quere = null;
             if (!entry) {
@@ -1272,6 +1290,7 @@ public class DBServer {
             }
             return out;
         }
+
         public void addBody(int id) {
             String quere = null;
             if (!entry) {
