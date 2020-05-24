@@ -130,6 +130,7 @@ public class BuildActivity extends AppCompatActivity {
             description.setText(preview.getDescription());
             price.setText("Цена: " + preview.getPrice() + "₽");
             replaceView(view, bpContainer);
+            replaceView(view, motherContainer);
         }
     }
 
@@ -201,7 +202,7 @@ public class BuildActivity extends AppCompatActivity {
                     startActivityForResult(s, BP);
                 } else if (id == R.id.motherIm || id == R.id.motherContainer) // вставить id motherboard и id motherboard container
                 { s.putExtra("MotherBoard", MOTHERBOARD);
-                  startActivityForResult(s, MOTHERBOARD);
+                    startActivityForResult(s, MOTHERBOARD);
                 } else if (id == R.id.cpuIm || id == R.id.cpuContainer) {
                     s.putExtra("Central processor", PROCES);
                     startActivityForResult(s,PROCES);
