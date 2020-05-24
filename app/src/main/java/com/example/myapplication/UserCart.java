@@ -121,37 +121,37 @@ public class UserCart {
         double amount = 0;
 
         if (bp!= null){
-            amount+= Double.parseDouble(bp.getPrice());
+            amount+= Double.parseDouble(bp.getPrice().replaceAll("\\s",""));
         }
         if(body != null){
-            amount+= Double.parseDouble(body.getPrice());
+            amount+= Double.parseDouble(body.getPrice().replaceAll("\\s",""));
         }
         if(cpu != null){
-            amount+= Double.parseDouble(cpu.getPrice());
+            amount+= Double.parseDouble(cpu.getPrice().replaceAll("\\s",""));
         }
         if(coolers != null){
-            amount+= Double.parseDouble(coolers.getPrice());
+            amount+= Double.parseDouble(coolers.getPrice().replaceAll("\\s",""));
         }
         if(hdd != null){
-            amount+= Double.parseDouble(hdd.getPrice());
+            amount+= Double.parseDouble(hdd.getPrice().replaceAll("\\s",""));
         }
         if(m2 != null){
-            amount+= Double.parseDouble(m2.getPrice());
+            amount+= Double.parseDouble(m2.getPrice().replaceAll("\\s",""));
         }
         if(motherboards != null){
-            amount+= Double.parseDouble(motherboards.getPrice());
+            amount+= Double.parseDouble(motherboards.getPrice().replaceAll("\\s",""));
         }
         if(ram != null){
-            amount+= Double.parseDouble(ram.getPrice());
+            amount+= Double.parseDouble(ram.getPrice().replaceAll("\\s",""));
         }
         if(ssd != null){
-            amount+= Double.parseDouble(ssd.getPrice());
+            amount+= Double.parseDouble(ssd.getPrice().replaceAll("\\s",""));
         }
         if(gpu != null){
-            amount+= Double.parseDouble(gpu.getPrice());
+            amount+= Double.parseDouble(gpu.getPrice().replaceAll("\\s",""));
         }
         if(coolersCPU != null){
-            amount+= Double.parseDouble(coolersCPU.getPrice());
+            amount+= Double.parseDouble(coolersCPU.getPrice().replaceAll("\\s",""));
         }
 
         return amount;
