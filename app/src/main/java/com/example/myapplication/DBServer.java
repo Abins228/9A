@@ -197,7 +197,7 @@ public class DBServer {
         }
     }
 
-    public class Coolers_CPUTable implements Selectable<Coolers_CPU> {
+    public class Coolers_CPUTable implements Selectable<CoolersCPU> {
         private static final String TABLE_NAME = "Coolers_CPU";
 
         private static final String COLUMN_ID = "id";
@@ -230,11 +230,11 @@ public class DBServer {
             database.delete(TABLE_NAME, null, null);
         }
 
-        public ArrayList<Coolers_CPU> selectAll() {
+        public ArrayList<CoolersCPU> selectAll() {
             Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
 
-            ArrayList<Coolers_CPU> arr = new ArrayList<>();
+            ArrayList<CoolersCPU> arr = new ArrayList<>();
             cursor.moveToFirst();
             if (!cursor.isAfterLast()) {
                 do {
@@ -245,7 +245,7 @@ public class DBServer {
                     String price = cursor.getString(NUM_COLUMN_PRICE);
                     String dns = cursor.getString(NUM_COLUMN_DNS);
                     byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
-                    arr.add(new Coolers_CPU(id, name, power, noise_level, price, dns, image));
+                    arr.add(new CoolersCPU(id, name, power, noise_level, price, dns, image));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -253,11 +253,11 @@ public class DBServer {
 
         }
 
-        public Coolers_CPU select(int id) {
+        public CoolersCPU select(int id) {
             Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
                     new String[]{String.valueOf(id)}, null, null, null);
 
-            Coolers_CPU out = null;
+            CoolersCPU out = null;
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 String name = cursor.getString(NUM_COLUMN_NAME);
@@ -266,7 +266,7 @@ public class DBServer {
                 String price = cursor.getString(NUM_COLUMN_PRICE);
                 String dns = cursor.getString(NUM_COLUMN_DNS);
                 byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
-                out = new Coolers_CPU(id, name, power, noise_level, price, dns, image);
+                out = new CoolersCPU(id, name, power, noise_level, price, dns, image);
             }
             cursor.close();
             return out;
@@ -916,8 +916,8 @@ public class DBServer {
         }
     }
 
-    class UserCart {
-        private static final String TABLENAME = "user_cart";
+    class UserCartTable {
+        private static final String TABLE_NAME = "user_cart";
         private static final String COLUMN_BP_ID = "BP_id";
         private static final String COLUMN_BODY_ID = "Body_id";
         private static final String COLUMN_CPU_ID = "CPU_id";
@@ -932,21 +932,42 @@ public class DBServer {
 
         public boolean entry = false;
 
-        public UserCart() {
-            Cursor cursor = database.query(TABLENAME, null, null,
+        public UserCartTable() {
+            Cursor cursor = database.query(TABLE_NAME, null, null,
                     null, null, null, null);
             if (cursor.getCount() > 0)
                 entry = true;
             cursor.close();
         }
 
+        public UserCart getUserCart(){
+            Cursor cursor = database.query(TABLE_NAME, null, COLUMN_ID + " =?",
+                    new String[]{String.valueOf(id)}, null, null, null);
+
+            Coolers out = null;
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+//
+                String name = cursor.getString(NUM_COLUMN_NAME);
+                String fan_size = cursor.getString(NUM_COLUMN_FAN_SIZE);
+                String maximum_volume = cursor.getString(NUM_COLUMN_MAXIMUM_VOLUME);
+                String price = cursor.getString(NUM_COLUMN_PRICE);
+                String dns = cursor.getString(NUM_COLUMN_DNS);
+                byte[] image = cursor.getBlob(NUM_COLUMN_IMAGE);
+                out = new Coolers(id, name, fan_size, maximum_volume, price, dns, image);
+            }
+            cursor.close();
+            return out;
+
+        }
+
         public void addBP(int id) {
             String quere = null;
             if (!entry) {
-                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_BP_ID + ") VALUES (?)";
+                quere = "INSERT INTO " + TABLE_NAME + " (" + COLUMN_BP_ID + ") VALUES (?)";
                 entry = true;
             } else
-                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_BP_ID + "= ? WHERE (ID = 1)";
+                quere = "UPDATE " + TABLE_NAME + " SET " + COLUMN_BP_ID + "= ? WHERE (ID = 1)";
             SQLiteStatement stmt = database.compileStatement(quere);
             stmt.bindLong(1, id);
             stmt.execute();
@@ -975,10 +996,10 @@ public class DBServer {
         public void addMot(int id) {
             String quere = null;
             if (!entry) {
-                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_MOTHERBOARDS_ID + ") VALUES (?)";
+                quere = "INSERT INTO " + TABLE_NAME + " (" + COLUMN_MOTHERBOARDS_ID + ") VALUES (?)";
                 entry = true;
             } else
-                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_MOTHERBOARDS_ID + "= ? WHERE (ID = 1)";
+                quere = "UPDATE " + TABLE_NAME + " SET " + COLUMN_MOTHERBOARDS_ID + "= ? WHERE (ID = 1)";
             SQLiteStatement stmt = database.compileStatement(quere);
             stmt.bindLong(1, id);
             stmt.execute();
@@ -1010,10 +1031,10 @@ public class DBServer {
         public void addCPU(int id) {
             String quere = null;
             if (!entry) {
-                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_CPU_ID + ") VALUES (?)";
+                quere = "INSERT INTO " + TABLE_NAME + " (" + COLUMN_CPU_ID + ") VALUES (?)";
                 entry = true;
             } else
-                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_CPU_ID + "= ? WHERE (ID = 1)";
+                quere = "UPDATE " + TABLE_NAME + " SET " + COLUMN_CPU_ID + "= ? WHERE (ID = 1)";
             SQLiteStatement stmt = database.compileStatement(quere);
             stmt.bindLong(1, id);
             stmt.execute();
@@ -1043,19 +1064,19 @@ public class DBServer {
         public void addCCPU(int id) {
             String quere = null;
             if (!entry) {
-                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_COOLERS_CPU_ID + ") VALUES (?)";
+                quere = "INSERT INTO " + TABLE_NAME + " (" + COLUMN_COOLERS_CPU_ID + ") VALUES (?)";
                 entry = true;
             } else
-                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_COOLERS_CPU_ID + "= ? WHERE (ID = 1)";
+                quere = "UPDATE " + TABLE_NAME + " SET " + COLUMN_COOLERS_CPU_ID + "= ? WHERE (ID = 1)";
             SQLiteStatement stmt = database.compileStatement(quere);
             stmt.bindLong(1, id);
             stmt.execute();
         }
 
-        public Coolers_CPU getCCPU() {
+        public CoolersCPU getCCPU() {
             Cursor cursor = database.query(Coolers_CPUTable.TABLE_NAME, null, Coolers_CPUTable.COLUMN_ID + "= (select user_cart.Coolers_CPU_id from user_cart where ID = 1)",
                     null, null, null, null);
-            Coolers_CPU out = null;
+            CoolersCPU out = null;
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
 
@@ -1066,7 +1087,7 @@ public class DBServer {
                 String price = cursor.getString(Coolers_CPUTable.NUM_COLUMN_PRICE);
                 String dns = cursor.getString(Coolers_CPUTable.NUM_COLUMN_DNS);
                 byte[] image = cursor.getBlob(Coolers_CPUTable.NUM_COLUMN_IMAGE);
-                out=new Coolers_CPU(id, name, power, noise_level, price, dns, image);
+                out=new CoolersCPU(id, name, power, noise_level, price, dns, image);
             }
             cursor.close();
             return out;
@@ -1074,10 +1095,10 @@ public class DBServer {
         public void addGPU(int id) {
             String quere = null;
             if (!entry) {
-                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_GPU_ID + ") VALUES (?)";
+                quere = "INSERT INTO " + TABLE_NAME + " (" + COLUMN_GPU_ID + ") VALUES (?)";
                 entry = true;
             } else
-                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_GPU_ID + "= ? WHERE (ID = 1)";
+                quere = "UPDATE " + TABLE_NAME + " SET " + COLUMN_GPU_ID + "= ? WHERE (ID = 1)";
             SQLiteStatement stmt = database.compileStatement(quere);
             stmt.bindLong(1, id);
             stmt.execute();
@@ -1105,10 +1126,10 @@ public class DBServer {
         public void addRAM(int id) {
             String quere = null;
             if (!entry) {
-                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_RAM_ID + ") VALUES (?)";
+                quere = "INSERT INTO " + TABLE_NAME + " (" + COLUMN_RAM_ID + ") VALUES (?)";
                 entry = true;
             } else
-                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_RAM_ID + "= ? WHERE (ID = 1)";
+                quere = "UPDATE " + TABLE_NAME + " SET " + COLUMN_RAM_ID + "= ? WHERE (ID = 1)";
             SQLiteStatement stmt = database.compileStatement(quere);
             stmt.bindLong(1, id);
             stmt.execute();
@@ -1136,10 +1157,10 @@ public class DBServer {
         public void addHDD(int id) {
             String quere = null;
             if (!entry) {
-                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_HDD_ID + ") VALUES (?)";
+                quere = "INSERT INTO " + TABLE_NAME + " (" + COLUMN_HDD_ID + ") VALUES (?)";
                 entry = true;
             } else
-                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_HDD_ID + "= ? WHERE (ID = 1)";
+                quere = "UPDATE " + TABLE_NAME + " SET " + COLUMN_HDD_ID + "= ? WHERE (ID = 1)";
             SQLiteStatement stmt = database.compileStatement(quere);
             stmt.bindLong(1, id);
             stmt.execute();
@@ -1165,10 +1186,10 @@ public class DBServer {
         public void addSSD(int id) {
             String quere = null;
             if (!entry) {
-                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_SSD_ID + ") VALUES (?)";
+                quere = "INSERT INTO " + TABLE_NAME + " (" + COLUMN_SSD_ID + ") VALUES (?)";
                 entry = true;
             } else
-                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_SSD_ID + "= ? WHERE (ID = 1)";
+                quere = "UPDATE " + TABLE_NAME + " SET " + COLUMN_SSD_ID + "= ? WHERE (ID = 1)";
             SQLiteStatement stmt = database.compileStatement(quere);
             stmt.bindLong(1, id);
             stmt.execute();
@@ -1195,10 +1216,10 @@ public class DBServer {
         public void addM2(int id) {
             String quere = null;
             if (!entry) {
-                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_M2_ID + ") VALUES (?)";
+                quere = "INSERT INTO " + TABLE_NAME + " (" + COLUMN_M2_ID + ") VALUES (?)";
                 entry = true;
             } else
-                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_M2_ID + "= ? WHERE (ID = 1)";
+                quere = "UPDATE " + TABLE_NAME + " SET " + COLUMN_M2_ID + "= ? WHERE (ID = 1)";
             SQLiteStatement stmt = database.compileStatement(quere);
             stmt.bindLong(1, id);
             stmt.execute();
@@ -1225,10 +1246,10 @@ public class DBServer {
         public void addCoolers(int id) {
             String quere = null;
             if (!entry) {
-                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_COOLERS_ID + ") VALUES (?)";
+                quere = "INSERT INTO " + TABLE_NAME + " (" + COLUMN_COOLERS_ID + ") VALUES (?)";
                 entry = true;
             } else
-                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_COOLERS_ID + "= ? WHERE (ID = 1)";
+                quere = "UPDATE " + TABLE_NAME + " SET " + COLUMN_COOLERS_ID + "= ? WHERE (ID = 1)";
             SQLiteStatement stmt = database.compileStatement(quere);
             stmt.bindLong(1, id);
             stmt.execute();
@@ -1254,10 +1275,10 @@ public class DBServer {
         public void addBody(int id) {
             String quere = null;
             if (!entry) {
-                quere = "INSERT INTO " + TABLENAME + " (" + COLUMN_BODY_ID + ") VALUES (?)";
+                quere = "INSERT INTO " + TABLE_NAME + " (" + COLUMN_BODY_ID + ") VALUES (?)";
                 entry = true;
             } else
-                quere = "UPDATE " + TABLENAME + " SET " + COLUMN_BODY_ID + "= ? WHERE (ID = 1)";
+                quere = "UPDATE " + TABLE_NAME + " SET " + COLUMN_BODY_ID + "= ? WHERE (ID = 1)";
             SQLiteStatement stmt = database.compileStatement(quere);
             stmt.bindLong(1, id);
             stmt.execute();

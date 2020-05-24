@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class MarketActivity extends AppCompatActivity implements ListView.OnItemClickListener {
 
     DBServer dbServer;
-    DBServer.UserCart user_carts;
+    DBServer.UserCartTable user_carts;
     ListView list;
     ListAdapter listAdapter;
     Selectable table;
@@ -36,7 +36,7 @@ public class MarketActivity extends AppCompatActivity implements ListView.OnItem
         setContentView(R.layout.market_activity);
 
         dbServer = new DBServer(this);
-        user_carts = dbServer.new UserCart();
+        user_carts = dbServer.new UserCartTable();
 
 
         list = findViewById(R.id.listView);
@@ -120,7 +120,7 @@ public class MarketActivity extends AppCompatActivity implements ListView.OnItem
             if (value == BuildActivity.CPUCOOLER) {
                 table = dbServer.new Coolers_CPUTable();
                 type = BuildActivity.CPUCOOLER;
-                listAdapter = new ListAdapter<Coolers_CPU>(this, table.selectAll());
+                listAdapter = new ListAdapter<CoolersCPU>(this, table.selectAll());
                 namemarket.setText("Кулеры для процессора");
             }
         }
@@ -224,7 +224,7 @@ public class MarketActivity extends AppCompatActivity implements ListView.OnItem
             user_carts.addCPU(cpu.getId());
             Toast.makeText(this, "Вы добавили: " + cpu.getName(), Toast.LENGTH_SHORT).show();
         } else if (type == BuildActivity.CPUCOOLER) {
-            Coolers_CPU coolers_cpu = (Coolers_CPU) listAdapter.getItem(position);
+            CoolersCPU coolers_cpu = (CoolersCPU) listAdapter.getItem(position);
             user_carts.addCCPU(coolers_cpu.getId());
             Toast.makeText(this, "Вы добавили: " + coolers_cpu.getName(), Toast.LENGTH_SHORT).show();
         } else if (type == BuildActivity.GPU) {

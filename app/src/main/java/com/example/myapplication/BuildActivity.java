@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -55,7 +54,7 @@ public class BuildActivity extends AppCompatActivity {
     FrameLayout bodyContainer;
     FrameLayout coolersContainer;
 
-    DBServer.UserCart user_carts;
+    DBServer.UserCartTable user_carts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +85,7 @@ public class BuildActivity extends AppCompatActivity {
         coolersContainer = findViewById(R.id.coollersContainer);
 
         DBServer dbServer = new DBServer(this);
-        user_carts = dbServer.new UserCart();
+        user_carts = dbServer.new UserCartTable();
         bt = findViewById(R.id.sborkaBack);
         bt.setOnClickListener(onBackClickListener());
         bpImgBt.setOnClickListener(onClickListener());
@@ -156,7 +155,7 @@ public class BuildActivity extends AppCompatActivity {
     }
 
     public void invalidateCCPUBt() {
-        Coolers_CPU coolers_cpu = user_carts.getCCPU();
+        CoolersCPU coolers_cpu = user_carts.getCCPU();
         invalidateBt(coolers_cpu, ccpuContainer);
     }
 

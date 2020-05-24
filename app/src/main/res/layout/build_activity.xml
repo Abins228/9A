@@ -8,6 +8,7 @@
     tools:context=".BuildActivity">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -19,7 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageButton
                 android:id="@+id/sborkaBack"
@@ -31,15 +32,16 @@
 
             <TextView
                 android:id="@+id/motherTV"
-                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Материнская плата" />
+                android:text="Материнская плата"
+                android:textColor="@android:color/black" />
 
             <FrameLayout
                 android:id="@+id/motherContainer"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px">
 
                 <ImageButton
                     android:id="@+id/motherIm"
@@ -52,16 +54,17 @@
 
             <TextView
                 android:id="@+id/cpuTV"
-                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
-                android:text="Процессор" />
+
+                android:text="Процессор"
+                android:textColor="@android:color/black" />
 
             <FrameLayout
                 android:id="@+id/cpuContainer"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px">
 
                 <ImageButton
                     android:id="@+id/cpuIm"
@@ -74,15 +77,16 @@
 
             <TextView
                 android:id="@+id/CPUcoollerTV"
-                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Кулер для процессора" />
+                android:text="Кулер для процессора"
+                android:textColor="@android:color/black" />
 
             <FrameLayout
                 android:id="@+id/CPUcoollerContainer"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px">
 
                 <ImageButton
                     android:id="@+id/CPUcoollerIm"
@@ -95,15 +99,16 @@
 
             <TextView
                 android:id="@+id/gpuTV"
-                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Видеокарта" />
+                android:text="Видеокарта"
+                android:textColor="@android:color/black" />
 
             <FrameLayout
                 android:id="@+id/gpuContainer"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px">
 
                 <ImageButton
                     android:id="@+id/gpuIm"
@@ -116,15 +121,16 @@
 
             <TextView
                 android:id="@+id/ramTV"
-                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Оперативная память" />
+                android:text="Оперативная память"
+                android:textColor="@android:color/black" />
 
             <FrameLayout
                 android:id="@+id/ramContainer"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px">
 
                 <ImageButton
                     android:id="@+id/ramIm"
@@ -137,15 +143,16 @@
 
             <TextView
                 android:id="@+id/hddTV"
-                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Жёсткие диски" />
+                android:text="Жёсткие диски"
+                android:textColor="@android:color/black" />
 
             <FrameLayout
                 android:id="@+id/hddContainer"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px">
 
                 <ImageButton
                     android:id="@+id/hddIm"
@@ -158,15 +165,16 @@
 
             <TextView
                 android:id="@+id/ssdTV"
-                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" SSD накопитель" />
+                android:text=" SSD накопитель"
+                android:textColor="@android:color/black" />
 
             <FrameLayout
                 android:id="@+id/ssdContainer"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px">
 
                 <ImageButton
                     android:id="@+id/ssdIm"
@@ -179,15 +187,16 @@
 
             <TextView
                 android:id="@+id/m2TV"
-                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="M.2 накопители" />
+                android:text="M.2 накопители"
+                android:textColor="@android:color/black" />
 
             <FrameLayout
                 android:id="@+id/m2Container"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px">
 
                 <ImageButton
                     android:id="@+id/m2Im"
@@ -200,15 +209,16 @@
 
             <TextView
                 android:id="@+id/bpTV"
-                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Блок питания" />
+                android:text="Блок питания"
+                android:textColor="@android:color/black" />
 
             <FrameLayout
                 android:id="@+id/bpContainer"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px">
 
                 <ImageButton
                     android:id="@+id/bpIm"
@@ -221,15 +231,16 @@
 
             <TextView
                 android:id="@+id/bodyTV"
-                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Корпус" />
+                android:text="Корпус"
+                android:textColor="@android:color/black" />
 
             <FrameLayout
                 android:id="@+id/bodyContainer"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px">
 
                 <ImageButton
                     android:id="@+id/bodyIm"
@@ -242,15 +253,16 @@
 
             <TextView
                 android:id="@+id/coollersTV"
-                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Вентиляторы" />
+                android:text="Вентиляторы"
+                android:textColor="@android:color/black" />
 
             <FrameLayout
                 android:id="@+id/coollersContainer"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px">
 
                 <ImageButton
                     android:id="@+id/coollersIm"
@@ -260,6 +272,13 @@
                     android:layout_gravity="bottom|left"
                     app:srcCompat="@drawable/sborka1" />
             </FrameLayout>
+
+            <TextView
+                android:id="@+id/priceSborka"
+                android:layout_width="168dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:text="text" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
