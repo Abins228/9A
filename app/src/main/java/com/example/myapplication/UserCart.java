@@ -1,7 +1,6 @@
 package com.example.myapplication;
 
 public class UserCart {
-    int id;
     private BP bp;
     private Body body;
     private CPU cpu;
@@ -17,8 +16,7 @@ public class UserCart {
     public UserCart() {
     }
 
-    public UserCart(int id, BP bp, Body body, CPU cpu, Coolers coolers, HDD hdd, M2 m2, Motherboards motherboards, RAM ram, SSD ssd, GPU gpu, CoolersCPU coolersCPU) {
-        this.id = id;
+    public UserCart(BP bp, Body body, CPU cpu, Coolers coolers, HDD hdd, M2 m2, Motherboards motherboards, RAM ram, SSD ssd, GPU gpu, CoolersCPU coolersCPU) {
         this.bp = bp;
         this.body = body;
         this.cpu = cpu;
@@ -31,15 +29,6 @@ public class UserCart {
         this.gpu = gpu;
         this.coolersCPU = coolersCPU;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public BP getBp() {
         return bp;
     }
@@ -126,5 +115,45 @@ public class UserCart {
 
     public void setCoolersCPU(CoolersCPU coolersCPU) {
         this.coolersCPU = coolersCPU;
+    }
+
+    public double getAmount(){
+        double amount = 0;
+
+        if (bp!= null){
+            amount+= Double.parseDouble(bp.getPrice());
+        }
+        if(body != null){
+            amount+= Double.parseDouble(body.getPrice());
+        }
+        if(cpu != null){
+            amount+= Double.parseDouble(cpu.getPrice());
+        }
+        if(coolers != null){
+            amount+= Double.parseDouble(coolers.getPrice());
+        }
+        if(hdd != null){
+            amount+= Double.parseDouble(hdd.getPrice());
+        }
+        if(m2 != null){
+            amount+= Double.parseDouble(m2.getPrice());
+        }
+        if(motherboards != null){
+            amount+= Double.parseDouble(motherboards.getPrice());
+        }
+        if(ram != null){
+            amount+= Double.parseDouble(ram.getPrice());
+        }
+        if(ssd != null){
+            amount+= Double.parseDouble(ssd.getPrice());
+        }
+        if(gpu != null){
+            amount+= Double.parseDouble(gpu.getPrice());
+        }
+        if(coolersCPU != null){
+            amount+= Double.parseDouble(coolersCPU.getPrice());
+        }
+
+        return amount;
     }
 }
