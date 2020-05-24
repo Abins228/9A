@@ -23,24 +23,15 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="0a9fe686-34fc-46a5-be2e-1bf3d5cbfdd4">
+        <schema name="main" object-types="index, table, column, dataset trigger, constraint" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="4c768b92-084a-49b1-98bb-68ed20b75b6a">
-      <console name="Connection" type="STANDARD" schema="" session="Main">create table &quot;User_cart&quot; (
-ID integer primary key autoincrement,
-BP_id integer,
-Body_id integer,
-CPU_id integer,
-Coolers_id integer,
-Coolers_CPU_id integer,
-HDD_id integer,
-M2_id integer,
-Motherboards_id integer,
-RAM_id integer,
-SSD_id integer,
-GPU_id integer
-)</console>
+      <console name="Connection" type="STANDARD" schema="" session="Main" />
       <console name="Connectionm" type="STANDARD" schema="" session="Main" />
     </connection>
     <connection id="0a9fe686-34fc-46a5-be2e-1bf3d5cbfdd4">
@@ -385,8 +376,6 @@ GPU_id integer
           <content-type name="Java" enabled="true" />
           <content-type name="SQL" enabled="true" />
           <content-type name="PL/SQL" enabled="true" />
-          <content-type name="JSON" enabled="true" />
-          <content-type name="JSON5" enabled="true" />
           <content-type name="Groovy" enabled="true" />
           <content-type name="AIDL" enabled="true" />
           <content-type name="YAML" enabled="true" />

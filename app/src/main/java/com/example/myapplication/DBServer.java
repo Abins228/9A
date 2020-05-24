@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Entity;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -951,6 +952,11 @@ public class DBServer {
             if (cursor.getCount() > 0)
                 entry = true;
             cursor.close();
+        }
+
+        public void deleteall() {
+            entry = false;
+            database.delete(TABLE_NAME, null, null);
         }
 
         public UserCart getUserCart() {
