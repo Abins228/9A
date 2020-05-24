@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -118,7 +119,7 @@ public class BuildActivity extends AppCompatActivity {
 
     }
 
-    public <T extends Idetificate> void invalidateBt(T preview) {
+    public <T extends Idetificate> void invalidateBt(T preview, FrameLayout container) {
         if (preview != null) {
             View view = getLayoutInflater().inflate(R.layout.item, null);
             ImageView image = view.findViewById(R.id.image);
@@ -129,65 +130,64 @@ public class BuildActivity extends AppCompatActivity {
             name.setText(preview.getName());
             description.setText(preview.getDescription());
             price.setText("Цена: " + preview.getPrice() + "₽");
-            replaceView(view, bpContainer);
-            replaceView(view, motherContainer);
+            replaceView(view, container);
         }
     }
 
     // повторить для всех элементов user_cart
     public void invalidateBpBt() {
         BP bp = user_carts.getBP();
-        invalidateBt(bp);
+        invalidateBt(bp,bpContainer);
     }
 
     public void invalidateMoBt() {
         Motherboards motherboards = user_carts.getMot();
-        invalidateBt(motherboards);
+        invalidateBt(motherboards,motherContainer);
     }
 
     public void invalidateCPUBt() {
         CPU cpu = user_carts.getCPU();
-        invalidateBt(cpu);
+        invalidateBt(cpu,cpuContainer);
     }
 
     public void invalidateGPUBt() {
         GPU gpu = user_carts.getGPU();
-        invalidateBt(gpu);
+        invalidateBt(gpu,gpuContainer);
     }
 
     public void invalidateCCPUBt() {
         Coolers_CPU coolers_cpu = user_carts.getCCPU();
-        invalidateBt(coolers_cpu);
+        invalidateBt(coolers_cpu, ccpuContainer);
     }
 
     public void invalidateRAMBt() {
         RAM ram = user_carts.getRAM();
-        invalidateBt(ram);
+        invalidateBt(ram,ramContainer);
     }
 
     public void invalidateHDDBt() {
         HDD hdd = user_carts.getHDD();
-        invalidateBt(hdd);
+        invalidateBt(hdd,hddContainer);
     }
 
     public void invalidateSSDBt() {
         SSD ssd = user_carts.getSSD();
-        invalidateBt(ssd);
+        invalidateBt(ssd,ssdContainer);
     }
 
     public void invalidateM2Bt() {
         M2 m2 = user_carts.getM2();
-        invalidateBt(m2);
+        invalidateBt(m2,m2Container);
     }
 
     public void invalidateCoollersBt() {
         Coolers coolers = user_carts.getCoolers();
-        invalidateBt(coolers);
+        invalidateBt(coolers, coolersContainer);
     }
 
     public void invalidateBodyBt() {
         Body body = user_carts.getBody();
-        invalidateBt(body);
+        invalidateBt(body,bodyContainer);
     }
 
     // дописать условия для остальных кнопок и контейнеров
