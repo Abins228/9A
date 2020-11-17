@@ -148,66 +148,6 @@ public class MarketActivity extends AppCompatActivity implements ListView.OnItem
         list.setOnItemClickListener(this);
     }
 
-//    void IntentfinishMother(){
-//        Bundle bundle=new Bundle();
-//        bundle.putSerializable(type, new Motherboards(0,null,null,null,null,null,null,null,null));
-//        getIntent().putExtras(bundle);
-//        setResult(RESULT_OK);
-//    }
-//    void IntentfinishCpu(){
-//        Bundle bundle=new Bundle();
-//        bundle.putSerializable(type, new CPU(0,null,null,null,null,null,null,null,null));
-//        getIntent().putExtras(bundle);
-//        setResult(RESULT_OK);
-//    }
-//    void IntentfinishCpuCool(){
-//        Bundle bundle=new Bundle();
-//        bundle.putSerializable(type, new Coolers_CPU(0,null,null,null,null,null,null));
-//        getIntent().putExtras(bundle);
-//        setResult(RESULT_OK);
-//    }
-//    void IntentfinishGpu(){
-//        Bundle bundle=new Bundle();
-//        bundle.putSerializable(type, new video_cards(0,null,null,null,null,null,null,null));
-//        getIntent().putExtras(bundle);
-//        setResult(RESULT_OK);
-//    }
-//    void IntentfinishRam(){
-//        Bundle bundle=new Bundle();
-//        bundle.putSerializable(type, new RAM(0,null,null,null,null,null,null,null,null));
-//        getIntent().putExtras(bundle);
-//        setResult(RESULT_OK);
-//    }
-//    void IntentfinishSsd(){
-//        Bundle bundle=new Bundle();
-//        bundle.putSerializable(type, new SSD(0,null,null,null,null,null,null,null));
-//        getIntent().putExtras(bundle);
-//        setResult(RESULT_OK);
-//    }
-//    void IntentfinishM2(){
-//        Bundle bundle=new Bundle();
-//        bundle.putSerializable(type, new M2(0,null,null,null,null,null,null,null));
-//        getIntent().putExtras(bundle);
-//        setResult(RESULT_OK);
-//    }
-//    void IntentfinishCooler(){
-//        Bundle bundle=new Bundle();
-//        bundle.putSerializable(type, new Coolers(0,null,null,null,null,null,null));
-//        getIntent().putExtras(bundle);
-//        setResult(RESULT_OK);
-//    }
-//    void Intentfinishbp(){
-//        Bundle bundle=new Bundle();
-//        bundle.putSerializable(type, new BP(0,null,null,null,null,null,null));
-//        getIntent().putExtras(bundle);
-//        setResult(RESULT_OK);
-//    }
-//    void IntentfinishBody(){
-//        Bundle bundle=new Bundle();
-//        bundle.putSerializable(type, new Body(0,null,null,null,null,null,null));
-//        getIntent().putExtras(bundle);
-//        setResult(RESULT_OK);
-//    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -256,7 +196,6 @@ public class MarketActivity extends AppCompatActivity implements ListView.OnItem
             user_carts.addCoolers(coolers.getId());
             Toast.makeText(this, "Вы добавили: " + coolers.getName(), Toast.LENGTH_SHORT).show();
         }
-        // дополнить
     }
 
 

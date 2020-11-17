@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     ImageButton bt, sb;
     DBServer dbServer;
-    // DBServer.Products products;
     private final static int GET_PERMISSION_STORAGE = 0;
 
     @Override
@@ -37,23 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-//        bt.setOnClickListener(new View.OnClickListener() {
-//            int height, width;
-//            @Override
-//            public void onClick(final View v) {
-//                v.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        height = v.getHeight();
-//                        width = v.getWidth();
-//                    }
-//                });
-//                // дальше код
-//            }
-//        });
-//
     }
-
 
 
     public void onClickSborka(View view) {
@@ -66,8 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
         if (requestCode == GET_PERMISSION_STORAGE) {
-            boolean permissionGranted = true; //все разрешения
-            //проверка всех разрешений
+            boolean permissionGranted = true;
             for (int curRes : grantResults)
                 if (curRes == PackageManager.PERMISSION_DENIED) {
                     permissionGranted = false;

@@ -961,7 +961,7 @@ public class DBServer {
 
         public UserCart getUserCart() {
 
-            UserCart out ;
+            UserCart out;
             BP bp = getBP();
             Body body = getBody();
             CPU cpu = getCPU();
@@ -991,7 +991,8 @@ public class DBServer {
         }
 
         public BP getBP() {
-            Cursor cursor = database.query(BPTable.TABLE_NAME, null, BPTable.COLUMN_ID + "= (select user_cart.BP_id from user_cart where ID = 1)",
+            Cursor cursor = database.query(BPTable.TABLE_NAME, null, BPTable.COLUMN_ID +
+                            "= (select user_cart.BP_id from user_cart where ID = 1)",
                     null, null, null, null);
             BP out = null;
             if (cursor.getCount() > 0) {
@@ -1023,7 +1024,8 @@ public class DBServer {
         }
 
         public Motherboards getMot() {
-            Cursor cursor = database.query(MotherboardsTable.TABLE_NAME, null, MotherboardsTable.COLUMN_ID + "= (select user_cart.MOTHERBOARDS_id from user_cart where ID = 1)",
+            Cursor cursor = database.query(MotherboardsTable.TABLE_NAME, null, MotherboardsTable.COLUMN_ID +
+                            "= (select user_cart.MOTHERBOARDS_id from user_cart where ID = 1)",
                     null, null, null, null);
             Motherboards out = null;
             if (cursor.getCount() > 0) {
@@ -1058,7 +1060,8 @@ public class DBServer {
         }
 
         public CPU getCPU() {
-            Cursor cursor = database.query(CPUTable.TABLE_NAME, null, CPUTable.COLUMN_ID + "= (select user_cart.CPU_id from user_cart where ID = 1)",
+            Cursor cursor = database.query(CPUTable.TABLE_NAME, null, CPUTable.COLUMN_ID +
+                            "= (select user_cart.CPU_id from user_cart where ID = 1)",
                     null, null, null, null);
             CPU out = null;
             if (cursor.getCount() > 0) {
@@ -1092,7 +1095,8 @@ public class DBServer {
         }
 
         public CoolersCPU getCCPU() {
-            Cursor cursor = database.query(Coolers_CPUTable.TABLE_NAME, null, Coolers_CPUTable.COLUMN_ID + "= (select user_cart.Coolers_CPU_id from user_cart where ID = 1)",
+            Cursor cursor = database.query(Coolers_CPUTable.TABLE_NAME, null, Coolers_CPUTable.COLUMN_ID +
+                            "= (select user_cart.Coolers_CPU_id from user_cart where ID = 1)",
                     null, null, null, null);
             CoolersCPU out = null;
             if (cursor.getCount() > 0) {
@@ -1124,7 +1128,8 @@ public class DBServer {
         }
 
         public GPU getGPU() {
-            Cursor cursor = database.query(GPUTable.TABLE_NAME, null, Coolers_CPUTable.COLUMN_ID + "= (select user_cart.GPU_id from user_cart where ID = 1)",
+            Cursor cursor = database.query(GPUTable.TABLE_NAME, null, Coolers_CPUTable.COLUMN_ID +
+                            "= (select user_cart.GPU_id from user_cart where ID = 1)",
                     null, null, null, null);
             GPU out = null;
             if (cursor.getCount() > 0) {
@@ -1156,7 +1161,8 @@ public class DBServer {
         }
 
         public RAM getRAM() {
-            Cursor cursor = database.query(RAMTable.TABLE_NAME, null, RAMTable.COLUMN_ID + "= (select user_cart.RAM_id from user_cart where ID = 1)",
+            Cursor cursor = database.query(RAMTable.TABLE_NAME, null, RAMTable.COLUMN_ID +
+                            "= (select user_cart.RAM_id from user_cart where ID = 1)",
                     null, null, null, null);
             RAM out = null;
             if (cursor.getCount() > 0) {
@@ -1188,7 +1194,8 @@ public class DBServer {
         }
 
         public HDD getHDD() {
-            Cursor cursor = database.query(HDDTable.TABLE_NAME, null, HDDTable.COLUMN_ID + "= (select user_cart.HDD_id from user_cart where ID = 1)",
+            Cursor cursor = database.query(HDDTable.TABLE_NAME, null, HDDTable.COLUMN_ID +
+                            "= (select user_cart.HDD_id from user_cart where ID = 1)",
                     null, null, null, null);
             HDD out = null;
             if (cursor.getCount() > 0) {
@@ -1218,7 +1225,8 @@ public class DBServer {
         }
 
         public SSD getSSD() {
-            Cursor cursor = database.query(SSDTable.TABLE_NAME, null, SSDTable.COLUMN_ID + "= (select user_cart.SSD_id from user_cart where ID = 1)",
+            Cursor cursor = database.query(SSDTable.TABLE_NAME, null, SSDTable.COLUMN_ID +
+                            "= (select user_cart.SSD_id from user_cart where ID = 1)",
                     null, null, null, null);
             SSD out = null;
             if (cursor.getCount() > 0) {
@@ -1249,7 +1257,8 @@ public class DBServer {
         }
 
         public M2 getM2() {
-            Cursor cursor = database.query(M2Table.TABLE_NAME, null, M2Table.COLUMN_ID + "= (select user_cart.M2_id from user_cart where ID = 1)",
+            Cursor cursor = database.query(M2Table.TABLE_NAME, null, M2Table.COLUMN_ID +
+                            "= (select user_cart.M2_id from user_cart where ID = 1)",
                     null, null, null, null);
             M2 out = null;
             if (cursor.getCount() > 0) {
@@ -1280,7 +1289,8 @@ public class DBServer {
         }
 
         public Coolers getCoolers() {
-            Cursor cursor = database.query(CoolersTable.TABLE_NAME, null, CoolersTable.COLUMN_ID + "= (select user_cart.Coolers_id from user_cart where ID = 1)",
+            Cursor cursor = database.query(CoolersTable.TABLE_NAME, null, CoolersTable.COLUMN_ID +
+                            "= (select user_cart.Coolers_id from user_cart where ID = 1)",
                     null, null, null, null);
             Coolers out = null;
             if (cursor.getCount() > 0) {
@@ -1310,7 +1320,8 @@ public class DBServer {
         }
 
         public Body getBody() {
-            Cursor cursor = database.query(BodyTable.TABLE_NAME, null, BodyTable.COLUMN_ID + "= (select user_cart.Body_id from user_cart where ID = 1)",
+            Cursor cursor = database.query(BodyTable.TABLE_NAME, null, BodyTable.COLUMN_ID +
+                            "= (select user_cart.Body_id from user_cart where ID = 1)",
                     null, null, null, null);
             Body out = null;
             if (cursor.getCount() > 0) {
@@ -1339,15 +1350,11 @@ public class DBServer {
             this.myContext = context;
         }
 
-        /**
-         * Создание пустой системной БД и её перезапись БД из ассетов
-         */
+
         public void createDataBase() throws IOException {
             boolean dbExist = checkDataBase();
             if (dbExist) {
-                // ничего не делать - БД уже создана
             } else {
-                // При вызове этого метода пустая база данных будет создана в системном пути по умолчанию
                 this.getReadableDatabase();
                 this.close();
                 try {
@@ -1358,22 +1365,13 @@ public class DBServer {
             }
         }
 
-        /**
-         * Проверка, существует ли база данных, необходима чтобы избежать повторного копирования при каждом открытии приложения.
-         *
-         * @ return true, если существует, false, если нет
-         */
+
         private boolean checkDataBase() {
             File databasePath = myContext.getDatabasePath(DATABASE_NAME);
             Log.i("TAG", databasePath.getPath());
             return databasePath.exists();
         }
 
-        /**
-         * Копирует вашу базу данных из вашей локальной папки ресурсов в только что созданную пустую базу данных в
-         * системнай папке, откуда она может быть доступна и обработана.
-         * Используется bytestream.
-         */
 
         private void copyDataBase() throws IOException {
             byte[] buffer = new byte[1024];
