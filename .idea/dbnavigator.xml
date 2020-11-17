@@ -27,7 +27,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="4c768b92-084a-49b1-98bb-68ed20b75b6a">
-      <console name="Connection" type="STANDARD" schema="" session="Main">create table &quot;User_cart&quot; (
+      <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[create table "User_cart" (
 ID integer primary key autoincrement,
 BP_id integer,
 Body_id integer,
@@ -40,7 +40,7 @@ Motherboards_id integer,
 RAM_id integer,
 SSD_id integer,
 GPU_id integer
-)</console>
+)]]></console>
       <console name="Connectionm" type="STANDARD" schema="" session="Main" />
     </connection>
     <connection id="0a9fe686-34fc-46a5-be2e-1bf3d5cbfdd4">

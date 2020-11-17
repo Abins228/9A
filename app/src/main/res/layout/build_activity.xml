@@ -70,7 +70,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Материнская плата"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:typeface="serif" />
 
             <FrameLayout
                 android:id="@+id/motherContainer"
@@ -84,7 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="93dp"
                     android:layout_gravity="bottom|left"
-                    app:srcCompat="@drawable/sborka1" />
+                    app:srcCompat="@drawable/sborka221" />
             </FrameLayout>
 
             <TextView
@@ -93,7 +94,8 @@
                 android:layout_height="wrap_content"
 
                 android:text="Процессор"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:typeface="serif" />
 
             <FrameLayout
                 android:id="@+id/cpuContainer"
@@ -107,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="93dp"
                     android:layout_gravity="bottom|left"
-                    app:srcCompat="@drawable/sborka1" />
+                    app:srcCompat="@drawable/sborka221" />
             </FrameLayout>
 
             <TextView
@@ -115,7 +117,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Кулер для процессора"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:typeface="serif" />
 
             <FrameLayout
                 android:id="@+id/CPUcoollerContainer"
@@ -129,7 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="93dp"
                     android:layout_gravity="bottom|left"
-                    app:srcCompat="@drawable/sborka1" />
+                    app:srcCompat="@drawable/sborka221" />
             </FrameLayout>
 
             <TextView
@@ -137,7 +140,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Видеокарта"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:typeface="serif" />
 
             <FrameLayout
                 android:id="@+id/gpuContainer"
@@ -151,7 +155,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="93dp"
                     android:layout_gravity="bottom|left"
-                    app:srcCompat="@drawable/sborka1" />
+                    app:srcCompat="@drawable/sborka221" />
             </FrameLayout>
 
             <TextView
@@ -159,7 +163,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Оперативная память"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:typeface="serif" />
 
             <FrameLayout
                 android:id="@+id/ramContainer"
@@ -173,7 +178,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="93dp"
                     android:layout_gravity="bottom|left"
-                    app:srcCompat="@drawable/sborka1" />
+                    app:srcCompat="@drawable/sborka221" />
             </FrameLayout>
 
             <TextView
@@ -181,7 +186,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Жёсткие диски"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:typeface="serif" />
 
             <FrameLayout
                 android:id="@+id/hddContainer"
@@ -195,7 +201,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="93dp"
                     android:layout_gravity="bottom|left"
-                    app:srcCompat="@drawable/sborka1" />
+                    app:srcCompat="@drawable/sborka221" />
             </FrameLayout>
 
             <TextView
@@ -203,7 +209,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" SSD накопитель"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:typeface="serif" />
 
             <FrameLayout
                 android:id="@+id/ssdContainer"
@@ -217,7 +224,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="93dp"
                     android:layout_gravity="bottom|left"
-                    app:srcCompat="@drawable/sborka1" />
+                    app:srcCompat="@drawable/sborka221" />
             </FrameLayout>
 
             <TextView
@@ -225,7 +232,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="M.2 накопители"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:typeface="serif" />
 
             <FrameLayout
                 android:id="@+id/m2Container"
@@ -239,7 +247,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="93dp"
                     android:layout_gravity="bottom|left"
-                    app:srcCompat="@drawable/sborka1" />
+                    app:srcCompat="@drawable/sborka221" />
             </FrameLayout>
 
             <TextView
@@ -247,7 +255,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Блок питания"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:typeface="serif" />
 
             <FrameLayout
                 android:id="@+id/bpContainer"
@@ -261,7 +270,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="93dp"
                     android:layout_gravity="bottom|left"
-                    app:srcCompat="@drawable/sborka1" />
+                    app:srcCompat="@drawable/sborka221" />
             </FrameLayout>
 
             <TextView
@@ -269,7 +278,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Корпус"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:typeface="serif" />
 
             <FrameLayout
                 android:id="@+id/bodyContainer"
@@ -283,7 +293,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="93dp"
                     android:layout_gravity="bottom|left"
-                    app:srcCompat="@drawable/sborka1" />
+                    app:srcCompat="@drawable/sborka221" />
             </FrameLayout>
 
             <TextView
@@ -291,7 +301,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Вентиляторы"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:typeface="serif" />
 
             <FrameLayout
                 android:id="@+id/coollersContainer"
@@ -305,7 +316,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="93dp"
                     android:layout_gravity="bottom|left"
-                    app:srcCompat="@drawable/sborka1" />
+                    app:srcCompat="@drawable/sborka221" />
             </FrameLayout>
 
             <TextView
