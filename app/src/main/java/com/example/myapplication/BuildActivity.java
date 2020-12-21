@@ -278,10 +278,10 @@ public class BuildActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user_carts.deleteall();
-                userCart = new UserCart();
-                invalidateAll();
-                Toast.makeText(BuildActivity.this, "Сборка очищена!",
+                //user_carts.deleteall();
+                //userCart = new UserCart();
+                //invalidateAll();
+                Toast.makeText(BuildActivity.this, "Сборка очищена! (Пока не работает)",
                         Toast.LENGTH_LONG).show();
             }
         };
